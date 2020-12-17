@@ -1,10 +1,9 @@
 # Technical stuff
 
 
-## About
-Team: Fitness-Plattform, Gruppe mit Diana Schilling, Vincent Rottloff und Veronika Kustermann
-Technologie: Django
-Thema: Fitness-Plattform
+
+# About the platform
+## Description
 
 Trainer können auf einer Plattform Profile erstellen, Material hochladen und Benutzer (gegen Bezahlung) freischalten. Benutzer können sich auch ein Profil erstellen, nach Angeboten suchen und sich Trainingspläne zusammenstellen.
 
