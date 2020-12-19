@@ -1,9 +1,24 @@
 # Technical stuff
 
+## Projektstruktur
+Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practice-to-structure-django-project-directories-and-files. 
+
+## Development
+
+## Production
 
 
-# About the platform
-## Description
+# Über die Fitnessplattform
+## Allgemeine Funktionalität
+TODO: Was kann die Plattform?
+
+### Trainer
+
+### Benutzer
+
+
+## Projektbeschreibung
+TODO: Am Ende entfernen
 
 Trainer können auf einer Plattform Profile erstellen, Material hochladen und Benutzer (gegen Bezahlung) freischalten. Benutzer können sich auch ein Profil erstellen, nach Angeboten suchen und sich Trainingspläne zusammenstellen.
 

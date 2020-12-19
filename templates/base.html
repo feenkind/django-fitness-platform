@@ -1,0 +1,27 @@
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+	<title>{{ page_title }}</title> 
+	{% bootstrap_css %}
+	{% bootstrap_javascript jquery='full' %}
+</head> 
+<body>
+  <header>
+    Logo, Navigation
+    {% block login %}
+      user login
+    {% endblock %}
+  </header>
+  <div class="container-md">
+    {% bootstrap_messages %}
+    {% block content %}
+    	<p>Dummy aus Basis-Template</p>
+    {% endblock %} 
+  </div>
+<footer>
+	Some footer
+</footer>
+</body> 
+</html>
