@@ -33,13 +33,6 @@ Erweiterungen (optional):
 Implementierung einer lokalen Datenbank:
 
 * Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
-* dazu die Datei fitnessplatform/.env erstellen und darin folgende Variabeln hinterlegen erstellen und darin folgende Variabeln hinterlegen:
-```
-SECRET_KEY=0x!b#(1*cd73w$&azzc6p+essg7v=g80ls#z&xcx*mpemx&@9$ 
-DATABASE_USER=<dbuser>
-DATABASE_NAME=<dbname>
-DATABASE_PASSWORD=<pw> 
-DATABASE_HOST=localhost 
-DATABASE_PORT=3306
-```
+* dazu die Datei fitnessplatform/.env nach Vorlage von .env.example erstellen und die Variablen entsprechend anpassen
+
 
