@@ -42,3 +42,12 @@ Erweiterungen (optional):
 * Benutzer können Trainer Nachrichten schicken (und umgekehrt)
 * Benutzer können sich Trainingspläne erstellen
 * Implementierung von Zahlungsmöglichkeiten und automatischer Freischaltung von Trainingsangeboten
+
+## Local Setup
+
+Implementierung einer lokalen Datenbank:
+
+* Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
+* dazu die Datei fitnessplatform/.env nach Vorlage von .env.example erstellen und die Variablen entsprechend anpassen
+
+
