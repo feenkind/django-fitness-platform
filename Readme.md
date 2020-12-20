@@ -27,3 +27,19 @@ Erweiterungen (optional):
 * Benutzer können Trainer Nachrichten schicken (und umgekehrt)
 * Benutzer können sich Trainingspläne erstellen
 * Implementierung von Zahlungsmöglichkeiten und automatischer Freischaltung von Trainingsangeboten
+
+## Local Setup
+
+Implementierung einer lokalen Datenbank:
+
+* Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
+* dazu die Datei .env in django-fitness-platform > fitnessplatform > .env erstellen und darin folgende Variabeln hinterlegen:
+```
+SECRET_KEY=0x!b#(1*cd73w$&azzc6p+essg7v=g80ls#z&xcx*mpemx&@9$ 
+DATABASE_USER=<dbuser>
+DATABASE_NAME=<dbname>
+DATABASE_PASSWORD=<pw> 
+DATABASE_HOST=localhost 
+DATABASE_PORT=3306
+```
+
