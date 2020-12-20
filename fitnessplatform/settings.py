@@ -83,17 +83,6 @@ SITE_ID = 1
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-'''DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fitnessdb', # make sure to set up database on local system with same credentials
-        'USER': 'debian-sys-maint', # use any user with privileges granted to database
-        'PASSWORD': '3YdKssOozzJEUvwN',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}'''
-
 env = environ.Env()
 # reading .env file
 environ.Env.read_env()
