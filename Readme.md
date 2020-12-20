@@ -33,7 +33,7 @@ Erweiterungen (optional):
 Implementierung einer lokalen Datenbank:
 
 * Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
-* dazu die Datei .env in django-fitness-platform > fitnessplatform > .env erstellen und darin folgende Variabeln hinterlegen:
+* dazu die Datei fitnessplatform/.env erstellen und darin folgende Variabeln hinterlegen erstellen und darin folgende Variabeln hinterlegen:
 ```
 SECRET_KEY=0x!b#(1*cd73w$&azzc6p+essg7v=g80ls#z&xcx*mpemx&@9$ 
 DATABASE_USER=<dbuser>
