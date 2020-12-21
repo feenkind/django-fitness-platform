@@ -5,8 +5,8 @@ from .models import User
 # Register your models here.
 
 
-class UserAdmin(UserAdmin):
+class UsersAdmin(UserAdmin):
     model = User
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(User, UsersAdmin)
