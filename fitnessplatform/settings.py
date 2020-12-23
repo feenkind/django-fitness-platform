@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'apps.pages',
+    'apps.trainers',
+    'apps.users',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,8 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'apps.users',
-    'apps.trainers'
 ]
 
 MIDDLEWARE = [
@@ -67,7 +67,7 @@ ROOT_URLCONF = 'fitnessplatform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(BASE_DIR) + '/templates/',],
+        'DIRS': [str(BASE_DIR) + '/templates/', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,11 +108,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -147,3 +142,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+AUTH_USER_MODEL = "users.User"
+
+ACCOUNT_FORMS = {
+    'signup': 'apps.users.forms.UsersSignupForm',
+}
+
+# ALL AUTH SETTINGS
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_PRESERVE_USERNAME_CASING = False
+ACCOUNT_USERNAME_BLACKLIST = ['admin', 'root']
+ACCOUNT_USERNAME_MIN_LENGTH = 3
