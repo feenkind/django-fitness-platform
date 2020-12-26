@@ -10,9 +10,7 @@
 <body>
   <header>
     Logo, Navigation
-    {% block login %}
-      user login
-    {% endblock %}
+    {% include 'users/usernav.html' %}
   </header>
   <div class="container-md">
     {% bootstrap_messages %}
