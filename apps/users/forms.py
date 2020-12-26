@@ -4,8 +4,8 @@ from .models import Roles
 
 
 class UsersSignupForm(SignupForm):
-    first_name = forms.CharField(max_length=30, label='First Name')
-    last_name = forms.CharField(max_length=30, label='Last Name')
+    first_name = forms.CharField(max_length=30, label='First Name', initial='First Name')
+    last_name = forms.CharField(max_length=30, label='Last Name', initial='Last Name')
 
     def save(self, request):
         # Ensure you call the parent class's save.
