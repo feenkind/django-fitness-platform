@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.trainers',
     'apps.users',
     'bootstrap4',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,6 +80,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'fitnessplatform.wsgi.application'
 
@@ -162,3 +165,4 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'root']
 ACCOUNT_USERNAME_MIN_LENGTH = 3
+ACCOUNT_LOGOUT_ON_GET = True
