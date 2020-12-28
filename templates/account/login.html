@@ -8,7 +8,7 @@
 <div class="row">
   <div class="col-12 col-md-8">
     <p>{% trans 'If you have not created an account yet, then please' %}
-<a href="{{ signup_url }}">{% trans ' register ' %}</a>{% trans 'first' %}.</p>
+<a href="{{ signup_url }}">{% trans 'register' %}</a> {% trans 'first' %}.</p>
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
