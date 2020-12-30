@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from apps.pages.views import start_page
+from apps.users.views import user_profile
 
 urlpatterns = [
     path('', start_page),
     path('admin/', admin.site.urls),
     path('user/', include('allauth.urls')),
+    path('user/', user_profile),
 ]
