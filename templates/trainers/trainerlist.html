@@ -4,28 +4,22 @@
 
 {% block content %}
     <h1>{% trans 'Trainer List' %}</h1>
-    {% if not user.is_authenticated %}
-        <p>{% trans 'Please log in to view this page.' %}</p>
-        <a class="btn btn-secondary" href="{% url 'account_login' %}?next={{ request.path }}">{% trans 'Log in' %}</a>
-    {% else %}
-        <table class="table table-striped table-bordered">
-            <thead>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'Sport' %}</th>
+            <th>{% trans 'Address' %}</th>
+            <th>{% trans 'Motto' %}</th>
+        </tr>
+        </thead>
+        {% for trainer in trainers %}
             <tr>
-                <th>{% trans 'Name' %}</th>
-                <th>{% trans 'Sport' %}</th>
-                <th>{% trans 'Address' %}</th>
-                <th>{% trans 'Motto' %}</th>
+                <td>{{ trainer.user }}</td>
+                <td>{{ trainer.sport }}</td>
+                <td>{{ trainer.address }}</td>
+                <td>{{ trainer.motto }}</td>
             </tr>
-            </thead>
-            {% for trainer in trainers %}
-                <tr>
-                    <td>{{ trainer.user }}</td>
-                    <td>{{ trainer.sport }}</td>
-                    <td>{{ trainer.address }}</td>
-                    <td>{{ trainer.motto }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% endif %}
-
+        {% endfor %}
+    </table>
 {% endblock %}
