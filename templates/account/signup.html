@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load bootstrap4 %}
 {% load i18n %}
 
 {% block content %}
@@ -10,7 +10,7 @@
     <p>{% trans 'Otherwise please fill in the form to be registered as a trainer on our platform.' %}</p>
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
-      {{ form|crispy}}
+      {% bootstrap_form form %}
       {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
