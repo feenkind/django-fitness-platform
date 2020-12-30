@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'apps.trainers',
     'apps.users',
     'bootstrap4',
-    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,7 +67,9 @@ ROOT_URLCONF = 'fitnessplatform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(BASE_DIR) + '/templates/', ],
+        'DIRS': [
+            str(BASE_DIR) + '/templates/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,8 +81,6 @@ TEMPLATES = [
         },
     },
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'fitnessplatform.wsgi.application'
 
