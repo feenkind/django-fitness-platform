@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.pages.views import start_page
 from apps.users.views import user_profile
+from apps.trainers.views import *
 
 urlpatterns = [
     path('', start_page),
     path('admin/', admin.site.urls),
     path('user/', include('allauth.urls')),
     path('user/', user_profile),
+    path('trainerlist/', get_trainer_list),
+    path('trainer/', get_trainer_profile)
 ]
