@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link {{ general_link_class }}" href="{% url 'user_profile' %}">{% trans 'General settings' %}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {{ password_link_class }}" href="{% url 'account_change_password' %}">{% trans 'Password' %}</a>
+  </li>
+</ul>
