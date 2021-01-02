@@ -6,6 +6,14 @@ from apps.users.forms import UserSettings
 # Create your views here.
 def user_profile(request):
     user = request.user
+    if not user.is_authenticated:
+        return render(
+            request,
+            'users/userprofile.html',
+            {
+                'page_title': _('Please login'),
+            },
+        )
 
     if request.method == 'POST':
         form = UserSettings(request.POST, instance=user)
