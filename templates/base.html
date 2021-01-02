@@ -3,23 +3,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Trainhorizon{% if page_title %} - {{ page_title }} {% endif %}</title>
-    {% bootstrap_css %}
-    {% bootstrap_javascript jquery='full' %}
+	<title>Trainhorizon{% if page_title %} - {{ page_title }} {% endif %}</title>
+	{% bootstrap_css %}
+	{% bootstrap_javascript jquery='full' %}
 </head>
 <body>
-<header>
+  <header>
     Logo, Navigation
     {% include 'users/usernav.html' %}
-</header>
-<div class="container-md">
+  </header>
+  <div class="container-md">
     {% bootstrap_messages %}
     {% block content %}
-        <p>Dummy aus Basis-Template</p>
+    	<p>Dummy aus Basis-Template</p>
     {% endblock %}
-</div>
+  </div>
 <footer>
-    Some footer
+	Some footer
 </footer>
 </body>
 </html>
