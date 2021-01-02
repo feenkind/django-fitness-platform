@@ -15,3 +15,6 @@ class User(AbstractUser):
         choices=Roles.choices,
         default=Roles.USER,
     )
+
+    def __str__(self):
+        return f'{self.username} - {self.email}'
