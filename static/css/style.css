@@ -103,7 +103,39 @@ ul, ol {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
+	background-image: url("/static/img/hero-bg.jpg");
 }
+#classes1{
+	background-image: url("/static/img/classes/classes-1.jpg");
+}
+#classes4{
+	background-image: url("/static/img/classes/classes-4.jpg");
+}
+#classes2{
+	background-image: url("/static/img/classes/classes-2.jpg");
+}
+#classes5{
+	background-image: url("/static/img/classes/classes-5.jpg");
+}
+#classes3{
+	background-image: url("/static/img/classes/classes-3.jpg");
+}
+#classes6{
+	background-image: url("/static/img/classes/classes-6.jpg");
+}
+#classes7{
+	background-image: url("/static/img/classes/classes-7.jpg");
+}
+#classes8{
+	background-image: url("/static/img/classes/classes-8.jpg");
+}
+#banner-bg{
+	background-image: url("/static/img/banner-bg.jpg");
+}
+#footer-signup{
+	background-image: url("/static/img/footer-signup.jpg")
+}
+
 .spad {
 	padding-top: 100px;
 	padding-bottom: 100px;
