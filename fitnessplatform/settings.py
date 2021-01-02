@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'bootstrap4',
-    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +54,6 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.trainers',
     'apps.pages',
-
 
 ]
 
@@ -86,8 +84,6 @@ TEMPLATES = [
         },
     },
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'fitnessplatform.wsgi.application'
 
@@ -152,6 +148,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -171,4 +170,3 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'root']
 ACCOUNT_USERNAME_MIN_LENGTH = 3
-ACCOUNT_LOGOUT_ON_GET = True
