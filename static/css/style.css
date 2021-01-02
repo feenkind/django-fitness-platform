@@ -132,9 +132,6 @@ ul, ol {
 #banner-bg{
 	background-image: url("/static/img/banner-bg.jpg");
 }
-#footer-signup{
-	background-image: url("/static/img/footer-signup.jpg")
-}
 
 .spad {
 	padding-top: 100px;
@@ -619,7 +616,7 @@ ul, ol {
 	top: 50%;
 	width: 1100px;
 	height: 540px;
-	background: url(../../../../Downloads/gutim-master/img/testimonial/testimonial-bg.png);
+	background-image: url("/static/img/testimonial/testimonial-bg.png");
 	content: "";
 	-webkit-transform: translate(-550px, -270px);
 	-ms-transform: translate(-550px, -270px);
