@@ -24,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('allauth.urls')),
     path('user/', user_profile),
-    path('trainerlist/', get_trainer_list),
-    path('trainer/', get_trainer_profile)
+    path('trainerlist/', get_trainer_list, name='trainer_list'),
+    path('trainer/<int:id>/', get_trainer_profile, name='trainer_profile')
 ]

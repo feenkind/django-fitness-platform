@@ -11,14 +11,21 @@
             <th>{% trans 'Sport' %}</th>
             <th>{% trans 'Address' %}</th>
             <th>{% trans 'Motto' %}</th>
+            <th>{% trans 'Profile' %}</th>
         </tr>
         </thead>
         {% for trainer in trainers %}
             <tr>
                 <td>{{ trainer.user }}</td>
                 <td>{{ trainer.sport }}</td>
-                <td>{{ trainer.address }}</td>
+                {% lookup locations_by_trainerid trainer.id as locs %}
+                <td>
+                    {% for loc in locs %}
+                        <p>{{ loc.city }}, {{ loc.country }}</p>
+                    {% endfor %}
+                </td>
                 <td>{{ trainer.motto }}</td>
+                <td><a href="{% url 'trainer_profile' trainer.id %}">View Profile</a></td>
             </tr>
         {% endfor %}
     </table>
