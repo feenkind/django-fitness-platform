@@ -32,7 +32,7 @@ def get_trainer_list(request):
 
 def get_trainer_profile(request, id):
     trainer = Trainer.objects.get(id=id)
-    trainername = trainer.__str__()
+    trainername = trainer.get_fullname()
     locations = Location.objects.filter(trainer_id=id)
     return render(request, 'trainers/trainerprofile.html', {
         'page_title': f'{trainername}s Profile',
