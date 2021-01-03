@@ -7,10 +7,8 @@ from apps.users.forms import UserSettings
 def user_profile(request):
     user = request.user
     if not user.is_authenticated:
-        context = {
-            'page_title': _('Please login'),
-        }
-        return render(request, context)
+        context = {'page_title': _('Please login')}
+        return render(request, 'users/userprofile.html', context)
 
     if request.method == 'POST':
         form = UserSettings(request.POST, instance=user)
