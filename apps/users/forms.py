@@ -1,14 +1,15 @@
 from allauth.account.forms import SignupForm
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import Roles, User
 
 
 class UsersSignupForm(SignupForm):
     first_name = forms.CharField(
-        max_length=30, label='First Name', initial='First Name'
+        max_length=30, label=_('First Name'), required=True
     )
     last_name = forms.CharField(
-        max_length=30, label='Last Name', initial='Last Name'
+        max_length=30, label=_('Last Name'), required=True
     )
 
     def save(self, request):
@@ -23,9 +24,10 @@ class UsersSignupForm(SignupForm):
 
 
 class UserSettings(forms.ModelForm):
-    email = forms.EmailField(required=True)
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
+    username = forms.CharField(label=_('Username *'))
+    email = forms.EmailField(required=True, label=_('Email *'))
+    first_name = forms.CharField(required=True, label=_('First Name *'))
+    last_name = forms.CharField(required=True, label=_('Email *'))
 
     class Meta:
         model = User
