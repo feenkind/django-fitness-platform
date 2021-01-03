@@ -24,7 +24,6 @@ class UsersSignupForm(SignupForm):
 
 
 class UserSettings(forms.ModelForm):
-    username = forms.CharField(label=_('Username *'))
     email = forms.EmailField(required=True, label=_('Email *'))
     first_name = forms.CharField(required=True, label=_('First Name *'))
     last_name = forms.CharField(required=True, label=_('Email *'))
@@ -32,3 +31,6 @@ class UserSettings(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name']
+        labels = {
+            'username': _('Username *'),
+        }
