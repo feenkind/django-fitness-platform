@@ -1,12 +1,18 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
+from allauth.account.models import EmailAddress
 from .models import User
 
-# Register your models here.
+
+class UserAdmin(admin.ModelAdmin):
+    exclude = ['last_login', 'groups', 'user_permissions', 'password']
 
 
-class UsersAdmin(UserAdmin):
-    model = User
+admin.site.register(User, UserAdmin)
 
-
-admin.site.register(User, UsersAdmin)
+# hide unneeded allauth models
+admin.site.unregister(SocialToken)
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialApp)
+admin.site.unregister(EmailAddress)
