@@ -1,12 +1,12 @@
 {% load bootstrap4 %}
 
 <!DOCTYPE html>
-<html lang="en"> 
-<head> 
-	<title>{{ page_title }}</title> 
+<html lang="en">
+<head>
+	<title>Trainhorizon{% if page_title %} - {{ page_title }} {% endif %}</title>
 	{% bootstrap_css %}
 	{% bootstrap_javascript jquery='full' %}
-</head> 
+</head>
 <body>
   <header class="d-flex">
     Logo, Navigation
@@ -16,10 +16,10 @@
     {% bootstrap_messages %}
     {% block content %}
     	<p>Dummy aus Basis-Template</p>
-    {% endblock %} 
+    {% endblock %}
   </div>
 <footer>
 	Some footer
 </footer>
-</body> 
+</body>
 </html>
