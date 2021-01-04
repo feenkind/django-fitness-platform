@@ -6,11 +6,24 @@ from .models import Roles, User
 
 class UsersSignupForm(SignupForm):
     first_name = forms.CharField(
-        max_length=30, label=_('First Name'), required=True
+        max_length=30,
+        label=_('First Name* '),
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
     )
     last_name = forms.CharField(
-        max_length=30, label=_('Last Name'), required=True
+        max_length=30,
+        label=_('Last Name *'),
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].label = _('E-mail *')
+        self.fields['username'].label = _('Username *')
+        self.fields['password1'].label = _('Password *')
+        self.fields['password2'].label = _('Password (again) *')
 
     def save(self, request):
         # Ensure you call the parent class's save.
@@ -26,7 +39,7 @@ class UsersSignupForm(SignupForm):
 class UserSettings(forms.ModelForm):
     email = forms.EmailField(required=True, label=_('Email *'))
     first_name = forms.CharField(required=True, label=_('First Name *'))
-    last_name = forms.CharField(required=True, label=_('Email *'))
+    last_name = forms.CharField(required=True, label=_('E-mail *'))
 
     class Meta:
         model = User

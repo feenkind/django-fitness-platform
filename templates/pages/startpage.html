@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block hero %}
+  <section id="hero" class="d-flex align-items-center">
+      <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+          <h1>Trainhorizon</h1>
+          <h2>Train like you never lift before</h2>
+          <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      </div>
+  </section>
+{% endblock %}
+
+{% block content %}
+    <main id="main">
+
+            <section id="about" class="about">
+                <div class="container">
+
+                    <div class="row content">
+                        <div class="col-lg-6">
+                            <h2>Unser Erfolgkonzept übertrifft die Grenzen der Vorstellung</h2>
+                            <h3>Mach dich und deinen Geist fit und gesund</h3>
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0">
+                            <p>
+                                Grundvoraussetzung für ein erfolgreiches Training ist die nötige Motivation und, dass
+                                man
+                                Faulheit erstmal beiseite schiebt.
+                                Wer wirklich was erreichen will, der darf nicht schon nach den ersten paar
+                                Trainingseinheiten sagen,
+                                dass es ja eh nichts bringt und wieder nach Hause gehen. Dadurch verschwendet man nur
+                                unnötig Lebenszeit und es demotiviert.
+                                Wer hier unterwegs ist, hat die Entscheidung getroffen, etwas aus sich zu machen und
+                                nicht
+                                auf der faulen Haut zu liegen.
+                            </p>
+                            <ul>
+                                <li><i class="ri-check-double-line"></i>Bewege dich schneller und effizienter im Alltag
+                                </li>
+                                <li><i class="ri-check-double-line"></i>Verlasse deine Komfortzone und steigere dein
+                                    Limit
+                                </li>
+                                <li><i class="ri-check-double-line"></i>Lerne dich richtig zu ernähren und deinen Körper
+                                    zu
+                                    nutzen
+                                </li>
+                            </ul>
+                            <p class="font-italic">
+
+                                {% trans 'Wer eine Jogginghose trägt, hat die Kontrolle über sein Leben verloren. -- Karl Lagerfeld' %}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+    </main>
+{% endblock %}

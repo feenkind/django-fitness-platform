@@ -1,25 +1,78 @@
 {% load bootstrap4 %}
+{% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"> 
+<head> 
 	<title>Trainhorizon{% if page_title %} - {{ page_title }} {% endif %}</title>
 	{% bootstrap_css %}
 	{% bootstrap_javascript jquery='full' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <header class="d-flex">
-    Logo, Navigation
-    {% include 'users/usernav.html' %}
-  </header>
+
+<header class="border-bottom">
   <div class="container-md">
-    {% bootstrap_messages %}
-    {% block content %}
-    	<p>Dummy aus Basis-Template</p>
-    {% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">Trainhorizon</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto navbar-right align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'trainer_list' %}">{% trans 'Trainer list' %}</a>
+          </li>
+          <li>
+            {% include 'users/usernav.html' %}
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-<footer>
-	Some footer
-</footer>
+</header>
+
+{% block hero %}
+{% endblock %}
+
+
+<section class="container-md py-5">
+  {% bootstrap_messages %}
+  {% block content %}
+    <p>{% trans 'If you see this, something went wrong.' %}</p>
+  {% endblock %}
+</section>
+
+<footer class="d-flex">
+  <div class="container-md">
+        <div class="row">
+          <div class="col-lg p-4">
+            <h4>Trainhorizon</h4>
+            <ul>
+              <li class="py-1">All rights reserved.</li>
+              <li class="py-1">{% trans 'Contact us at' %} info@trainhorizon.com</li>
+            </ul>
+          </div>
+
+          <div class="col-lg p-4">
+            <h4>{% trans 'Legal information' %}</h4>
+            <ul>
+              <li class="py-1"><a href="#">{% trans 'Terms of service' %}</a></li>
+              <li class="py-1"><a href="#">{% trans 'Privacy policy' %}</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg p-4">
+            <h4>{% trans 'Useful Links' %}</h4>
+            <ul>
+              <li class="py-1"><a href="/">{% trans 'Home' %}</a></li>
+              <li class="py-1"><a href="{% url 'trainer_list' %}">{% trans 'Trainer list' %}</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </footer>
 </body>
 </html>
