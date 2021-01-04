@@ -25,11 +25,16 @@
     </div>
 </header>
 
+{% block hero %}
+{% endblock %}
 
-    {% bootstrap_messages %}
-    {% block content %}
-    	<p>{% trans 'If you see this, something went wrong.' %}</p>
-    {% endblock %}
+
+<section class="container-md py-5">
+  {% bootstrap_messages %}
+  {% block content %}
+    <p>{% trans 'If you see this, something went wrong.' %}</p>
+  {% endblock %}
+</section>
 
 <footer class="d-flex">
   <div class="container-md">

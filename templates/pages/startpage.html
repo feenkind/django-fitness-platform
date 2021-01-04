@@ -2,14 +2,17 @@
 {% load static %}
 {% load i18n %}
 
+{% block hero %}
+  <section id="hero" class="d-flex align-items-center">
+      <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+          <h1>Fitnesshorizon</h1>
+          <h2>Train like you never lift before</h2>
+          <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      </div>
+  </section>
+{% endblock %}
+
 {% block content %}
-    <section id="hero" class="d-flex align-items-center">
-        <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
-            <h1>Fitnesshorizon</h1>
-            <h2>Train like you never lift before</h2>
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-        </div>
-    </section>
     <main id="main">
 
             <section id="about" class="about">
