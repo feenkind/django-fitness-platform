@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.template.defaulttags import register
 
 from apps.trainers.models import *
+from apps.trainers.filters import *
 
 
 # custom template tag to enable multiple level lookup
@@ -11,7 +12,8 @@ def get_item(dictionary, key):
 
 
 def get_trainer_list(request):
-    trainers = list(Trainer.objects.all().order_by('user'))
+    trainer_filter = TrainerFilter(request.GET, queryset=Trainer.objects.all())
+    trainers = list(trainer_filter.qs)
     locations = Location.objects.all()
     locations_by_trainerid = {}
     for location in locations:
@@ -23,11 +25,13 @@ def get_trainer_list(request):
         location_list.append(location)
         # assign complete location_list to corresponding trainer_id key
         locations_by_trainerid[location.trainer_id] = location_list
-        context = {
-            'page_title': 'All Trainers',
-            'trainers': trainers,
-            'locations_by_trainerid': locations_by_trainerid
-        }
+
+    context = {
+        'page_title': 'All Trainers',
+        'trainers': trainers,
+        'locations_by_trainerid': locations_by_trainerid,
+        'filter': trainer_filter.form,
+    }
     return render(request, 'trainers/trainerlist.html', context)
 
 
@@ -39,6 +43,6 @@ def get_trainer_profile(request, id):
         'page_title': f'{trainername}s Profile',
         'trainer': trainer,
         'trainername': trainername,
-        'locations': locations
+        'locations': locations,
     }
     return render(request, 'trainers/trainerprofile.html', context)
