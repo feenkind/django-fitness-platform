@@ -13,7 +13,7 @@ class TrainerFilter(django_filters.FilterSet):
 
     city = django_filters.ModelChoiceFilter(
         label=_('City'),
-        queryset=Location.objects.values_list('city', flat=True),
+        queryset=Location.objects.values_list('city', flat=True).distinct(),
         field_name='location__city',
         to_field_name='city',
     )
