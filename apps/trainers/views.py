@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.template.defaulttags import register
+from django.utils.translation import gettext_lazy as _
 
 from apps.trainers.models import *
 from apps.trainers.filters import *
@@ -27,7 +28,7 @@ def get_trainer_list(request):
         locations_by_trainerid[location.trainer_id] = location_list
 
     context = {
-        'page_title': 'All Trainers',
+        'page_title': _('All Trainers'),
         'trainers': trainers,
         'locations_by_trainerid': locations_by_trainerid,
         'filter': trainer_filter.form,
@@ -40,7 +41,7 @@ def get_trainer_profile(request, id):
     trainername = trainer.get_fullname()
     locations = Location.objects.filter(trainer_id=id)
     context = {
-        'page_title': f'{trainername}s Profile',
+        'page_title': _(f'{trainername}s Profile'),
         'trainer': trainer,
         'trainername': trainername,
         'locations': locations,
