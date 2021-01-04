@@ -28,4 +28,5 @@ urlpatterns = [
     path('trainerlist/', get_trainer_list, name='trainer_list'),
     path('trainer/<int:id>/', get_trainer_profile, name='trainer_profile'),
     path('trainer/', get_trainer_profile, name='trainer_profile'),
+    path('trainer/edit', edit_trainer_profile, name='trainer_profile_edit'),
 ]

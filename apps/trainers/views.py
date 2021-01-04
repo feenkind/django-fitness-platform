@@ -1,8 +1,12 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template.defaulttags import register
-
+from django.urls import reverse_lazy
 from apps.trainers.models import *
-
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
+from apps.trainers.forms import TrainerSettings
+# from apps.users.models import Roles
 
 # custom template tag to enable multiple level lookup
 @register.simple_tag(name='lookup')
@@ -46,3 +50,28 @@ def get_trainer_profile(request, id=None):
         context = {'page_title': 'Trainerprofile does not exist.'}
 
     return render(request, 'trainers/trainerprofile.html', context)
+
+
+def edit_trainer_profile(request):
+    user = request.user
+    try:
+        trainer = Trainer.objects.get(user_id=user.id)
+    except:
+        trainer = Trainer()
+    if request.method == 'POST':
+        form = TrainerSettings(request.POST, instance=trainer)
+        if form.is_valid():
+            trainer.user_id = user.id
+            # user.role = Roles.TRAINER
+            form.save()
+            messages.success(request, _('Profile saved'))
+            return HttpResponseRedirect(reverse_lazy('trainer_profile'))
+        else:
+            messages.error(request, _('We had problems saving your changes.'))
+    else:
+        form = TrainerSettings(instance=trainer)
+    context = {
+        'page_title': f'Edit trainer profile',
+        'form': form,
+    }
+    return render(request, 'trainers/trainerprofile_edit.html', context)
