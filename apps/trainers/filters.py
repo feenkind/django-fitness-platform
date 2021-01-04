@@ -11,6 +11,13 @@ class TrainerFilter(django_filters.FilterSet):
         method='filter_trainer_name',
     )
 
+    city = django_filters.ModelChoiceFilter(
+        label=_('City'),
+        queryset=Location.objects.values_list('city', flat=True),
+        field_name='location__city',
+        to_field_name='city',
+    )
+
     # first or last name can contain given value
     def filter_trainer_name(self, queryset, name, value):
         return queryset.filter(
