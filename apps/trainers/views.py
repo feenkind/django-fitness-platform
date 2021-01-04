@@ -23,20 +23,22 @@ def get_trainer_list(request):
         location_list.append(location)
         # assign complete location_list to corresponding trainer_id key
         locations_by_trainerid[location.trainer_id] = location_list
-    return render(request, 'trainers/trainerlist.html', {
-        'page_title': 'All Trainers',
-        'trainers': trainers,
-        'locations_by_trainerid': locations_by_trainerid
-    })
+        context = {
+            'page_title': 'All Trainers',
+            'trainers': trainers,
+            'locations_by_trainerid': locations_by_trainerid
+        }
+    return render(request, 'trainers/trainerlist.html', context)
 
 
 def get_trainer_profile(request, id):
     trainer = Trainer.objects.get(id=id)
     trainername = trainer.get_fullname()
     locations = Location.objects.filter(trainer_id=id)
-    return render(request, 'trainers/trainerprofile.html', {
+    context = {
         'page_title': f'{trainername}s Profile',
         'trainer': trainer,
         'trainername': trainername,
         'locations': locations
-    })
+    }
+    return render(request, 'trainers/trainerprofile.html', context)
