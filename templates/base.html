@@ -11,18 +11,25 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container">
-      <div class="header-container d-flex align-items-center">
-        <div class="logo mr-auto">
-          <h1 class="text-light"><a href=""><span>Fitnesshorizon</span></a></h1>
-             <!--<a href=""><img src="{% static 'img/logo.png'%}" alt="" class="img-fluid"></a>-->
-        </div>
-        <nav>
+
+<header class="border-bottom">
+  <div class="container-md">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">Trainhorizon</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'trainer_list' %}">{% trans 'Trainer list' %}</a>
+          </li>
+        </ul>
         {% include 'users/usernav.html' %}
-        </nav>
       </div>
-    </div>
+    </nav>
+  </div>
 </header>
 
 {% block hero %}
