@@ -1,18 +1,22 @@
 import django_filters
-from apps.trainers.models import *
 from django.utils.translation import gettext_lazy as _
+from django.db.models import Q
+from apps.trainers.models import *
 
 
 class TrainerFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(
-        field_name='user_id__first_name',
+        field_name='name',
         label=_('Trainer name'),
-        lookup_expr='icontains',
         method='filter_trainer_name',
     )
 
+    # first or last name can contain given value
     def filter_trainer_name(self, queryset, name, value):
-        return queryset
+        return queryset.filter(
+            Q(user_id__first_name__icontains=value)
+            | Q(user_id__last_name__icontains=value)
+        )
 
     class Meta:
         model = Trainer
