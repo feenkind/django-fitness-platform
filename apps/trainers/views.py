@@ -31,14 +31,18 @@ def get_trainer_list(request):
     return render(request, 'trainers/trainerlist.html', context)
 
 
-def get_trainer_profile(request, id):
-    trainer = Trainer.objects.get(id=id)
-    trainername = trainer.get_fullname()
-    locations = Location.objects.filter(trainer_id=id)
-    context = {
-        'page_title': f'{trainername}s Profile',
-        'trainer': trainer,
-        'trainername': trainername,
-        'locations': locations
-    }
+def get_trainer_profile(request, id=None):
+    try:
+        trainer = Trainer.objects.get(id=id) if id else Trainer.objects.get(user_id=request.user.id)
+        trainername = trainer.get_fullname()
+        locations = Location.objects.filter(trainer_id=id)
+        context = {
+            'page_title': f'{trainername}s Profile',
+            'trainer': trainer,
+            'trainername': trainername,
+            'locations': locations
+        }
+    except Trainer.DoesNotExist:
+        context = {'page_title': 'Trainerprofile does not exist.'}
+
     return render(request, 'trainers/trainerprofile.html', context)

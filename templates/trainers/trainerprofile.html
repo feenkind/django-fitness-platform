@@ -2,14 +2,19 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block content %}
-    <a href="{% url 'trainer_list' %}">{% trans 'Return to trainer overview' %}</a>
-    <h1>{{ trainername }}{% trans '\'s Profile' %}</h1>
-    <p><strong>{% trans 'Sport' %}: </strong>{{ trainer.get_sport_display }}</p>
-    <p><strong>{% trans 'Motto' %}: </strong>{{ trainer.motto }}</p>
-    <p><strong>{% trans 'Location' %}: </strong></p>
-    {% for location in locations %}
-        <p>{{ location.street }} {{ location.number }}, {{ location.zipcode }} {{ location.city }} {{ location.country }}</p>
-    {% endfor %}
-    <p><strong>{% trans 'About' %}: </strong></p>
-    <p>{{ trainer.about }}</p>
+    <a href="{% url 'trainer_list' %}">{% trans 'Trainer overview' %}</a>
+    {% if not trainer %}
+        <h1>{% trans 'No trainer profile availabe.' %}</h1>
+        <a class="btn btn-secondary" href="#">{% trans 'Create trainer profile' %}</a>
+    {% else %}
+        <h1>{{ trainername }}{% trans '\'s Profile' %}</h1>
+        <p><strong>{% trans 'Sport' %}: </strong>{{ trainer.get_sport_display }}</p>
+        <p><strong>{% trans 'Motto' %}: </strong>{{ trainer.motto }}</p>
+        <p><strong>{% trans 'Location' %}: </strong></p>
+        {% for location in locations %}
+            <p>{{ location.street }} {{ location.number }}, {{ location.zipcode }} {{ location.city }} {{ location.country }}</p>
+        {% endfor %}
+        <p><strong>{% trans 'About' %}: </strong></p>
+        <p>{{ trainer.about }}</p>
+    {% endif %}
 {% endblock %}
