@@ -39,8 +39,8 @@ class UsersSignupForm(SignupForm):
 class UserSettings(forms.ModelForm):
     email = forms.EmailField(required=True, label=_('Email *'))
     first_name = forms.CharField(required=True, label=_('First Name *'))
-    last_name = forms.CharField(required=True, label=_('E-mail *'))
     avatar = forms.ImageField(required=False)
+    last_name = forms.CharField(required=True, label=_('Last Name *'))
 
     class Meta:
         model = User
