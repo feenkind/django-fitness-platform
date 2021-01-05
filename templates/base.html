@@ -12,10 +12,13 @@
 </head>
 <body>
 
-<header class="border-bottom">
+<header class="border-bottom border-primary">
   <div class="container-md">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="/">Trainhorizon</a>
+
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'img/logo.png' %}" height="50" class="d-inline-block align-top" alt="">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,7 +26,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto navbar-right align-items-lg-center">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'trainer_list' %}">{% trans 'Trainer list' %}</a>
+            <a class="nav-link {% if request.path == '/trainerlist/' %}active{% endif %}" href="{% url 'trainer_list' %}">
+              {% trans 'Trainer list' %}
+            </a>
+          <li class="mr-lg-4">
+            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">
+              {% trans 'About us' %}
+            </a>
           </li>
           <li>
             {% include 'users/usernav.html' %}
@@ -45,7 +54,7 @@
   {% endblock %}
 </section>
 
-<footer class="d-flex">
+<footer class="d-flex bg-dark">
   <div class="container-md">
         <div class="row">
           <div class="col-lg p-4">

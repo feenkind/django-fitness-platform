@@ -4,11 +4,12 @@ body {
 }
 
 a {
+  transition: 0.3s;
   color: #FF6100;
 }
 
 a:hover {
-  color: #FF6100;
+  color: #e45000;
   text-decoration: none;
 }
 
@@ -16,13 +17,24 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
 
+.bg-primary {
+  background-color: #FF6100 !important;
+}
+.border-primary {
+  border-color: #FF6100 !important;
+}
+
+/* ------ HEADER ------ */
+#dropdownMenuButton {
+  color: #FF6100
+}
+
 
 /* ------ FOOTER ------ */
 
-body>footer {
-  color: #777777;
-  font-size: 14px;
-  background: #1f1d1d;
+body>footer, 
+body>footer ul a {
+  color: #969696;
 }
 
 body>footer h4 {
@@ -36,7 +48,6 @@ body>footer ul {
 }
 
 body>footer ul a {
-  color: #777777;
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
