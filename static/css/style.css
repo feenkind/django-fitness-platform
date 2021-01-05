@@ -1,46 +1,49 @@
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
+:root {
+  --primary-color: #FF6100;
+  --primary-color-dark: #e45000;
+  --light-color: #e0ecf5;
 }
+
 
 a {
   transition: 0.3s;
-  color: #FF6100;
+  color: var(--primary-color);
 }
 
 a:hover {
-  color: #e45000;
+  color: var(--primary-color-dark);
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
-}
 
 body>.container-md>h1 {
   margin-bottom: 1.5rem;
 }
 
 .bg-light {
-  background-color: #e0ecf5 !important;
+  background-color: var(--light-color) !important;
 }
 
 .btn-primary {
-  background-color: #FF6100;
-  border-color: #FF6100;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: var(--primary-color-dark);
+  border-color: var(--primary-color-dark);
 }
 
 .bg-primary {
-  background-color: #FF6100 !important;
+  background-color: var(--primary-color) !important;
 }
 .border-primary {
-  border-color: #FF6100 !important;
+  border-color: var(--primary-color) !important;
 }
 
 /* ------ HEADER ------ */
 #dropdownMenuButton {
-  color: #FF6100
-
+  color: var(--primary-color);
 }
 
 
