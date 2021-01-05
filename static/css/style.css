@@ -63,6 +63,12 @@ body>.container-md>h1 {
   background-color: var(--primary-color);
 }
 
+.image-square-crop {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+}
+
 
 /* ------ FOOTER ------ */
 body>footer {
