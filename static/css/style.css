@@ -28,7 +28,8 @@ body>.container-md>h1 {
 .btn-primary {
   background-color: #FF6100;
   border-color: #FF6100;
-=======
+}
+
 .bg-primary {
   background-color: #FF6100 !important;
 }
