@@ -63,7 +63,7 @@ body>.container-md>h1 {
   background-color: var(--primary-color);
 }
 
-.image-square-crop {
+header .image-square-crop {
   height: 50px;
   width: 50px;
   overflow: hidden;
@@ -109,6 +109,12 @@ body>.container-md {
 /* ----- TRAINER LIST ------*/
 .table-hover tbody tr:hover {
   background-color: var(--light-color);
+}
+
+table .image-square-crop {
+  height: 10vw;
+  width: 10vw;
+  overflow: hidden;
 }
 
 /* ------ START PAGE ------ */

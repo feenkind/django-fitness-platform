@@ -28,15 +28,22 @@
     <table class="table table-hover">
         <thead>
         <tr>
+            <th>{% trans 'Trainer picture' %}</th>
             <th>{% trans 'Name' %}</th>
             <th>{% trans 'Sport' %}</th>
             <th>{% trans 'Location' %}</th>
-            <th>{% trans 'Motto' %}</th>
             <th></th>
         </tr>
         </thead>
         {% for trainer in trainers %}
             <tr>
+                <td>
+                  {% if trainer.user.avatar %}
+                    <div class="image-square-crop d-inline-block">
+                      <img class="img-fluid border border-secondary"  src="{{ trainer.user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
+                    </div>
+                  {% endif %}
+                </td>
                 <td>
                   {{ trainer.user.first_name }} {{ trainer.user.last_name }}
                 </td>
@@ -48,9 +55,6 @@
                     {% for loc in locs %}
                         <p>{{ loc.city }}, {{ loc.country }}</p>
                     {% endfor %}
-                </td>
-                <td>
-                  {{ trainer.motto }}
                 </td>
                 <td class="text-right">
                   <a href="{% url 'trainer_profile' trainer.id %}">{% trans 'View Profile' %}</a>
