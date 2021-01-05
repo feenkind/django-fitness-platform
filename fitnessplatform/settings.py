@@ -47,13 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django_filters',
     'environ',
-
-    #own
+    # own
     'apps.users',
     'apps.trainers',
     'apps.pages',
-
 ]
 
 MIDDLEWARE = [
