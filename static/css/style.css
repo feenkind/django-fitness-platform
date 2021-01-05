@@ -1,7 +1,7 @@
 :root {
   --primary-color: #FF6100;
   --primary-color-dark: #e45000;
-  --light-color: #e0ecf5;
+  --light-color: #d8e9f7;
 }
 
 
@@ -41,6 +41,7 @@ body>.container-md>h1 {
 }
 
 /* BACKGROUNDS */
+.badge-light,
 .bg-light {
   background-color: var(--light-color) !important;
 }
@@ -64,6 +65,9 @@ body>.container-md>h1 {
 
 
 /* ------ FOOTER ------ */
+body>footer {
+  font-size: 0.8rem;
+}
 
 body>footer, 
 body>footer ul a {
@@ -89,6 +93,16 @@ body>footer ul a {
 body>footer ul a:hover {
   text-decoration: none;
   color: #FF6100;
+}
+
+/* ------ CONTENT ------ */
+body>.container-md {
+  min-height: 80vh;
+}
+
+/* ----- TRAINER LIST ------*/
+.table-hover tbody tr:hover {
+  background-color: var(--light-color);
 }
 
 /* ------ START PAGE ------ */
