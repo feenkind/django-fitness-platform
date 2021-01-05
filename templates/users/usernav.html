@@ -12,14 +12,20 @@
   </span>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
     <p class="dropdown-item">{% trans 'Signed in as ' %}<strong>{{ user.username }}</strong></p>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="{% url 'user_profile' %}">{% trans 'Your settings' %}</a>
+    <div class="dropdown-divider border-primary"></div>
+    <a class="dropdown-item {% if request.path == '/user/' %}active{% endif %}" href="{% url 'user_profile' %}">
+      {% trans 'Your settings' %}
+    </a>
     {% if user.role == 'trainer' %}
-      <a class="dropdown-item" href="#">{% trans 'Your trainer profile' %}</a>
+      <a class="dropdown-item {% if request.path == '/trainer/' %}active{% endif %}" href="#">
+        {% trans 'Your trainer profile' %}
+      </a>
     {% endif %}
-    <a class="dropdown-item" href="{% url 'account_logout' %}">{% trans 'Logout' %}</a>
+    <a class="dropdown-item" href="{% url 'account_logout' %}">
+      {% trans 'Logout' %}
+    </a>
   </div>
 </div>
 {% else %}
-<a class="btn btn-secondary" href="{% url 'account_login' %}">Login</a> or <a href="{% url 'account_signup' %}">Register</a>
+<a class="btn btn-outline-primary mr-1" href="{% url 'account_login' %}">Login</a> or <a class="ml-1" href="{% url 'account_signup' %}">Register</a>
 {% endif %}

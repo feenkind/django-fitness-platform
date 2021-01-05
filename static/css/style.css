@@ -20,10 +20,7 @@ body>.container-md>h1 {
   margin-bottom: 1.5rem;
 }
 
-.bg-light {
-  background-color: var(--light-color) !important;
-}
-
+/* BUTTONS */
 .btn-primary {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
@@ -33,10 +30,25 @@ body>.container-md>h1 {
   background-color: var(--primary-color-dark);
   border-color: var(--primary-color-dark);
 }
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
 
+/* BACKGROUNDS */
+.bg-light {
+  background-color: var(--light-color) !important;
+}
 .bg-primary {
   background-color: var(--primary-color) !important;
 }
+
+/* BORDERS */
 .border-primary {
   border-color: var(--primary-color) !important;
 }
@@ -44,6 +56,10 @@ body>.container-md>h1 {
 /* ------ HEADER ------ */
 #dropdownMenuButton {
   color: var(--primary-color);
+}
+.dropdown-item.active, 
+.dropdown-item:active {
+  background-color: var(--primary-color);
 }
 
 
