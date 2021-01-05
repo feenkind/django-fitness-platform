@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load i18n %}
+{% load static %}
+
+{% block hero %}
+<img src="{% static 'img/hero-trainerlist.jpg' %}" class="img-fluid mh-20" alt="Trainer list image">
+{% endblock %}
 
 {% block content %}
   <h1>{% trans 'Trainer List' %}</h1>
