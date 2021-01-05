@@ -32,6 +32,7 @@ def get_trainer_list(request):
         'trainers': trainers,
         'locations_by_trainerid': locations_by_trainerid,
         'filter': trainer_filter.form,
+        'result_count': trainers.__len__,
     }
     return render(request, 'trainers/trainerlist.html', context)
 
