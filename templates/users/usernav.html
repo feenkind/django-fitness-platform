@@ -4,7 +4,11 @@
 {% if user.is_authenticated %}
 <div class="dropdown">
   <span class="dropdown-toggle btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-    <img class="border border-secondary"  src="{% static 'img/dummy_profile.png' %}" alt="{% trans 'Profile picture' %}" />
+    {% if user.avatar %}
+      <img height="50" width="50" class="border border-secondary"  src="{{ user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
+    {% else %}
+      <img height="50" width="50" class="border border-secondary"  src="{% static 'img/dummy_profile.png' %}" alt="{% trans 'Profile picture' %}" />
+    {% endif %}
   </span>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
     <p class="dropdown-item">{% trans 'Signed in as ' %}<strong>{{ user.username }}</strong></p>
