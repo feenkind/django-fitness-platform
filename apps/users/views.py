@@ -11,7 +11,7 @@ def user_profile(request):
         return render(request, 'users/userprofile.html', context)
 
     if request.method == 'POST':
-        form = UserSettings(request.POST, instance=user)
+        form = UserSettings(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             messages.success(request, _('Settings saved'))

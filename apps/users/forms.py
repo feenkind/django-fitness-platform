@@ -40,10 +40,11 @@ class UserSettings(forms.ModelForm):
     email = forms.EmailField(required=True, label=_('Email *'))
     first_name = forms.CharField(required=True, label=_('First Name *'))
     last_name = forms.CharField(required=True, label=_('E-mail *'))
+    avatar = forms.ImageField(required=False)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = ['avatar', 'username', 'email', 'first_name', 'last_name']
         labels = {
             'username': _('Username *'),
         }

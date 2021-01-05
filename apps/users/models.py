@@ -16,5 +16,11 @@ class User(AbstractUser):
         default=Roles.USER,
     )
 
+    def user_directory_path(self, filename):
+        # file will be uploaded to MEDIA_ROOT/user_<id>/avatar/<filename>
+        return f'user_{self.id}/avatar/avatar.{filename.split(".")[1]}'
+
+    avatar = models.ImageField(upload_to=user_directory_path, null=True)
+
     def __str__(self):
         return f'{self.username} - {self.email}'
