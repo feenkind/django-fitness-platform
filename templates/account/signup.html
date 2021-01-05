@@ -4,19 +4,17 @@
 
 {% block content %}
 <h1>{% trans 'Register' %}</h1>
-<div class="row">
-  <div class="col-12 col-md-8">
-    <p>{% trans 'Already have an account? Then please ' %}<a href="{{ login_url }}">{% trans 'sign in' %}</a>.</p>
-    <p>{% trans 'Otherwise please fill in the form to be registered as a trainer on our platform.' %}</p>
-    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-      {% endif %}
-      <button type="submit" class="btn btn-primary">{% trans 'Register now' %}</button>
-    </form>
+<p>{% trans 'Already have an account? Then please ' %}<a href="{{ login_url }}">{% trans 'sign in' %}</a>.</p>
+<p>{% trans 'Otherwise please fill in the form to be registered as a trainer on our platform.' %}</p>
+<form class="signup my-5 p-4 bg-light" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  <div class="form-row">
+    {% bootstrap_form form form_group_class='form-group col-lg-6' %}
   </div>
-</div>
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit" class="btn btn-primary">{% trans 'Register now' %}</button>
+</form>
 
 {% endblock %}

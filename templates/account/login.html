@@ -5,21 +5,19 @@
 {% block content %}
 
 <h1>{% trans 'Login' %}</h1>
-<div class="row">
-  <div class="col-12 col-md-8">
-    <p>{% trans 'If you have not created an account yet, then please' %}
+<p>{% trans 'If you have not created an account yet, then please' %}
 <a href="{{ signup_url }}">{% trans 'register' %}</a> {% trans 'first' %}.</p>
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<form class="login my-5 p-4 bg-light" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-  {% bootstrap_form form %}
+  <div class="form-row">
+    {% bootstrap_form form form_group_class='form-group col-lg-6' %}
+  </div>
   {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <button class="btn btn-primary" type="submit">{% trans 'Log In' %}</button>
   <a class="btn btn-outline-secondary" href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
 </form>
-</div>
-</div>
 
 {% endblock %}
