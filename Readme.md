@@ -40,7 +40,7 @@ Durch Klick auf den jeweiligen Trainer kommt man zur Detailansicht des Profils, 
 * Trainer können sich über den Link im Header registrieren (`/user/signup/`). Sobald sich ein Benutzer über die Website registriert hat, wird er in der Datenbank mit der Rolle "trainer" angelegt. Nicht über die Website registrierte Benutzer (wie z.B der superuser) werden mit der Rolle "user" angelegt.
 * Registrierte Trainer können sich über den Link im Header einloggen (`/user/login/`). 
 * Eingeloggte Benutzer sehen ihr Avatar im Header und haben Zugriff auf eine Benutzernavigation.
-  * Der Link "Your settings" führt zu den Profil Settings `/user/` und der Benutzer kann hier seine Daten und sein Passwort ändern. Außerdem kann hier ein Avatarbild hochgeladen werden, das im Header angezeigt wird.
+  * Der Link "Your settings" führt zu den Profil Settings `/user/` und der Benutzer kann hier seine Daten und sein Passwort ändern. Außerdem kann hier ein Avatarbild hochgeladen werden, das im Header angezeigt wird. Bei jedem neuen Avatarupload wird der alte Avatar automatisch aus dem Filesystem gelöscht.
   * Der Link Logout loggt den aktuellen Benutzer aus.
   * Benutzer mit der Rolle "trainer" sehen zusätzlich den Link "Your trainer profile" (`/trainer/`), der zum Trainerprofil des eingeloggten Trainers führt. Hier kann der Trainer sein öffentliches Profil anlegen und editieren.
 

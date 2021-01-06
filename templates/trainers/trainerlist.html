@@ -1,48 +1,66 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load i18n %}
+{% load static %}
+
+{% block hero %}
+<img src="{% static 'img/hero-trainerlist.jpg' %}" class="img-fluid mh-20" alt="Trainer list image">
+{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Trainer List' %}</h1>
-    <div class="bg-light p-3 mb-5">
-      <form method="get">
-          <div class="form-row">
-            {% bootstrap_field filter.name form_group_class='col-lg-5 mb-3' bound_css_class='' %}
-            {% bootstrap_field filter.sport form_group_class='col-lg-3 mb-3' bound_css_class='' %}
-            {% bootstrap_field filter.city form_group_class='col-lg-4 mb-3' bound_css_class='' %}
-          </div>
-          <div class="d-flex justify-content-end">
-            <input class="btn btn-primary" type="submit" value="{% trans 'Submit' %}" />
-            <a class="btn btn-secondary ml-2" href="{% url 'trainer_list' %}">{% trans 'Reset' %}</a>
-          </div>
-      </form>
-    </div>
-    <div class="d-flex justify-content-end my-2">
-      <span class="mx-1">{{result_count|default:0}} {% trans 'result' %}{{ result_count|pluralize:'s' }}</span>
-    </div>
-    <table class="table table-striped table-bordered">
+  <h1>{% trans 'Trainer List' %}</h1>
+  <form class="bg-light my-5 p-4" method="get">
+      <div class="form-row">
+        {% bootstrap_field filter.name form_group_class='col-lg-5 mb-3' bound_css_class='' %}
+        {% bootstrap_field filter.sport form_group_class='col-lg-3 mb-3' bound_css_class='' %}
+        {% bootstrap_field filter.city form_group_class='col-lg-4 mb-3' bound_css_class='' %}
+      </div>
+      <div class="d-flex justify-content-end mt-2">
+        <input class="btn btn-primary" type="submit" value="{% trans 'Submit' %}" />
+        <a class="btn btn-secondary ml-2" href="{% url 'trainer_list' %}">{% trans 'Reset' %}</a>
+      </div>
+  </form>
+
+  <div class="d-flex justify-content-end my-2">
+    <span class="badge badge-light font-weight-normal mx-1">{{result_count|default:0}} {% trans 'result' %}{{ result_count|pluralize:'s' }}</span>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
         <thead>
         <tr>
+            <th>{% trans 'Trainer picture' %}</th>
             <th>{% trans 'Name' %}</th>
             <th>{% trans 'Sport' %}</th>
-            <th>{% trans 'Address' %}</th>
-            <th>{% trans 'Motto' %}</th>
-            <th>{% trans 'Profile' %}</th>
+            <th>{% trans 'Location' %}</th>
+            <th></th>
         </tr>
         </thead>
         {% for trainer in trainers %}
             <tr>
-                <td>{{ trainer.user.first_name }} {{ trainer.user.last_name }}</td>
-                <td>{{ trainer.get_sport_display }}</td>
-                {% lookup locations_by_trainerid trainer.id as locs %}
                 <td>
+                  {% if trainer.user.avatar %}
+                    <div class="image-square-crop d-inline-block">
+                      <img class="img-fluid border border-secondary"  src="{{ trainer.user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
+                    </div>
+                  {% endif %}
+                </td>
+                <td>
+                  {{ trainer.user.first_name }} {{ trainer.user.last_name }}
+                </td>
+                <td>
+                  {{ trainer.get_sport_display }}
+                </td>
+                <td>
+                    {% lookup locations_by_trainerid trainer.id as locs %}
                     {% for loc in locs %}
                         <p>{{ loc.city }}, {{ loc.country }}</p>
                     {% endfor %}
                 </td>
-                <td>{{ trainer.motto }}</td>
-                <td><a href="{% url 'trainer_profile' trainer.id %}">{% trans 'View Profile' %}</a></td>
+                <td class="text-right">
+                  <a href="{% url 'trainer_profile' trainer.id %}">{% trans 'View Profile' %}</a>
+                </td>
             </tr>
         {% endfor %}
     </table>
+  </div>
 {% endblock %}
