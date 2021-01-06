@@ -47,13 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django_filters',
     'environ',
-
-    #own
+    # own
     'apps.users',
     'apps.trainers',
     'apps.pages',
-
 ]
 
 MIDDLEWARE = [
@@ -147,8 +146,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "assets")
+
 ROOT_PATH = os.path.dirname(__file__)
 STATICFILES_DIRS = [os.path.join(ROOT_PATH, '../static')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

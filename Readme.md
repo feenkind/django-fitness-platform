@@ -1,53 +1,51 @@
-# Technical stuff
+# Technisches
 
 ## Projektstruktur
 Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practice-to-structure-django-project-directories-and-files. 
 
+## Genutzte packages
+* django-allauth
+* django-bootstrap4
+* django-environ
+* django-filters
+
 ## Development
+Die Website ist erreichbar unter `localhost:8080`.
+
+### Implementierung einer lokalen Datenbank:
+
+* Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
+* dazu die Datei `fitnessplatform/.env` nach Vorlage von `.env.example` erstellen und die Variablen entsprechend anpassen
+
 
 ## Production
+Die Website ist erreichbar unter `https://trainhorizon.eu.pythonanywhere.com`.
 
 
 # Über die Fitnessplattform
+Trainhorizon ist eine Fitnessplatform, auf der sich Trainer registrieren und darstellen können.
+Es gibt zudem die Möglichkeit, Besuchern kostenlos Trainingsangebote per PDF und Video zur Verfügung zu stellen.
+
 ## Allgemeine Funktionalität
-TODO: Was kann die Plattform?
+Die Website besteht aus einer Startseite, einer Listenansicht aller registrierten Trainer mit öffentlichem Profil und den jeweiligen Trainerprofilen.
+Über den Link im Header kommt der (anonyme oder eingeloggte) Benutzer auf die Übersicht aller Trainer (`/trainerlist/`). Hier werden alle Trainer mit angelegtem Trainerprofil angezeigt und können nach Name, angebotener Sportart und Stadt gefiltert werden.
+Durch Klick auf den jeweiligen Trainer kommt man zur Detailansicht des Profils, in dem die Daten des jeweiligen Trainers angezeigt werden:
+* Name des Trainers
+* Motto des Trainers
+* Ort, an dem der Trainer seine Angebote bereitstellt - ein Trainer kann das prinzipiell an mehreren Orten tun
+* Allgemeine Informationen über den Trainer und seine Angebote
+
 
 ### Trainer
+* Trainer können sich über den Link im Header registrieren (`/user/signup/`). Sobald sich ein Benutzer über die Website registriert hat, wird er in der Datenbank mit der Rolle "trainer" angelegt. Nicht über die Website registrierte Benutzer (wie z.B der superuser) werden mit der Rolle "user" angelegt.
+* Registrierte Trainer können sich über den Link im Header einloggen (`/user/login/`). 
+* Eingeloggte Benutzer sehen ihr Avatar im Header und haben Zugriff auf eine Benutzernavigation.
+  * Der Link "Your settings" führt zu den Profil Settings `/user/` und der Benutzer kann hier seine Daten und sein Passwort ändern. Außerdem kann hier ein Avatarbild hochgeladen werden, das im Header angezeigt wird.
+  * Der Link Logout loggt den aktuellen Benutzer aus.
+  * Benutzer mit der Rolle "trainer" sehen zusätzlich den Link "Your trainer profile" (`/trainer/`), der zum Trainerprofil des eingeloggten Trainers führt. Hier kann der Trainer sein öffentliches Profil anlegen und editieren.
+
+
+
 
 ### Benutzer
-
-
-## Projektbeschreibung
-TODO: Am Ende entfernen
-
-Trainer können auf einer Plattform Profile erstellen, Material hochladen und Benutzer (gegen Bezahlung) freischalten. Benutzer können sich auch ein Profil erstellen, nach Angeboten suchen und sich Trainingspläne zusammenstellen.
-
-Basis:
-* Trainer können ein Profil erstellen mit Feldern wie
-	* Sportart
-	* Ort
-	* Kontaktdaten
-	* …
-* Trainer können in ihrem Profil PDFs und Videos hochladen
-* Alle Trainer werden in einer Liste angezeigt
-* Benutzer können (ohne Profil) in der Liste filtern (nach zB Sportart)
-* es gibt eine Detailansicht der Trainer und Benutzer können alle Materialien und Kontaktdaten der Trainer sehen
-
-Erweiterungen (optional):
-* Benutzer können sich Profile erstellen
-* Trainer können den Zugriff auf Materialien beschränken
-* Benutzer mit Profil können dem Trainer eine Anfrage schicken, um Zugriff auf die Materialien zu bekommen
-* Trainer können Benutzer für ihre Materialien freischalten (Adminoberfläche für Trainer)
-* Trainer können in ihrem Profil “Trainingspläne” erstellen und Bilder mit Beschreibungen hochladen, die dann der Reihe nach angezeigt werden
-* Benutzer können Trainer Nachrichten schicken (und umgekehrt)
-* Benutzer können sich Trainingspläne erstellen
-* Implementierung von Zahlungsmöglichkeiten und automatischer Freischaltung von Trainingsangeboten
-
-## Local Setup
-
-Implementierung einer lokalen Datenbank:
-
-* Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
-* dazu die Datei fitnessplatform/.env nach Vorlage von .env.example erstellen und die Variablen entsprechend anpassen
-
-
+Momentan gibt es außer den Trainern nur anonyme Benutzer.

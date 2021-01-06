@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from apps.users.forms import UserSettings
 
 # Create your views here.
@@ -11,12 +13,11 @@ def user_profile(request):
         return render(request, 'users/userprofile.html', context)
 
     if request.method == 'POST':
-        form = UserSettings(request.POST, instance=user)
+        form = UserSettings(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             messages.success(request, _('Settings saved'))
-        #   # use name from urls again, redirect to a_name
-        #   return HttpResponseRedirect(reverse_lazy('a_name'))
+            return HttpResponseRedirect(reverse_lazy('user_profile'))
         else:
             messages.error(request, _('We had problems saving your changes.'))
     else:

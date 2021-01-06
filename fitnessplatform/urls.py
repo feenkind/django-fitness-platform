@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
 from apps.pages.views import start_view
 from apps.users.views import user_profile
@@ -29,4 +30,4 @@ urlpatterns = [
     path('trainer/<int:id>/', get_trainer_profile, name='trainer_profile'),
     path('trainer/', get_trainer_profile, name='trainer_profile'),
     path('trainer/edit', edit_trainer_profile, name='trainer_profile_edit'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
