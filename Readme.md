@@ -17,6 +17,10 @@ Die Website ist erreichbar unter `localhost:8080`.
 * Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
 * dazu die Datei `fitnessplatform/.env` nach Vorlage von `.env.example` erstellen und die Variablen entsprechend anpassen
 
+### Mails
+Für lokales Development werden Emails direkt über die Konsole ausgegeben.
+Dafür können die Variablen aus der `.env.example` ins lokale `.env`-file übernommen werden.
+
 
 ## Production
 Die Website ist erreichbar unter `https://trainhorizon.eu.pythonanywhere.com`.

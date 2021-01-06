@@ -152,6 +152,8 @@ STATICFILES_DIRS = [os.path.join(ROOT_PATH, '../static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+# AUTHENTICATION AND ACCOUNT
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -172,3 +174,12 @@ ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'root']
 ACCOUNT_USERNAME_MIN_LENGTH = 3
 ACCOUNT_LOGOUT_ON_GET = True
+
+# EMAIL
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', cast=bool)
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
