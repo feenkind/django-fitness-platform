@@ -39,12 +39,16 @@ def get_trainer_list(request):
 
 
 def get_trainer_profile(request, id=None):
+    show_edit = False
+    show_create = False
     try:
         trainer = (
             Trainer.objects.get(id=id)
             if id
             else Trainer.objects.get(user_id=request.user.id)
         )
+        if trainer.user_id == request.user.id:
+            show_edit = True
         trainername = trainer.get_fullname()
         locations = Location.objects.filter(trainer_id=id)
         context = {
@@ -52,13 +56,19 @@ def get_trainer_profile(request, id=None):
             'trainer': trainer,
             'trainername': trainername,
             'locations': locations,
+            'show_edit': show_edit,
+            'show_create': show_create
         }
     except Trainer.DoesNotExist:
-        user = request.user
-        if user.role != Roles.TRAINER:
-            return
-        else:
-            context = {'page_title': 'Trainerprofile does not exist.'}
+        if not id and hasattr(request.user,
+                              'role') and request.user.role == Roles.TRAINER:
+            show_create = True
+
+        context = {
+            'page_title': 'Trainerprofile does not exist.',
+            'show_edit': show_edit,
+            'show_create': show_create
+        }
 
     return render(request, 'trainers/trainerprofile.html', context)
 

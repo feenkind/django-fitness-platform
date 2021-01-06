@@ -5,9 +5,15 @@
     <a href="{% url 'trainer_list' %}">{% trans 'Trainer overview' %}</a>
     {% if not trainer %}
         <h1>{% trans 'No trainer profile available.' %}</h1>
-        <a class="btn btn-secondary"
-           href="{% url 'trainer_profile_edit' %}">{% trans 'Create trainer profile' %}</a>
-    {% elif user.is_authenticated and user.role == 'trainer' %}
+        {% if show_create %}
+            <a class="btn btn-secondary"
+               href="{% url 'trainer_profile_edit' %}">{% trans 'Create trainer profile' %}</a>
+        {% else %}
+            <p>{% trans 'How about checking out the' %} <a class="btn btn-secondary"
+                                                           href="{% url 'trainer_list' %} ">{% trans 'Trainer list' %}</a> {% trans 'instead' %}?
+            </p>
+        {% endif %}
+    {% else %}
         <h1>{{ trainername }}{% trans '\'s Profile' %}</h1>
         <p><strong>{% trans 'Sport' %}: </strong>{{ trainer.get_sport_display }}</p>
         <p><strong>{% trans 'Motto' %}: </strong>{{ trainer.motto }}</p>
@@ -17,7 +23,7 @@
         {% endfor %}
         <p><strong>{% trans 'About' %}: </strong></p>
         <p>{{ trainer.about }}</p>
-        {% if trainer.user_id == user.id and user.is_authenticated %}
+        {% if show_edit %}
             <a class="btn btn-secondary" href="{% url 'trainer_profile_edit' %} ">{% trans 'Edit trainer profile' %}</a>
         {% endif %}
     {% endif %}
