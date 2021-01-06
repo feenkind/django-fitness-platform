@@ -15,7 +15,7 @@
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="{% url 'user_profile' %}">{% trans 'Your settings' %}</a>
     {% if user.role == 'trainer' %}
-      <a class="dropdown-item" href="#">{% trans 'Your trainer profile' %}</a>
+      <a class="dropdown-item" href="{% url 'trainer_profile'%}">{% trans 'Your trainer profile' %}</a>
     {% endif %}
     <a class="dropdown-item" href="{% url 'account_logout' %}">{% trans 'Logout' %}</a>
   </div>
