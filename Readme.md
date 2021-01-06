@@ -25,6 +25,9 @@ Dafür können die Variablen aus der `.env.example` ins lokale `.env`-file über
 ## Production
 Die Website ist erreichbar unter `https://trainhorizon.eu.pythonanywhere.com`.
 
+### Mails
+Die Mails auf Production laufen über `smtp.gmail.com`.
+
 
 # Über die Fitnessplattform
 Trainhorizon ist eine Fitnessplatform, auf der sich Trainer registrieren und darstellen können.
