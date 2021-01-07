@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% trans 'Confirm E-mail Address' %}</h1>
+{% if confirmation %}
+  <p>{% trans 'Please confirm that' %} <a href="mailto:{{ confirmation.email_address.email }}">{{ confirmation.email_address.email }}</a> {% trans 'is an e-mail address for user' %} {{ confirmation.email_address.user }}.</p>
+
+  <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+  {% csrf_token %}
+      <button type="submit" class="btn btn-primary">{% trans 'Confirm' %}</button>
+  </form>
+
+{% else %}
+
+  <p>{% trans 'This e-mail confirmation link expired or is invalid.' %}</p>
+
+{% endif %}
+{% endblock %}
