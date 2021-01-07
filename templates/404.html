@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans 'Oh no!' %}</h1>
+<p>{% trans 'We are so sorry, but the page you were looking for doesn\'t exist.' %}</p>
+<p>{% trans 'Maybe try and' %} <a href="{% url 'trainer_list' %}">{% trans ' look for a new trainer' %}</a> {% trans 'instead?' %}</p>
+{% endblock %}

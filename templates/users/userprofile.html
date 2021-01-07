@@ -6,17 +6,29 @@
 <h1>{% trans 'Your profile settings' %}</h1>
 {% if not user.is_authenticated %}
       <p>{% trans 'You need to log in before you can see your profile settings.' %}</p>
-      <a class="btn btn-secondary" href="{% url 'account_login' %}?next={{request.path}}">{% trans 'Log in' %}</a>
+      <a class="btn btn-outline-primary" href="{% url 'account_login' %}?next={{request.path}}">{% trans 'Log in' %}</a>
 {% else %}
 {% include 'users/userprofilenav.html' %}
-<div class="row mt-4 p-2">
-  <div class="col-12 col-md-8">
-    <form action="" enctype="multipart/form-data" method="POST">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      <button type="submit" class="btn btn-success">{% trans 'Save changes' %}</button>
-    </form>
-    {% endif %}
-  </div>
+<div class="px-2 pt-5">
+  <form action="" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col-lg-6">
+        {% bootstrap_field form.username %}
+        {% bootstrap_field form.email %}
+        {% bootstrap_field form.first_name %}
+        {% bootstrap_field form.last_name %}
+      </div>
+      <div class="col-lg-6 pl-lg-5">
+        {% if user.avatar %}
+          <img class="img-fluid border border-secondary"  src="{{ user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
+        {% endif %}
+        {% bootstrap_field form.avatar %}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">{% trans 'Save changes' %}</button>
+  </form>
 </div>
+{% endif %}
+
 {% endblock %}

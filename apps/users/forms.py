@@ -39,7 +39,10 @@ class UsersSignupForm(SignupForm):
 class UserSettings(forms.ModelForm):
     email = forms.EmailField(required=True, label=_('Email *'))
     first_name = forms.CharField(required=True, label=_('First Name *'))
-    avatar = forms.ImageField(required=False)
+    avatar = forms.ImageField(
+        required=False,
+        help_text=_('For best results make sure to upload a square image.'),
+    )
     last_name = forms.CharField(required=True, label=_('Last Name *'))
 
     class Meta:

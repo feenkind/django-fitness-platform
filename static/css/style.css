@@ -1,50 +1,79 @@
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
+:root {
+  --primary-color: #FF6100;
+  --primary-color-dark: #e45000;
+  --light-color: #D4DDE2;
 }
+
 
 a {
   transition: 0.3s;
-  color: #FF6100;
+  color: var(--primary-color);
 }
 
 a:hover {
-  color: #e45000;
+  color: var(--primary-color-dark);
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
-}
 
 body>.container-md>h1 {
   margin-bottom: 1.5rem;
 }
 
-.bg-light {
-  background-color: #e0ecf5 !important;
-}
-
+/* BUTTONS */
 .btn-primary {
-  background-color: #FF6100;
-  border-color: #FF6100;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: var(--primary-color-dark);
+  border-color: var(--primary-color-dark);
+}
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
-.bg-primary {
-  background-color: #FF6100 !important;
+/* BACKGROUNDS */
+.badge-light,
+.bg-light {
+  background-color: var(--light-color) !important;
 }
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+/* BORDERS */
 .border-primary {
-  border-color: #FF6100 !important;
+  border-color: var(--primary-color) !important;
 }
 
 /* ------ HEADER ------ */
 #dropdownMenuButton {
-  color: #FF6100
+  color: var(--primary-color);
+}
+.dropdown-item.active, 
+.dropdown-item:active {
+  background-color: var(--primary-color);
+}
 
+header .image-square-crop {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
 }
 
 
 /* ------ FOOTER ------ */
+body>footer {
+  font-size: 0.8rem;
+}
 
 body>footer, 
 body>footer ul a {
@@ -70,6 +99,22 @@ body>footer ul a {
 body>footer ul a:hover {
   text-decoration: none;
   color: #FF6100;
+}
+
+/* ------ CONTENT ------ */
+body>.container-md {
+  min-height: 80vh;
+}
+
+/* ----- TRAINER LIST ------*/
+.table-hover tbody tr:hover {
+  background-color: var(--light-color);
+}
+
+table .image-square-crop {
+  height: 10vw;
+  width: 10vw;
+  overflow: hidden;
 }
 
 /* ------ START PAGE ------ */
