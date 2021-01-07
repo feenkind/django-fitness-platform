@@ -2,59 +2,165 @@
 {% load static %}
 {% load i18n %}
 
+
 {% block hero %}
-  <section id="hero" class="d-flex align-items-center">
-      <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
-          <h1>Trainhorizon</h1>
-          <h2>Train like you never lift before</h2>
-          <a href="#about" class="btn-get-started scrollto">Get Started</a>
-      </div>
-  </section>
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+            <h1>Trainhorizon</h1>
+            <h2>Train like you never lift before</h2>
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        </div>
+    </section>
 {% endblock %}
 
 {% block content %}
     <main id="main">
 
-            <section id="about" class="about">
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="row content">
+                    <div class="col-lg-6">
+                        <h2>Unser Erfolgkonzept übertrifft die Grenzen der Vorstellung</h2>
+                        <h3>Mach dich und deinen Geist fit und gesund</h3>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <p>
+                            {% trans 'Building muscle is why most of us constantly return to the gym. ' %}
+                            {% trans "It's the beacon of light that continues to drive our effort-driven workouts that many consider us crazy for," %}
+                            {% trans "but how do we build muscle effectively? That's the question that trips up so many lifters." %}
+                            {% trans 'The physical act of building muscle is easier said than done because in order to build muscle we need' %}
+                            {% trans 'to have multiple variables aligned both in regard to our training and nutrition.' %}
+                        </p>
+                        <ul>
+                            <li>
+                                <i class="ri-check-double-line"></i>{% trans 'Move faster and more efficiently in everyday life' %}
+                            </li>
+                            <li>
+                                <i class="ri-check-double-line"></i>{% trans 'Leave your comfort zone and increase your limits' %}
+                            </li>
+                            <li><i class="ri-check-double-line"></i>
+                                {% trans 'Learn how to eat correctly and how to use your body effectively' %}
+                            </li>
+                        </ul>
+                        <p class="font-italic">
+                            {% trans 'The clock is ticking. Are you becoming the person you want to be? -- Greg Plitt' %}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section>
+            <div class="app-features text-center" id="features">
                 <div class="container">
-
-                    <div class="row content">
-                        <div class="col-lg-6">
-                            <h2>Unser Erfolgkonzept übertrifft die Grenzen der Vorstellung</h2>
-                            <h3>Mach dich und deinen Geist fit und gesund</h3>
+                    <h2>{% trans 'Our promise to you' %}  </h2>
+                    <p>{% trans ' Gain more strength and a better body feeling step by step.' %} <br>
+                        {% trans 'Get an individual special plan to reach your goals on the best way you can imagine.' %}
+                    </p>
+                    <div class="row">
+                        <div class="col-md-4 features-left text-right">
+                            <div class="col-md-12 ">
+                                <div class="feature-single">
+                                    <p>{% trans 'Will create a plan that’s tailored to your situation and create your everyday nutrition strategies.' %}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="feature-single">
+                                    <p>{% trans 'Bring to the table win-win survival strategies to ensure proactive domination.' %}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="feature-single">
+                                    <p>{% trans 'Will create a plan that’s tailored to your situation and create your everyday nutrition strategies.' %}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-6 pt-4 pt-lg-0">
-                            <p>
-                                Grundvoraussetzung für ein erfolgreiches Training ist die nötige Motivation und, dass
-                                man
-                                Faulheit erstmal beiseite schiebt.
-                                Wer wirklich was erreichen will, der darf nicht schon nach den ersten paar
-                                Trainingseinheiten sagen,
-                                dass es ja eh nichts bringt und wieder nach Hause gehen. Dadurch verschwendet man nur
-                                unnötig Lebenszeit und es demotiviert.
-                                Wer hier unterwegs ist, hat die Entscheidung getroffen, etwas aus sich zu machen und
-                                nicht
-                                auf der faulen Haut zu liegen.
-                            </p>
-                            <ul>
-                                <li><i class="ri-check-double-line"></i>Bewege dich schneller und effizienter im Alltag
-                                </li>
-                                <li><i class="ri-check-double-line"></i>Verlasse deine Komfortzone und steigere dein
-                                    Limit
-                                </li>
-                                <li><i class="ri-check-double-line"></i>Lerne dich richtig zu ernähren und deinen Körper
-                                    zu
-                                    nutzen
-                                </li>
-                            </ul>
-                            <p class="font-italic">
 
-                                {% trans 'Wer eine Jogginghose trägt, hat die Kontrolle über sein Leben verloren. -- Karl Lagerfeld' %}
-                            </p>
+                        <img class="col-md-4 img-responsive" src="{% static 'img/Trainers-example.png' %}" alt="App"/>
+
+                        <div class="col-md-4 features-left text-left">
+                            <div class="col-md-12 ">
+                                <div class="feature-single">
+                                    <p>{% trans 'Bring to the table win-win survival strategies to ensure proactive domination.' %}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="feature-single">
+                                    <p>{% trans 'Bring to the table win-win survival strategies to ensure proactive domination.' %}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="feature-single">
+                                    <p>{% trans 'Will create a plan that’s tailored to your situation and create your everyday nutrition strategies.' %}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-            </section>
+            </div>
+        </section>
+        <section>
+            <div class="split-features row">
+                <div class="col-md-6 ">
+                    <div class="split-image">
+                        <img class="img-responsive" src="{% static 'img/fitness-running.jpg' %}"alt="Image"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="split-content">
+                        <h2>Keep your body fit & strong to <br>
+                            live longer</h2>
+                        <p>Let every training session feel your entire body and notice how with every unit#
+                            you increase your feeling of happiness that you have achieved something</p>
+                        <ul>
+                            <li>Feel more strength and power with every unit</li>
+                            <li></li>
+                            <li>Make heavy physical work to a little pleasure</li>
+                            <li>Spray strength and confidence to the outside</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="split-features2 row">
+                <div class="col-md-6">
+                    <div class="split-content ">
+                        <h2>See The Results and Feel the difference</h2>
+                        <p> With every workout you will notice how your body changes for the better and your fitness improves.
+                        You will notice how you say goodbye to your old self little by little and step into a new feeling for life</p>
+                        <ul>
+                            <li>Feel how things can be done more easily in everyday life</li>
+                            <li>Let more energy flow through every pore of yourself</li>
+                            <li>Your aura will fill the room with positive vibes and inspire people</li>
+                            <li>Shake off your old attitude and see the world with different eyes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="split-image"><img class="img-responsive" src="{% static 'img/pushups-boy.jpg' %}"
+                                                  alt="Image"/></div>
+                </div>
+            </div>
+            <div class="split-features row">
+                <div class="col-md-6 ">
+                    <div class="split-image"><img class="img-responsive" src="{% static 'img/steel-workout.jpg' %}"
+                                                  alt="Image"/></div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="split-content">
+                        <h2>you derve another feeling of passion</h2>
+                        <p> Your attitude will be seriously changed and also how you go about belongs to life.
+                            Don't be a little light more than just illuminate entire buildings</p>
+                        <ul>
+                            <li>Feel another form of energy and fulfillment</li>
+                            <li>Let worries from everyday life disappear behind here</li>
+                            <li>Start the morning more balanced</li>
+                            <li>While others whine with exhaustion, you will only be bursting with zest for action</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 {% endblock %}
