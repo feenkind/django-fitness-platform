@@ -62,17 +62,20 @@ def get_trainer_profile(request, id=None):
             'trainername': trainername,
             'locations': locations,
             'show_edit': show_edit,
-            'show_create': show_create
+            'show_create': show_create,
         }
     except Trainer.DoesNotExist:
-        if not id and hasattr(request.user,
-                              'role') and request.user.role == Roles.TRAINER:
+        if (
+            not id
+            and hasattr(request.user, 'role')
+            and request.user.role == Roles.TRAINER
+        ):
             show_create = True
 
         context = {
             'page_title': 'Trainerprofile does not exist.',
             'show_edit': show_edit,
-            'show_create': show_create
+            'show_create': show_create,
         }
 
     return render(request, 'trainers/trainerprofile.html', context)
@@ -98,7 +101,15 @@ def edit_trainer_profile(request):
     else:
         form = TrainerSettings(instance=trainer)
     context = {
-        'page_title': f'Edit trainer profile',
+        'page_title': 'Edit trainer profile',
         'form': form,
     }
     return render(request, 'trainers/trainerprofile_edit.html', context)
+
+
+def upload_trainer_profile(request):
+    # TODO: all the upload logic goes here
+    context = {
+        'page_title': 'Edit trainer profile',
+    }
+    return render(request, 'trainers/trainerprofile_upload.html', context)
