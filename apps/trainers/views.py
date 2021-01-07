@@ -57,7 +57,7 @@ def get_trainer_profile(request, id=None):
         trainername = trainer.get_fullname()
         locations = Location.objects.filter(trainer_id=id)
         context = {
-            'page_title': f'{trainername}s Profile',
+            'page_title': f'{trainername}\'s profile',
             'trainer': trainer,
             'trainername': trainername,
             'locations': locations,
@@ -73,7 +73,7 @@ def get_trainer_profile(request, id=None):
             show_create = True
 
         context = {
-            'page_title': 'Trainerprofile does not exist.',
+            'page_title': 'Trainerprofile does not exist',
             'show_edit': show_edit,
             'show_create': show_create,
         }
