@@ -21,7 +21,7 @@ def get_item(dictionary, key):
 
 def get_trainer_list(request):
     trainer_filter = TrainerFilter(request.GET, queryset=Trainer.objects.all())
-    trainers = list(trainer_filter.qs)
+    trainers = list(trainer_filter.qs.filter(visible=True))
     locations = Location.objects.all()
     locations_by_trainerid = {}
     for location in locations:
@@ -63,6 +63,7 @@ def get_trainer_profile(request, id=None):
             'locations': locations,
             'show_edit': show_edit,
             'show_create': show_create,
+            'is_visible': trainer.visible,
         }
     except Trainer.DoesNotExist:
         if (
