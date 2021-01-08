@@ -6,7 +6,11 @@ from .models import Trainer
 class TrainerSettings(forms.ModelForm):
     sport = forms.ChoiceField(choices=Trainer.Sports.choices)
     motto = forms.CharField(label=_('Motto'))
-    about = forms.CharField(label=_('About'))
+    about = forms.CharField(
+        widget=forms.Textarea,
+        help_text=_('Text can only be 500 characters long.'),
+        label=_('About me'),
+    )
 
     class Meta:
         model = Trainer
