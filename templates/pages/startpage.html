@@ -4,7 +4,7 @@
 
 
 {% block hero %}
-    <section id="hero" class="d-flex align-items-center">
+    <section id="hero" class="jumbotron">
         <div class="container text-center position-relative">
             <h1>Trainhorizon</h1>
             <h2>Train like you never lift before</h2>
@@ -14,8 +14,8 @@
 {% endblock %}
 
 {% block content %}
-    <main id="main">
-        <section id="about" class="about">
+    <main>
+        <section>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -37,25 +37,26 @@
                         <h3>{% trans 'Make yourself and your mind fit and healthy' %}</h3>
                     </div>
                         <div class="col-lg-6 pt-4 pt-lg-0">
-                        <ul  class="list-group list-group-flush">
-                            <li class="list-group-item">
+                        <ul>
+                            <li >
                                 {% trans 'Move faster and more efficiently in everyday life' %}
                             </li>
-                            <li class="list-group-item">
+                            <li >
                                 {% trans 'Leave your comfort zone and increase your limits' %}
                             </li>
-                            <li class="list-group-item">
+                            <li >
                                 {% trans 'Learn how to eat correctly and how to use your body effectively' %}
                             </li>
                         </ul>
-                        <p class="font-italic">
+                        <p class="font-italic mt-2">
                             {% trans 'The clock is ticking.<br> Are you becoming the person you want to be? -- Greg Plitt' %}
                         </p>
                     </div>
                     </div>
+                <hr class="my-4">
                 </div>
         </section>
-        <section>
+        <section id="about">
             <div class=" container text-center mt-5">
                     <h2>{% trans 'Our endeavour to you' %}</h2>
                     <p>{% trans ' Gain more strength and a better body feeling step by step.<br> Get an individual special plan to reach your goals on the best way you can imagine.' %}
@@ -63,13 +64,13 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mt-5">
-                                    <p>{% trans 'Will create a plan that’s tailored to your situation and create your everyday nutrition strategies.' %}</p>
+                                    <p>{% trans 'A trainer will create a plan that’s tailored to your situation and create your everyday nutrition strategies.' %}</p>
                             </div>
                             <div class="mt-5">
                                     <p>{% trans 'Bring to the table win-win survival strategies to ensure proactive domination.' %}</p>
                             </div>
                             <div class="mt-5">
-                                    <p>{% trans 'Get a plan that is specified on your body and weaknesses.' %}</p>
+                                    <p>{% trans 'Every trainer will focus on minimizing your weaknesses.' %}</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -83,10 +84,11 @@
                                     <p>{% trans 'Get a healthy and balanced training for your life situation.' %}</p>
                             </div>
                             <div class="mt-5">
-                                    <p>{% trans 'Learn how to eat correctly and get healthy food plans to get more energy for the day.' %}</p>
+                                    <p>{% trans 'Get healthy food plans from your trainer to get more energy for the day.' %}</p>
                             </div>
                         </div>
                     </div>
+                  <hr class="my-4">
                 </div>
         </section>
         <section>
@@ -98,11 +100,11 @@
                         <h2>{% trans 'Keep your body fit & strong to' %} <br>
                             {% trans 'live longer' %}</h2>
                         <p>{% trans 'Let every training session feel your entire body and notice how with every unit<br> you increase your feeling of happiness that you have achieved something' %}</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">{% trans 'Feel more strength and power with every unit' %}</li>
-                            <li class="list-group-item">{% trans 'Get more healthier than ever before.'%}</li>
-                            <li class="list-group-item">{% trans 'Make heavy physical work to a little pleasure' %}</li>
-                            <li class="list-group-item">{% trans 'Spray strength and confidence to the outside' %}</li>
+                        <ul >
+                            <li >{% trans 'Feel more strength and power with every unit' %}</li>
+                            <li >{% trans 'Get more healthier than ever before.'%}</li>
+                            <li >{% trans 'Make heavy physical work to a little pleasure' %}</li>
+                            <li >{% trans 'Spray strength and confidence to the outside' %}</li>
                         </ul>
                 </div>
             </div>
@@ -110,11 +112,11 @@
                 <div class="col-lg-6">
                         <h2>{% trans 'See The Results and Feel the difference' %}</h2>
                         <p>{% trans ' With every workout you will notice how your body changes for the better and your fitness improves.<br> You will notice how you say goodbye to your old self little by little and step into a new feeling for life' %}</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">{% trans 'Feel how things can be done more easily in everyday life' %}</li>
-                            <li class="list-group-item">{% trans 'Let more energy flow through every pore of yourself' %}</li>
-                            <li class="list-group-item">{% trans 'Your aura will fill the room with positive vibes and inspire people' %}</li>
-                            <li class="list-group-item">{% trans 'Shake off your old attitude and see the world with different eyes' %}</li>
+                        <ul>
+                            <li >{% trans 'Feel how things can be done more easily in everyday life' %}</li>
+                            <li >{% trans 'Let more energy flow through every pore of yourself' %}</li>
+                            <li >{% trans 'Your aura will fill the room with positive vibes and inspire people' %}</li>
+                            <li >{% trans 'Shake off your old attitude and see the world with different eyes' %}</li>
                         </ul>
                 </div>
                 <div class="col-lg-6">
@@ -128,11 +130,11 @@
                 <div class="col-lg-6">
                         <h2>{% trans 'you derve another feeling of passion' %}</h2>
                         <p> {% trans "Your attitude will be seriously changed and also how you go about belongs to life.<br> Don't be a little light more than just illuminate entire buildings" %}</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">{% trans 'Feel another form of energy and fulfillment' %}</li>
-                            <li class="list-group-item">{% trans 'Let worries from everyday life disappear behind here' %}</li>
-                            <li class="list-group-item">{% trans 'Start the morning more balanced' %}</li>
-                            <li class="list-group-item">{% trans 'While others whine with exhaustion, you will only be bursting with zest for action' %}</li>
+                        <ul >
+                            <li >{% trans 'Feel another form of energy and fulfillment' %}</li>
+                            <li >{% trans 'Let worries from everyday life disappear behind here' %}</li>
+                            <li >{% trans 'Start the morning more balanced' %}</li>
+                            <li >{% trans 'While others whine with exhaustion, you will only be bursting with zest for action' %}</li>
                         </ul>
                 </div>
             </div>
