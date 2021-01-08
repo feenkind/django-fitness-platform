@@ -104,6 +104,7 @@ def edit_trainer_profile(request):
     context = {
         'page_title': 'Edit trainer profile',
         'form': form,
+        'is_visible': trainer.visible,
     }
     return render(request, 'trainers/trainerprofile_edit.html', context)
 

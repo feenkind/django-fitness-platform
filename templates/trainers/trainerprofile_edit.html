@@ -10,6 +10,12 @@
   {% else %}
   {% include 'trainers/trainerprofile_nav.html' %}
   <div class="px-2 pt-5">
+    {% if not is_visible %}
+      <div class="alert alert-warning">
+        {% trans 'Your profile is not visible. Check the visbility settings at the bottom and save to publish it.' %}
+      </div>
+    {% endif %}
+
     <form action="" enctype="multipart/form-data" method="POST">
       {% csrf_token %}
       <div class="form-row">
@@ -31,6 +37,9 @@
       <div class="form-row">
         <div class="col-lg-12">
           {% bootstrap_field form.about %}
+        </div>
+        <div class="col-lg-12 border rounded my-4 px-3 pt-2">
+          {% bootstrap_field form.visible %}
         </div>
       </div>
         <button type="submit" class="btn btn-primary">{% trans 'Save changes' %}</button>

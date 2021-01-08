@@ -24,7 +24,9 @@
     {% elif is_visible or show_edit %}
 
         {% if not is_visible %}
-          <div class="alert alert-danger">{% trans 'Your profile is not visible. Edit your profile and check the visbility settings to publish it.' %}</div>
+          <div class="alert alert-warning">
+            {% trans 'Your profile is not visible. Edit your profile and check the visbility settings to publish it.' %}
+          </div>
         {% endif %}
 
         <div class="row align-items-center">

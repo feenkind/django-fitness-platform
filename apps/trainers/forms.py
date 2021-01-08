@@ -11,7 +11,15 @@ class TrainerSettings(forms.ModelForm):
         help_text=_('Text can only be 500 characters long.'),
         label=_('About me'),
     )
+    visible = forms.BooleanField(
+        label=_(
+            'Profile is visible',
+        ),
+        help_text=(
+            'When this is checked, the profile is visible for all users of trainhorizon and will also appear in the trainer overview.'
+        ),
+    )
 
     class Meta:
         model = Trainer
-        fields = ['sport', 'motto', 'about']
+        fields = ['sport', 'motto', 'about', 'visible']
