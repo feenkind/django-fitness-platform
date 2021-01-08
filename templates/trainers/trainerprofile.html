@@ -23,15 +23,15 @@
 
     {% else %}
         <div class="row align-items-center">
-          <div class="col-md-3">
-            {% if trainer.user.avatar %}
-              <div class="image-square-crop d-inline-block">
-                <img class="img-fluid border border-secondary"  src="{{ trainer.user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
-              </div>
-            {% endif %}
-          </div>
+          {% if trainer.user.avatar %}
+            <div class="col-md-3">
+                <div class="image-square-crop d-inline-block">
+                  <img class="img-fluid border border-secondary"  src="{{ trainer.user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
+                </div>
+            </div>
+          {% endif %}
           <div class="col-md-9">
-            <span class="display-4 text-muted">{{ trainer.motto }}</span>
+            <span class="display-4 text-muted">"{{ trainer.motto }}"</span>
           </div>
         </div>
 
@@ -48,10 +48,14 @@
           </section>
           <aside class="col-lg-4 p-4 bg-light">
             <strong>{% trans 'Classes are offered in' %}</strong>
-            <ul class="list-unstyled">
-            {% for location in locations %}
-                <li class="my-2">{{ location.street }} {{ location.number }}<br />{{ location.zipcode }} {{ location.city }} ({{ location.country }})</li>
-            {% endfor %}
+            {% if locations %}
+              <ul class="list-unstyled">
+              {% for location in locations %}
+                  <li class="my-2">{{ location.street }} {{ location.number }}<br />{{ location.zipcode }} {{ location.city }} ({{ location.country }})</li>
+              {% endfor %}
+            {% else %}
+              <p>{% trans 'This trainer doesn\'t offer classes on any location for now.' %}</p>
+            {% endif %}
             </ul>
           </aside>
         </article>
