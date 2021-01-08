@@ -43,6 +43,7 @@ Durch Klick auf den jeweiligen Trainer kommt man zur Detailansicht des Profils, 
   * Der Link "Your settings" führt zu den Profil Settings `/user/` und der Benutzer kann hier seine Daten und sein Passwort ändern. Außerdem kann hier ein Avatarbild hochgeladen werden, das im Header angezeigt wird. Bei jedem neuen Avatarupload wird der alte Avatar automatisch aus dem Filesystem gelöscht.
   * Der Link Logout loggt den aktuellen Benutzer aus.
   * Benutzer mit der Rolle "trainer" sehen zusätzlich den Link "Your trainer profile" (`/trainer/`), der zum Trainerprofil des eingeloggten Trainers führt. Hier kann der Trainer sein öffentliches Profil anlegen und editieren.
+* Trainer können ihr Profil sichtbar oder unsichtbar schalten. Hierzu können sie eine Checkbox in ihrem Trainerprofil setzen. Unsichtbare Trainer erscheinen nicht in der Trainerliste und andere Benutzer haben auch keinen Zugriff auf das Trainerprofil.
 
 
 
