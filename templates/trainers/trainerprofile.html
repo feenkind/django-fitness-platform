@@ -2,29 +2,66 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block content %}
-    <a href="{% url 'trainer_list' %}">{% trans 'Trainer overview' %}</a>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'trainer_list' %}">{% trans 'Trainer overview' %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{page_title}}</li>
+      </ol>
+    </nav>
+
     {% if not trainer %}
-        <h1>{% trans 'No trainer profile available.' %}</h1>
+        <h1>{% trans 'No trainer profile available' %}</h1>
         {% if show_create %}
-            <a class="btn btn-secondary"
+            <p>{% trans 'Seems like you don\'t have a public trainer profile yet.' %}</p>
+            <p>{% trans 'Let\'s create one!' %}</p>
+            <a class="btn btn-outline-primary"
                href="{% url 'trainer_profile_edit' %}">{% trans 'Create trainer profile' %}</a>
         {% else %}
-            <p>{% trans 'How about checking out the' %} <a class="btn btn-secondary"
-                                                           href="{% url 'trainer_list' %} ">{% trans 'Trainer list' %}</a> {% trans 'instead' %}?
+            <p>{% trans 'How about checking out the' %} <a href="{% url 'trainer_list' %} ">{% trans 'Trainer list' %}</a> {% trans 'instead' %}?
             </p>
         {% endif %}
+
     {% else %}
-        <h1>{{ trainername }}{% trans '\'s Profile' %}</h1>
-        <p><strong>{% trans 'Sport' %}: </strong>{{ trainer.get_sport_display }}</p>
-        <p><strong>{% trans 'Motto' %}: </strong>{{ trainer.motto }}</p>
-        <p><strong>{% trans 'Location' %}: </strong></p>
-        {% for location in locations %}
-            <p>{{ location.street }} {{ location.number }}, {{ location.zipcode }} {{ location.city }} {{ location.country }}</p>
-        {% endfor %}
-        <p><strong>{% trans 'About' %}: </strong></p>
-        <p>{{ trainer.about }}</p>
+        <div class="row align-items-center">
+          {% if trainer.user.avatar %}
+            <div class="col-md-3">
+                <div class="image-square-crop d-inline-block">
+                  <img class="img-fluid border border-secondary"  src="{{ trainer.user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
+                </div>
+            </div>
+          {% endif %}
+          <div class="col-md-9">
+            <span class="display-4 text-muted">"{{ trainer.motto }}"</span>
+          </div>
+        </div>
+
+        <h1 class="mt-3">{{ page_title }}</h1>
+        <article class="row">
+          <section class="col-lg-8 py-4 pr-lg-4">
+            <p>{{ trainer.about }}</p>
+            <p class="mb-0"><strong>{% trans 'Sports' %}:</strong>
+            <span class="lead">
+              <a class="badge badge-primary" href="{% url 'trainer_list' %}?sport={{ trainer.sport }}">
+                {{ trainer.get_sport_display }}
+              </a>
+            </span>
+          </section>
+          <aside class="col-lg-4 p-4 bg-light">
+            <strong>{% trans 'Classes are offered in' %}</strong>
+            {% if locations %}
+              <ul class="list-unstyled">
+              {% for location in locations %}
+                  <li class="my-2">{{ location.street }} {{ location.number }}<br />{{ location.zipcode }} {{ location.city }} ({{ location.country }})</li>
+              {% endfor %}
+            {% else %}
+              <p>{% trans 'This trainer doesn\'t offer classes on any location for now.' %}</p>
+            {% endif %}
+            </ul>
+          </aside>
+        </article>
+  
         {% if show_edit %}
-            <a class="btn btn-secondary" href="{% url 'trainer_profile_edit' %} ">{% trans 'Edit trainer profile' %}</a>
+            <a class="btn btn-secondary mt-3" href="{% url 'trainer_profile_edit' %} ">{% trans 'Edit your trainer profile' %}</a>
         {% endif %}
     {% endif %}
 {% endblock %}

@@ -30,4 +30,7 @@ urlpatterns = [
     path('trainer/<int:id>/', get_trainer_profile, name='trainer_profile'),
     path('trainer/', get_trainer_profile, name='trainer_profile'),
     path('trainer/edit', edit_trainer_profile, name='trainer_profile_edit'),
+    path(
+        'trainer/upload', upload_trainer_profile, name='trainer_profile_upload'
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

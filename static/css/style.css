@@ -4,6 +4,8 @@
   --light-color: #D4DDE2;
 }
 
+
+/* FONTS */
 a {
   transition: 0.3s;
   color: var(--primary-color);
@@ -14,12 +16,12 @@ a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
-}
 
 body>.container-md>h1 {
   margin-bottom: 1.5rem;
+}
+.display-4 {
+  font-size: 2rem;
 }
 
 /* BUTTONS */
@@ -43,13 +45,18 @@ body>.container-md>h1 {
 }
 
 /* BACKGROUNDS */
+.breadcrumb,
 .badge-light,
 .bg-light {
   background-color: var(--light-color) !important;
 }
+
+.badge-primary,
 .bg-primary {
   background-color: var(--primary-color) !important;
 }
+
+/* BORDERS */
 .border-primary {
   border-color: var(--primary-color) !important;
 }
@@ -58,7 +65,7 @@ body>.container-md>h1 {
 #dropdownMenuButton {
   color: var(--primary-color);
 }
-.dropdown-item.active,
+.dropdown-item.active, 
 .dropdown-item:active {
   background-color: var(--primary-color);
 }
@@ -111,10 +118,30 @@ body>.container-md {
   background-color: var(--light-color);
 }
 
+.image-square-crop {
+  overflow: hidden;
+}
+
+.image-square-crop img {
+  width: 100%;
+}
+
 table .image-square-crop {
   height: 10vw;
   width: 10vw;
-  overflow: hidden;
+}
+
+.col-md-3 .image-square-crop {
+  height: 15vw;
+  width: 15vw;
+  margin: auto;
+}
+
+@media all and (max-width: 768px) {
+  .col-md-3 .image-square-crop {
+    height: calc(100vw - 30px);
+    width: calc(100vw - 30px);
+  }
 }
 
 /* ------ START PAGE ------ */
