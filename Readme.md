@@ -11,6 +11,7 @@ Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practic
 
 ## Development
 Die Website ist erreichbar unter `localhost:8080`.
+Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im root-Verzeichnis erstellen und die Variablen aus der `.env.example` kopieren. Für die Ausgabe von Fehlermeldungen `DEBUG=True` setzen.
 
 ### Implementierung einer lokalen Datenbank:
 
