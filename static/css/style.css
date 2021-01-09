@@ -10,10 +10,13 @@ a {
   transition: 0.3s;
   color: var(--primary-color);
 }
+
 a:hover {
   color: var(--primary-color-dark);
   text-decoration: none;
 }
+
+
 body>.container-md>h1 {
   margin-bottom: 1.5rem;
 }
@@ -182,13 +185,11 @@ table .image-square-crop {
   margin-bottom: 40px;
   font-size: 15px;
   font-weight: 500;
-  font-family: "Open Sans", sans-serif;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 #hero .btn-get-started {
-  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
@@ -203,8 +204,8 @@ table .image-square-crop {
 }
 
 #hero .btn-get-started:hover {
-  background: #009970;
-  border: 2px solid #009970;
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 @media (min-width: 1024px) {
@@ -225,43 +226,8 @@ table .image-square-crop {
     line-height: 36px;
   }
 }
-#about{
-  margin-top: 3%;
-}
-.about .content h2 {
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 60px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
 
-.about .content h3 {
-  font-weight: 500;
-  line-height: 32px;
-  font-size: 24px;
-}
 
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
 
-.about .content ul li {
-  padding: 10px 0 0 28px;
-  position: relative;
-}
-
-.about .content ul i {
-  left: 0;
-  top: 7px;
-  position: absolute;
-  font-size: 20px;
-  color: #009970;
-}
-
-.about .content p:last-child {
-  margin-bottom: 0;
-}
 
 
