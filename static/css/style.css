@@ -105,6 +105,11 @@ body>footer ul a:hover {
   color: #FF6100;
 }
 
+/* ------ FORMS ------ */
+form.login .alert {
+  width: 100%;
+}
+
 /* ------ CONTENT ------ */
 body>.container-md {
   min-height: 80vh;
