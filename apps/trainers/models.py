@@ -10,10 +10,13 @@ class Trainer(models.Model):
         TEAM = 'team sports', _('Team Sports')
         DANCE = 'dance', _('Dance')
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
     sport = models.CharField(max_length=30, choices=Sports.choices)
     motto = models.CharField(max_length=100)
     about = models.CharField(max_length=500)
+    visible = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username

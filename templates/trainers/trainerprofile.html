@@ -21,7 +21,14 @@
             </p>
         {% endif %}
 
-    {% else %}
+    {% elif is_visible or show_edit %}
+
+        {% if not is_visible %}
+          <div class="alert alert-warning">
+            {% trans 'Your profile is not visible. Edit your profile and check the visbility settings to publish it.' %}
+          </div>
+        {% endif %}
+
         <div class="row align-items-center">
           {% if trainer.user.avatar %}
             <div class="col-md-3">
@@ -38,7 +45,7 @@
         <h1 class="mt-3">{{ page_title }}</h1>
         <article class="row">
           <section class="col-lg-8 py-4 pr-lg-4">
-            <p>{{ trainer.about }}</p>
+            <p>{{ trainer.about|linebreaks }}</p>
             <p class="mb-0"><strong>{% trans 'Sports' %}:</strong>
             <span class="lead">
               <a class="badge badge-primary" href="{% url 'trainer_list' %}?sport={{ trainer.sport }}">
@@ -63,5 +70,10 @@
         {% if show_edit %}
             <a class="btn btn-secondary mt-3" href="{% url 'trainer_profile_edit' %} ">{% trans 'Edit your trainer profile' %}</a>
         {% endif %}
+    
+    {% else %}
+      <h1>{% trans 'This trainer profile is not public' %}</h1>
+      <p>{% trans 'The trainer you were looking for has no public profile.' %}</p>
+      <p>{% trans 'How about checking out the' %} <a href="{% url 'trainer_list' %} ">{% trans 'Trainer list' %}</a> {% trans 'instead' %}?
     {% endif %}
 {% endblock %}
