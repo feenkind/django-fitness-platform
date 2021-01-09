@@ -11,15 +11,23 @@ Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practic
 
 ## Development
 Die Website ist erreichbar unter `localhost:8080`.
+Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im `fitnessplatform`-Verzeichnis erstellen und die Variablen aus der `.env.example` kopieren. Für die Ausgabe von Fehlermeldungen `DEBUG=True` setzen.
 
 ### Implementierung einer lokalen Datenbank:
 
 * Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
 * dazu die Datei `fitnessplatform/.env` nach Vorlage von `.env.example` erstellen und die Variablen entsprechend anpassen
 
+### Mails
+Für lokales Development werden Emails direkt über die Konsole ausgegeben.
+Dafür können die Variablen aus der `.env.example` ins lokale `.env`-file übernommen werden.
+
 
 ## Production
 Die Website ist erreichbar unter `https://trainhorizon.eu.pythonanywhere.com`.
+
+### Mails
+Die Mails auf Production laufen über `smtp.gmail.com`.
 
 
 # Über die Fitnessplattform
