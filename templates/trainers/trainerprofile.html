@@ -58,7 +58,7 @@
             {% if locations %}
               <ul class="list-unstyled">
               {% for location in locations %}
-                  <li class="my-2">{{ location.street }} {{ location.number }}<br />{{ location.zipcode }} {{ location.city }} ({{ location.country }})</li>
+                  <li class="my-2">{{ location.name}}<br />{{location.street }} {{ location.number }}<br />{{ location.zipcode }} {{ location.city }} ({{ location.country }})</li>
               {% endfor %}
             {% else %}
               <p>{% trans 'This trainer doesn\'t offer classes on any location for now.' %}</p>
