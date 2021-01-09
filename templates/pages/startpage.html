@@ -8,7 +8,7 @@
         <div class="container text-center position-relative">
             <h1>Trainhorizon</h1>
             <h2>Train like you never lift before</h2>
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="{% url 'trainer_list' %}" class="btn-get-started">Get your trainer</a>
         </div>
     </section>
 {% endblock %}
@@ -56,7 +56,7 @@
                 <hr class="my-4">
                 </div>
         </section>
-        <section id="about">
+        <section>
             <div class=" container text-center mt-5">
                     <h2>{% trans 'Our endeavour to you' %}</h2>
                     <p>{% trans ' Gain more strength and a better body feeling step by step.<br> Get an individual special plan to reach your goals on the best way you can imagine.' %}

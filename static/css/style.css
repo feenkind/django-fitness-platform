@@ -180,13 +180,11 @@ table .image-square-crop {
   margin-bottom: 40px;
   font-size: 15px;
   font-weight: 500;
-  font-family: "Open Sans", sans-serif;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 #hero .btn-get-started {
-  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
@@ -201,8 +199,8 @@ table .image-square-crop {
 }
 
 #hero .btn-get-started:hover {
-  background: #009970;
-  border: 2px solid #009970;
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 @media (min-width: 1024px) {
