@@ -18,6 +18,7 @@ class TrainerSettings(forms.ModelForm):
         help_text=(
             'When this is checked, the profile is visible for all users of trainhorizon and will also appear in the trainer overview.'
         ),
+        required=False,
     )
 
     class Meta:

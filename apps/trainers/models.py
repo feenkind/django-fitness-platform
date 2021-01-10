@@ -35,12 +35,12 @@ class Upload(models.Model):
 
 class Location(models.Model):
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    street = models.CharField(max_length=40)
+    name = models.CharField(max_length=150)
+    street = models.CharField(max_length=150)
     number = models.CharField(max_length=5)
-    zipcode = models.CharField(max_length=10)
-    city = models.CharField(max_length=30)
-    country = models.CharField(max_length=30)
+    zipcode = models.CharField(max_length=150)
+    city = models.CharField(max_length=150)
+    country = models.CharField(max_length=150)
 
     def __str__(self):
         return self.trainer.__str__()
