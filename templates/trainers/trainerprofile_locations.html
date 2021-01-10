@@ -24,7 +24,7 @@
                     {% endfor %}
                 {% endif %}
                 <a class="btn btn-primary"
-                   href="{% url 'trainer_profile_locations' True %}">{% trans 'Add new location' %}</a>
+                   href="{% url 'trainer_profile_locations' create='new' %}">{% trans 'Add new location' %}</a>
             </div>
         {% else %}
             <form action="" enctype="multipart/form-data" method="POST">
