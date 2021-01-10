@@ -54,7 +54,7 @@ def get_trainer_profile(request, id=None):
         if trainer.user_id == request.user.id:
             show_edit = True
         trainername = trainer.get_fullname()
-        locations = Location.objects.filter(trainer_id=id)
+        locations = Location.objects.filter(trainer_id=trainer.id)
         context = {
             'page_title': f'{trainername}\'s profile',
             'trainer': trainer,
@@ -83,8 +83,8 @@ def get_trainer_profile(request, id=None):
 
 def edit_trainer_profile(request):
     user = request.user
-    if user.role != Roles.TRAINER:
-        return
+    if not user.is_authenticated or user.role != Roles.TRAINER:
+        return render(request, '404.html')
     try:
         trainer = Trainer.objects.get(user_id=user.id)
     except:
