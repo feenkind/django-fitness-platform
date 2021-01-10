@@ -11,7 +11,7 @@
 <form class="login my-5 p-4 bg-light" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   <div class="form-row">
-    {% bootstrap_form form form_group_class='form-group col-lg-6' %}
+    {% bootstrap_form form form_group_class='form-group col-lg-6' bound_css_class='' %}
   </div>
   {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
