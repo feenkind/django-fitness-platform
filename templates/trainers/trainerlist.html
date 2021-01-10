@@ -53,7 +53,7 @@
                 <td>
                     {% lookup locations_by_trainerid trainer.id as locs %}
                     {% for loc in locs %}
-                        <p>{{ loc.city }}, {{ loc.country }}</p>
+                        <p>{{ loc.name }}, {{ loc.city }}, {{ loc.country }}</p>
                     {% endfor %}
                 </td>
                 <td class="text-right">
