@@ -17,13 +17,13 @@
                         <div class="col-lg-4 p-4 bg-light">{{ location.name }}<br/>{{ location.street }} {{ location.number }}<br/>{{ location.zipcode }} {{ location.city }}
                             ({{ location.country }})
                         </div>
-                        <a class="btn btn-secondary mt-3"
+                        <a class="btn btn-secondary mt-3 mb-4"
                            href={% url 'trainer_profile_locations' location.id %}>{% trans 'Edit location' %}</a>
-                        <a class="btn btn-secondary mt-3"
+                        <a class="btn btn-secondary mt-3 mb-4"
                            href="{% url 'location_delete' location.pk %}">{% trans 'Delete location' %}</a></br>
                     {% endfor %}
                 {% endif %}
-                <a class="btn btn-secondary mt-3"
+                <a class="btn btn-primary"
                    href="{% url 'trainer_profile_locations' True %}">{% trans 'Add new location' %}</a>
             </div>
         {% else %}
@@ -31,12 +31,12 @@
                 {% csrf_token %}
                 <div class="form-row">
                     <div class="col-lg-6">
-                        <div class="my-5"> {% bootstrap_field form.name %}</div>
-                        <div class="my-5"> {% bootstrap_field form.street %}</div>
-                        <div class="my-5"> {% bootstrap_field form.number %}</div>
-                        <div class="my-5"> {% bootstrap_field form.zipcode %}</div>
-                        <div class="my-5"> {% bootstrap_field form.city %}</div>
-                        <div class="my-5"> {% bootstrap_field form.country %}</div>
+                        <div class="my-3"> {% bootstrap_field form.name %}</div>
+                        <div class="my-3"> {% bootstrap_field form.street %}</div>
+                        <div class="my-3"> {% bootstrap_field form.number %}</div>
+                        <div class="my-3"> {% bootstrap_field form.zipcode %}</div>
+                        <div class="my-3"> {% bootstrap_field form.city %}</div>
+                        <div class="my-3"> {% bootstrap_field form.country %}</div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">{% trans 'Save changes' %}</button>
