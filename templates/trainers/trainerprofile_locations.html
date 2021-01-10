@@ -13,15 +13,17 @@
         {% if not create and not location %}
             <div class="px-2 pt-5">
                 {% if locations %}
-                    {% for location in locations %}
-                        <div class="col-lg-4 p-4 bg-light">{{ location.name }}<br/>{{ location.street }} {{ location.number }}<br/>{{ location.zipcode }} {{ location.city }}
-                            ({{ location.country }})
-                        </div>
-                        <a class="btn btn-secondary mt-3 mb-4"
-                           href={% url 'trainer_profile_locations' location.id %}>{% trans 'Edit location' %}</a>
-                        <a class="btn btn-secondary mt-3 mb-4"
-                           href="{% url 'location_delete' location.pk %}">{% trans 'Delete location' %}</a></br>
-                    {% endfor %}
+                    <div class="row">
+                        {% for location in locations %}
+                            <div class="col-lg-5 p-4 mr-4 mb-4 bg-light">{{ location.name }}<br>{{ location.street }} {{ location.number }}<br>{{ location.zipcode }} {{ location.city }}
+                                ({{ location.country }})<br>
+                                <a class="btn btn-secondary mt-3 mr-3"
+                                   href={% url 'trainer_profile_locations' location.id %}>{% trans 'Edit location' %}</a>
+                                <a class="btn btn-secondary mt-3 mr-3"
+                                   href="{% url 'location_delete' location.pk %}">{% trans 'Delete location' %}</a><br>
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% endif %}
                 <a class="btn btn-primary"
                    href="{% url 'trainer_profile_locations' create='new' %}">{% trans 'Add new location' %}</a>
@@ -30,12 +32,28 @@
             <form action="" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 <div class="form-row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <div class="my-3"> {% bootstrap_field form.name %}</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-6">
                         <div class="my-3"> {% bootstrap_field form.street %}</div>
+                    </div>
+                    <div class="col-lg-2">
                         <div class="my-3"> {% bootstrap_field form.number %}</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-3">
                         <div class="my-3"> {% bootstrap_field form.zipcode %}</div>
+                    </div>
+                    <div class="col-lg-5">
                         <div class="my-3"> {% bootstrap_field form.city %}</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-8">
                         <div class="my-3"> {% bootstrap_field form.country %}</div>
                     </div>
                 </div>

@@ -116,7 +116,7 @@ def edit_trainer_locations(request, id=None, create=None):
         location = None
         create = True if create == 'new' else False
         if id:
-            location = Location.objects.get(id=id)
+            location = locations.get(id=id)
         elif create:
             location = Location()
             location.trainer_id = trainer.id
