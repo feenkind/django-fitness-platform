@@ -66,9 +66,9 @@ def get_trainer_profile(request, id=None):
         }
     except Trainer.DoesNotExist:
         if (
-                not id
-                and hasattr(request.user, 'role')
-                and request.user.role == Roles.TRAINER
+            not id
+            and hasattr(request.user, 'role')
+            and request.user.role == Roles.TRAINER
         ):
             show_create = True
 
@@ -114,10 +114,10 @@ def edit_trainer_locations(request, id=None, action=None):
         trainer = Trainer.objects.get(user_id=user.id)
         locations = Location.objects.filter(trainer_id=trainer.id)
         location = None
-        action = True if action == 'new' else False
+        create = True if action == 'new' else False
         if id:
             location = locations.get(id=id)
-        elif action:
+        elif create:
             location = Location()
             location.trainer_id = trainer.id
         if request.method == 'POST':
@@ -127,7 +127,8 @@ def edit_trainer_locations(request, id=None, action=None):
                 form.save()
                 messages.success(request, _('Location saved'))
                 return HttpResponseRedirect(
-                    reverse_lazy('trainer_profile_locations'))
+                    reverse_lazy('trainer_profile_locations')
+                )
         else:
             form = LocationSettings(instance=location)
         context = {
@@ -135,14 +136,13 @@ def edit_trainer_locations(request, id=None, action=None):
             'locations': locations,
             'location': location,
             'form': form,
-            'action': action
+            'action': action,
         }
 
     except:
         return render(request, '404.html')
 
-    return render(request, 'trainers/trainerprofile_locations.html',
-                  context)
+    return render(request, 'trainers/trainerprofile_locations.html', context)
 
 
 def delete_location(request, id):
