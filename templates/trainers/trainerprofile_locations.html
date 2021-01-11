@@ -10,7 +10,7 @@
            href="{% url 'account_login' %}?next={{ request.path }}">{% trans 'Log in' %}</a>
     {% else %}
         {% include 'trainers/trainerprofile_nav.html' %}
-        {% if not create and not location %}
+        {% if not action and not location %}
             <div class="px-2 pt-5">
                 {% if locations %}
                     <div class="row">
@@ -26,7 +26,7 @@
                     </div>
                 {% endif %}
                 <a class="btn btn-primary"
-                   href="{% url 'trainer_profile_locations' create='new' %}">{% trans 'Add new location' %}</a>
+                   href="{% url 'trainer_profile_locations' action='new' %}">{% trans 'Add new location' %}</a>
             </div>
         {% else %}
             <form action="" enctype="multipart/form-data" method="POST">

@@ -41,7 +41,7 @@ urlpatterns = [
                        name='trainer_profile_locations'),
                   path('trainer/locations/<int:id>', edit_trainer_locations,
                        name='trainer_profile_locations'),
-                  path('trainer/locations/<str:create>', edit_trainer_locations,
+                  path('trainer/locations/<str:action>', edit_trainer_locations,
                        name='trainer_profile_locations'),
                   path('trainer/locations/delete/<int:id>/', delete_location,
                        name='location_delete'),

@@ -108,16 +108,16 @@ def edit_trainer_profile(request):
     return render(request, 'trainers/trainerprofile_edit.html', context)
 
 
-def edit_trainer_locations(request, id=None, create=None):
+def edit_trainer_locations(request, id=None, action=None):
     user = request.user
     try:
         trainer = Trainer.objects.get(user_id=user.id)
         locations = Location.objects.filter(trainer_id=trainer.id)
         location = None
-        create = True if create == 'new' else False
+        action = True if action == 'new' else False
         if id:
             location = locations.get(id=id)
-        elif create:
+        elif action:
             location = Location()
             location.trainer_id = trainer.id
         if request.method == 'POST':
@@ -135,7 +135,7 @@ def edit_trainer_locations(request, id=None, create=None):
             'locations': locations,
             'location': location,
             'form': form,
-            'create': create
+            'action': action
         }
 
     except:
