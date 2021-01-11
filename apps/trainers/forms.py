@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Trainer
+from .models import Trainer, Location
 
 
 class TrainerSettings(forms.ModelForm):
@@ -24,3 +24,16 @@ class TrainerSettings(forms.ModelForm):
     class Meta:
         model = Trainer
         fields = ['sport', 'motto', 'about', 'visible']
+
+
+class LocationSettings(forms.ModelForm):
+    name = forms.CharField(label=_('Studio Name'))
+    street = forms.CharField(label=_('Street'))
+    number = forms.CharField(label=_('Number'))
+    zipcode = forms.CharField(label=_('Zipcode'))
+    city = forms.CharField(label=_('City'))
+    country = forms.CharField(label=_('Country'))
+
+    class Meta:
+        model = Location
+        fields = ['name', 'street', 'number', 'zipcode', 'city', 'country']

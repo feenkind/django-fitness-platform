@@ -1,13 +1,12 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.template.defaulttags import register
 from django.urls import reverse_lazy
 from apps.trainers.models import *
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-from apps.trainers.forms import TrainerSettings
+from apps.trainers.forms import TrainerSettings, LocationSettings
 from apps.users.models import Roles
-from apps.trainers.models import *
 from apps.trainers.filters import *
 
 
@@ -55,7 +54,7 @@ def get_trainer_profile(request, id=None):
         if trainer.user_id == request.user.id:
             show_edit = True
         trainername = trainer.get_fullname()
-        locations = Location.objects.filter(trainer_id=id)
+        locations = Location.objects.filter(trainer_id=trainer.id)
         context = {
             'page_title': f'{trainername}\'s profile',
             'trainer': trainer,
@@ -84,8 +83,8 @@ def get_trainer_profile(request, id=None):
 
 def edit_trainer_profile(request):
     user = request.user
-    if user.role != Roles.TRAINER:
-        return
+    if not user.is_authenticated or user.role != Roles.TRAINER:
+        return render(request, '404.html')
     try:
         trainer = Trainer.objects.get(user_id=user.id)
     except:
@@ -107,6 +106,49 @@ def edit_trainer_profile(request):
         'is_visible': trainer.visible,
     }
     return render(request, 'trainers/trainerprofile_edit.html', context)
+
+
+def edit_trainer_locations(request, id=None, action=None):
+    user = request.user
+    try:
+        trainer = Trainer.objects.get(user_id=user.id)
+        locations = Location.objects.filter(trainer_id=trainer.id)
+        location = None
+        create = True if action == 'new' else False
+        if id:
+            location = locations.get(id=id)
+        elif create:
+            location = Location()
+            location.trainer_id = trainer.id
+        if request.method == 'POST':
+            form = LocationSettings(request.POST, instance=location)
+            if form.is_valid():
+                location.trainer = trainer
+                form.save()
+                messages.success(request, _('Location saved'))
+                return HttpResponseRedirect(
+                    reverse_lazy('trainer_profile_locations')
+                )
+        else:
+            form = LocationSettings(instance=location)
+        context = {
+            'page_title': 'Edit your locations',
+            'locations': locations,
+            'location': location,
+            'form': form,
+            'action': action,
+        }
+
+    except:
+        return render(request, '404.html')
+
+    return render(request, 'trainers/trainerprofile_locations.html', context)
+
+
+def delete_location(request, id):
+    location = Location.objects.get(id=id)
+    location.delete()
+    return redirect('trainer_profile_locations')
 
 
 def upload_trainer_profile(request):
