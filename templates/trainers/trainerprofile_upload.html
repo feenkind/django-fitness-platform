@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
@@ -10,7 +11,11 @@
   {% else %}
     {% include 'trainers/trainerprofile_nav.html' %}
     <div class="px-2 pt-5">
-      Here will be the awesome upload section
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+          <input type="file" name="document">
+          <button type="submit">Upload file</button>
+    </form>
     </div>
   {% endif %}
 {% endblock %}

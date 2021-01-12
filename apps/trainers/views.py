@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from apps.trainers.forms import TrainerSettings, LocationSettings
 from apps.users.models import Roles
 from apps.trainers.filters import *
+from django.core.files.storage import FileSystemStorage
 
 
 # custom template tag to enable multiple level lookup
@@ -152,8 +153,10 @@ def delete_location(request, id):
 
 
 def upload_trainer_profile(request):
-    # TODO: all the upload logic goes here
-    context = {
-        'page_title': 'Edit trainer profile',
-    }
+    context = {'page_title': 'Edit trainer profile', }
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+        fs = FileSystemStorage()
+        name = fs.save(uploaded_file.name, uploaded_file)
+        context['url'] = fs.url(name)
     return render(request, 'trainers/trainerprofile_upload.html', context)
