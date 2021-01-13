@@ -9,7 +9,15 @@
 <form class="signup my-5 p-4 bg-light" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
   <div class="form-row">
-    {% bootstrap_form form form_group_class='form-group col-lg-6' %}
+    {% bootstrap_field form.role form_group_class='form-group col-lg-6' %}
+  </div>
+  <div class="form-row">
+    {% bootstrap_field form.username form_group_class='form-group col-lg-6' %}
+    {% bootstrap_field form.email form_group_class='form-group col-lg-6' %}
+    {% bootstrap_field form.first_name form_group_class='form-group col-lg-6' %}
+    {% bootstrap_field form.last_name form_group_class='form-group col-lg-6' %}
+    {% bootstrap_field form.password1 form_group_class='form-group col-lg-6' %}
+    {% bootstrap_field form.password2 form_group_class='form-group col-lg-6' %}
   </div>
   {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
