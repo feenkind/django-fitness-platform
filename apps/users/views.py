@@ -36,7 +36,7 @@ def user_profile(request):
 def get_user_favorites(request):
     user = request.user
 
-    if not user.is_authenticated or user.role != Roles.USER:
+    if hasattr(user, 'role') and user.role != Roles.USER:
         return render(request, '404.html')
 
     # this returns all trainers with flags, the ones not flagged for the user have no value though
