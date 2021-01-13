@@ -179,4 +179,3 @@ def mark_favorite(request, id):
         trainer.set_flag(user)
 
     return redirect('trainer_profile', trainer.id)
-    # TODO: display fav count for trainer
