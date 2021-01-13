@@ -170,9 +170,8 @@ def mark_favorite(request, id):
     user = request.user
     # only logged in "normal" users can mark as favorite
     if not user.is_authenticated or user.role != Roles.USER:
-        return
+        return render(request, '404.html')
 
-    # TODO: try catch and error messages
     trainer = get_object_or_404(Trainer, id=id)
     if trainer.is_flagged(user):
         trainer.remove_flag(user)

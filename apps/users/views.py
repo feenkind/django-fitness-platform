@@ -28,3 +28,13 @@ def user_profile(request):
         'form': form,
     }
     return render(request, 'users/userprofile.html', context)
+
+
+def get_user_favorites(request):
+    favorite_trainers = []
+    context = {
+        'page_title': _('Favorite trainers'),
+        'favorites': favorite_trainers,
+    }
+
+    return render(request, 'users/favorites.html', context)

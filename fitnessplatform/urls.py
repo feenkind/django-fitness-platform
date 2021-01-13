@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 
 from apps.pages.views import start_view
-from apps.users.views import user_profile
+from apps.users.views import *
 from apps.trainers.views import *
 
 urlpatterns = [
@@ -57,5 +57,10 @@ urlpatterns = [
         'trainer/favorite/<int:id>',
         mark_favorite,
         name='mark_favorite',
+    ),
+    path(
+        'user/favorites',
+        get_user_favorites,
+        name='user_favorites',
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
