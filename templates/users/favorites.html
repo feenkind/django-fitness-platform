@@ -28,7 +28,7 @@
                 </td>
                 <td>
                   <a class="btn btn-primary" href="{% url 'trainer_profile' trainer.id %}">{% trans 'View Profile' %}</a>
-                  <a class="btn btn-secondary" href="{% url 'mark_favorite' trainer.id %}">
+                  <a class="btn btn-secondary" href="{% url 'mark_favorite' trainer.id %}?next={{ request.path|urlencode }}">
                       {% trans 'Unmark this trainer as favorite' %}
                   </a>
                 </td>

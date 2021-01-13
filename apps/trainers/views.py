@@ -178,4 +178,4 @@ def mark_favorite(request, id):
     else:
         trainer.set_flag(user)
 
-    return redirect('trainer_profile', trainer.id)
+    return redirect(request.GET.get('next'))
