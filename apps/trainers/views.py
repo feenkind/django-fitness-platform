@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.template.defaulttags import register
 from django.urls import reverse_lazy
 from apps.trainers.models import *
@@ -55,6 +55,11 @@ def get_trainer_profile(request, id=None):
             show_edit = True
         trainername = trainer.get_fullname()
         locations = Location.objects.filter(trainer_id=trainer.id)
+        marked_favorite = trainer.is_flagged(request.user)
+        user_can_favorite = (
+            hasattr(request.user, 'role') and request.user.role == Roles.USER
+        )
+
         context = {
             'page_title': f'{trainername}\'s profile',
             'trainer': trainer,
@@ -63,6 +68,8 @@ def get_trainer_profile(request, id=None):
             'show_edit': show_edit,
             'show_create': show_create,
             'is_visible': trainer.visible,
+            'marked_favorite': marked_favorite,
+            'user_can_favorite': user_can_favorite,
         }
     except Trainer.DoesNotExist:
         if (
@@ -157,3 +164,21 @@ def upload_trainer_profile(request):
         'page_title': 'Edit trainer profile',
     }
     return render(request, 'trainers/trainerprofile_upload.html', context)
+
+
+def mark_favorite(request, id):
+    user = request.user
+    # only logged in "normal" users can mark as favorite
+    if not user.is_authenticated or user.role != Roles.USER:
+        return
+
+    # TODO: try catch and error messages
+    trainer = get_object_or_404(Trainer, id=id)
+    if trainer.is_flagged(user):
+        trainer.remove_flag(user)
+    else:
+        trainer.set_flag(user)
+
+    return redirect('trainer_profile', trainer.id)
+    # TODO: display fav count for trainer
+    # TODO: display favs for user

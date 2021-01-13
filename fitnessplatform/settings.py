@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'environ',
+    'siteflags',
     # own
     'apps.users',
     'apps.trainers',
