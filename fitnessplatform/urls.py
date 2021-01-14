@@ -18,31 +18,49 @@ from django.urls import path, include
 from django.conf.urls.static import static
 
 from apps.pages.views import start_view
-from apps.users.views import user_profile
+from apps.users.views import *
 from apps.trainers.views import *
 
 urlpatterns = [
-                  path('', start_view),
-                  path('admin/', admin.site.urls),
-                  path('user/', include('allauth.urls')),
-                  path('user/', user_profile, name='user_profile'),
-                  path('trainerlist/', get_trainer_list, name='trainer_list'),
-                  path('trainer/<int:id>/', get_trainer_profile,
-                       name='trainer_profile'),
-                  path('trainer/', get_trainer_profile,
-                       name='trainer_profile'),
-                  path('trainer/edit', edit_trainer_profile,
-                       name='trainer_profile_edit'),
-                  path(
-                      'trainer/upload', upload_trainer_profile,
-                      name='trainer_profile_upload'
-                  ),
-                  path('trainer/locations', edit_trainer_locations,
-                       name='trainer_profile_locations'),
-                  path('trainer/locations/<int:id>', edit_trainer_locations,
-                       name='trainer_profile_locations'),
-                  path('trainer/locations/<str:action>', edit_trainer_locations,
-                       name='trainer_profile_locations'),
-                  path('trainer/locations/delete/<int:id>/', delete_location,
-                       name='location_delete'),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', start_view),
+    path('admin/', admin.site.urls),
+    path('user/', include('allauth.urls')),
+    path('user/', user_profile, name='user_profile'),
+    path('trainerlist/', get_trainer_list, name='trainer_list'),
+    path('trainer/<int:id>/', get_trainer_profile, name='trainer_profile'),
+    path('trainer/', get_trainer_profile, name='trainer_profile'),
+    path('trainer/edit', edit_trainer_profile, name='trainer_profile_edit'),
+    path(
+        'trainer/upload', upload_trainer_profile, name='trainer_profile_upload'
+    ),
+    path(
+        'trainer/locations',
+        edit_trainer_locations,
+        name='trainer_profile_locations',
+    ),
+    path(
+        'trainer/locations/<int:id>',
+        edit_trainer_locations,
+        name='trainer_profile_locations',
+    ),
+    path(
+        'trainer/locations/<str:action>',
+        edit_trainer_locations,
+        name='trainer_profile_locations',
+    ),
+    path(
+        'trainer/locations/delete/<int:id>/',
+        delete_location,
+        name='location_delete',
+    ),
+    path(
+        'trainer/favorite/<int:id>',
+        mark_favorite,
+        name='mark_favorite',
+    ),
+    path(
+        'user/favorites',
+        get_user_favorites,
+        name='user_favorites',
+    ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

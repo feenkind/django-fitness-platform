@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% trans 'Your favorite trainers' %}</h1>
+  {% if not user.is_authenticated %}
+      <p>{% trans 'You need to log in before you can see your favorite trainers.' %}</p>
+      <a class="btn btn-outline-primary" href="{% url 'account_login' %}?next={{ request.path|urlencode }}">{% trans 'Log in' %}</a>
+  {% elif favourites_count == 0 %}
+    <p>{% trans 'You don\'t have any favorite trainers yet.' %}</p>
+    <p>{% trans 'Maybe go and' %} <a href="{% url 'trainer_list' %}">{% trans ' look for a new trainer' %}</a> {% trans 'you like?' %}</p>
+  {% else %}
+  <div class="table-responsive mt-5">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>{% trans 'Trainer picture' %}</th>
+            <th>{% trans 'Name' %}</th>
+            <th></th>
+        </tr>
+        </thead>
+        {% for trainer in favorites %}
+            <tr>
+                <td>
+                  {% if trainer.user.avatar %}
+                    <div class="image-square-crop d-inline-block">
+                      <img class="img-fluid border border-secondary"  src="{{ trainer.user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
+                    </div>
+                  {% endif %}
+                </td>
+                <td>
+                  {{ trainer.user.first_name }} {{ trainer.user.last_name }}
+                </td>
+                <td>
+                  <a class="btn btn-primary" href="{% url 'trainer_profile' trainer.id %}">{% trans 'View Profile' %}</a>
+                  <a class="btn btn-secondary" href="{% url 'mark_favorite' trainer.id %}?next={{ request.path|urlencode }}">
+                      {% trans 'Unmark this trainer as favorite' %}
+                  </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+  </div>
+  {% endif %}
+{% endblock %}

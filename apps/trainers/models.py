@@ -1,9 +1,10 @@
 from django.db import models
+from siteflags.models import ModelWithFlag
 from fitnessplatform import settings
 from django.utils.translation import gettext_lazy as _
 
 
-class Trainer(models.Model):
+class Trainer(ModelWithFlag):
     class Sports(models.TextChoices):
         YOGA = 'yoga', _('Yoga')
         PERSONAL = 'personal', _('Personal Training')

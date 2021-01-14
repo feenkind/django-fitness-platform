@@ -18,11 +18,19 @@
     <a class="dropdown-item {% if request.path == '/user/' or request.path == '/user/password/change/' %}active{% endif %}" href="{% url 'user_profile' %}">
       {% trans 'Your settings' %}
     </a>
+
     {% if user.role == 'trainer' %}
       <a class="dropdown-item {% if request.path == '/trainer/' %}active{% endif %}" href="{% url 'trainer_profile'%}">
         {% trans 'Your trainer profile' %}
       </a>
     {% endif %}
+
+    {% if user.role == 'user' %}
+      <a class="dropdown-item {% if request.path == '/user/favorites' %}active{% endif %}" href="{% url 'user_favorites'%}">
+        {% trans 'Your favorite trainers' %}
+      </a>
+    {% endif %}
+
     <a class="dropdown-item" href="{% url 'account_logout' %}">
       {% trans 'Logout' %}
     </a>

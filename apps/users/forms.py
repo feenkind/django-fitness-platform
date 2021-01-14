@@ -18,6 +18,15 @@ class UsersSignupForm(SignupForm):
         widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
     )
 
+    role = forms.ChoiceField(
+        choices=(
+            ('user', 'No, I want to register as a normal user'),
+            ('trainer', 'Yes I want to register as a trainer'),
+        ),
+        required=True,
+        label=_('Do you want to offer training classes? *'),
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].label = _('E-mail *')
@@ -30,7 +39,11 @@ class UsersSignupForm(SignupForm):
         user = super(UsersSignupForm, self).save(request)
 
         # own processing
-        user.role = Roles.TRAINER
+        user.role = (
+            Roles.TRAINER
+            if self.cleaned_data['role'] == 'trainer'
+            else Roles.USER
+        )
         user.save()
 
         return user
