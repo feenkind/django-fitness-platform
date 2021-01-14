@@ -7,8 +7,10 @@
   {% if not user.is_authenticated %}
       <p>{% trans 'You need to log in before you can see your favorite trainers.' %}</p>
       <a class="btn btn-outline-primary" href="{% url 'account_login' %}?next={{ request.path|urlencode }}">{% trans 'Log in' %}</a>
+  {% elif favourites_count == 0 %}
+    <p>{% trans 'You don\'t have any favorite trainers yet.' %}</p>
+    <p>{% trans 'Maybe go and' %} <a href="{% url 'trainer_list' %}">{% trans ' look for a new trainer' %}</a> {% trans 'you like?' %}</p>
   {% else %}
-
   <div class="table-responsive mt-5">
     <table class="table">
         <thead>
