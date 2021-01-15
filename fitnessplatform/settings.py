@@ -54,6 +54,12 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.trainers',
     'apps.pages',
+    # social login
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.facebook',
+
+
 ]
 
 MIDDLEWARE = [
@@ -167,6 +173,10 @@ AUTH_USER_MODEL = 'users.User'
 ACCOUNT_FORMS = {
     'signup': 'apps.users.forms.UsersSignupForm',
 }
+
+# SOCIALACCOUNT_FORMS = {
+#     'signup': 'apps.users.forms.SocialSignupForm',
+# }
 
 # ALL AUTH SETTINGS
 ACCOUNT_EMAIL_REQUIRED = True

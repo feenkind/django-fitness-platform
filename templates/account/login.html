@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load i18n %}
+{% load socialaccount %}
 
 {% block content %}
 
@@ -19,5 +20,5 @@
   <button class="btn btn-primary" type="submit">{% trans 'Log In' %}</button>
   <a class="btn btn-outline-secondary" href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
 </form>
-
+<a href="{% provider_login_url "github" method = "oauth2" %}">Sign in with Github</a>
 {% endblock %}
