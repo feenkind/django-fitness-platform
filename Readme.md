@@ -6,8 +6,9 @@ Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practic
 ## Genutzte packages
 * django-allauth
 * django-bootstrap4
-* django-environ
 * django-filters
+* environ
+* siteflags
 
 ## Development
 Die Website ist erreichbar unter `localhost:8080`.
@@ -21,6 +22,23 @@ Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im `fitnessplat
 ### Mails
 Für lokales Development werden Emails direkt über die Konsole ausgegeben.
 Dafür können die Variablen aus der `.env.example` ins lokale `.env`-file übernommen werden.
+
+### Social Login
+Eigene OAuth Github App erstellen für Trainhorizon local:
+* in Github Developer Settings neue OAuth App erstellen: https://github.com/settings/developers
+  * Application name: Trainhorizon
+  * Homepage URL: `http://127.0.0.1:8000/`
+  * Authorization callback URL: `http://127.0.0.1:8000/accounts/github/login/callback/`
+* Client secret generieren und dieses zusammen mit der Client ID dem o.g. 'Social application'-Objekt im Trainhorizon Admin-Bereich übergeben
+
+
+* in Admin-Bereich einloggen und Domain name der Site in `http://127.0.0.1:8000` ändern (Displayname kann frei gewählt werden)
+* im Admin-Bereich neues 'Social application' - Objekt anlegen
+  * Provider: GitHub
+  * Name: GitHub
+  * client id und secret key angeben
+  * Sites: `http://127.0.0.1:8000` zu chosen sites hinzufügen
+
 
 
 ## Production
