@@ -174,9 +174,9 @@ ACCOUNT_FORMS = {
     'signup': 'apps.users.forms.UsersSignupForm',
 }
 
-# SOCIALACCOUNT_FORMS = {
-#     'signup': 'apps.users.forms.SocialSignupForm',
-# }
+SOCIALACCOUNT_FORMS = {
+    'signup': 'apps.users.forms.SocialSignupForm',
+}
 
 # ALL AUTH SETTINGS
 ACCOUNT_EMAIL_REQUIRED = True

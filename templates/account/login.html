@@ -1,24 +1,26 @@
 {% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
 {% load bootstrap4 %}
 {% load i18n %}
-{% load socialaccount %}
 
 {% block content %}
-
-<h1>{% trans 'Login' %}</h1>
-<p>{% trans 'If you have not created an account yet, then please' %}
-<a href="{{ signup_url }}">{% trans 'register' %}</a> {% trans 'first' %}.</p>
-
-<form class="login my-5 p-4 bg-light" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  <div class="form-row">
-    {% bootstrap_form form form_group_class='form-group col-lg-6' bound_css_class='' %}
-  </div>
-  {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="btn btn-primary" type="submit">{% trans 'Log In' %}</button>
-  <a class="btn btn-outline-secondary" href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
-</form>
-<a href="{% provider_login_url "github" method = "oauth2" %}">Sign in with Github</a>
+    <h1>{% trans 'Login' %}</h1>
+    <p>{% trans 'If you have not created an account yet, then please' %}
+        <a href="{{ signup_url }}">{% trans 'register' %}</a> {% trans 'first' %} or <a
+                href="{% provider_login_url "github" method = "oauth2" %}"> {% trans 'sign in with' %} <img
+                src="{% static 'img/GitHub_Logo.png' %}" height="25" class="d-inline-block align-top" alt=""></a>.
+    </p>
+    <form class="login my-5 p-4 bg-light" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        <div class="form-row">
+            {% bootstrap_form form form_group_class='form-group col-lg-6' bound_css_class='' %}
+        </div>
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+        <button class="btn btn-primary" type="submit">{% trans 'Log In' %}</button>
+        <a class="btn btn-outline-secondary"
+           href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
+    </form>
 {% endblock %}

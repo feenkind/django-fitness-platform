@@ -1,6 +1,5 @@
-from allauth.account.adapter import get_adapter
 from allauth.account.forms import SignupForm
-from allauth.socialaccount import app_settings
+from allauth.socialaccount.forms import SignupForm as AllauthSocialSignupForm
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import Roles, User
@@ -68,8 +67,7 @@ class UserSettings(forms.ModelForm):
         }
 
 
-class SocialSignupForm(SignupForm):
-
+class SocialSignupForm(AllauthSocialSignupForm):
     first_name = forms.CharField(
         max_length=30,
         label=_('First Name* '),
@@ -93,7 +91,7 @@ class SocialSignupForm(SignupForm):
     )
 
     def __init__(self, *args, **kwargs):
-        super().__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['email'].label = _('E-mail *')
         self.fields['username'].label = _('Username *')
 
@@ -106,6 +104,3 @@ class SocialSignupForm(SignupForm):
         )
         user.save()
         return user
-
-    def validate_unique_email(self, value):
-        super().validate_unique_email(value)
