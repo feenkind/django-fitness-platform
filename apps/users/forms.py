@@ -10,19 +10,19 @@ class UsersSignupForm(SignupForm):
         max_length=30,
         label=_('First Name* '),
         required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
+        widget=forms.TextInput(attrs={'placeholder': _('First Name')}),
     )
     last_name = forms.CharField(
         max_length=30,
         label=_('Last Name *'),
         required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
+        widget=forms.TextInput(attrs={'placeholder': _('Last Name')}),
     )
 
     role = forms.ChoiceField(
         choices=(
-            ('user', 'No, I want to register as a normal user'),
-            ('trainer', 'Yes I want to register as a trainer'),
+            ('user', _('No, I want to register as a normal user')),
+            ('trainer', _('Yes I want to register as a trainer')),
         ),
         required=True,
         label=_('Do you want to offer training classes? *'),
@@ -72,19 +72,19 @@ class SocialSignupForm(AllauthSocialSignupForm):
         max_length=30,
         label=_('First Name* '),
         required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
+        widget=forms.TextInput(attrs={'placeholder': _('First Name')}),
     )
     last_name = forms.CharField(
         max_length=30,
         label=_('Last Name *'),
         required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
+        widget=forms.TextInput(attrs={'placeholder': _('Last Name')}),
     )
 
     role = forms.ChoiceField(
         choices=(
-            ('user', 'No, I want to register as a normal user'),
-            ('trainer', 'Yes I want to register as a trainer'),
+            ('user', _('No, I want to register as a normal user')),
+            ('trainer', _('Yes I want to register as a trainer')),
         ),
         required=True,
         label=_('Do you want to offer training classes? *'),
