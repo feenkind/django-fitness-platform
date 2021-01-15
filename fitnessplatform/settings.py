@@ -55,9 +55,7 @@ INSTALLED_APPS = [
     'apps.trainers',
     'apps.pages',
     # social login
-    'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.facebook',
 
 
 ]
