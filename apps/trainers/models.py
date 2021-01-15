@@ -1,6 +1,8 @@
+import os
 from django.db import models
 from fitnessplatform import settings
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import AbstractUser
 
 
 class Trainer(models.Model):
@@ -44,3 +46,16 @@ class Location(models.Model):
 
     def __str__(self):
         return self.trainer.__str__()
+
+
+class Upload_File(models.Model):
+    def upload_filename(self):
+        filepath = f'user_{self.id}/uploads/'
+        fullpath = os.path.join(settings.MEDIA_ROOT, filepath)
+        return fullpath
+
+    title = models.CharField(max_length=100)
+    uploaded = models.FileField(upload_to=upload_filename, null=True, blank=True,)
+
+    def __str__(self):
+        return self.uploaded.__str__()

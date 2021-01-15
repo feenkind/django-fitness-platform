@@ -37,6 +37,10 @@ urlpatterns = [
                       'trainer/upload', upload_trainer_profile,
                       name='trainer_profile_upload'
                   ),
+                  path(
+                      'trainer/upload_list', trainer_upload_list,
+                      name='trainer_upload_list'
+                  ),
                   path('trainer/locations', edit_trainer_locations,
                        name='trainer_profile_locations'),
                   path('trainer/locations/<int:id>', edit_trainer_locations,

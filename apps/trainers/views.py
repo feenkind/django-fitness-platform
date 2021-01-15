@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from apps.trainers.models import *
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-from apps.trainers.forms import TrainerSettings, LocationSettings
+from apps.trainers.forms import TrainerSettings, LocationSettings, UploadForm
 from apps.users.models import Roles
 from apps.trainers.filters import *
 from django.core.files.storage import FileSystemStorage
@@ -153,10 +153,25 @@ def delete_location(request, id):
 
 
 def upload_trainer_profile(request):
-    context = {'page_title': 'Edit trainer profile', }
+
     if request.method == 'POST':
-        uploaded_file = request.FILES['document']
-        fs = FileSystemStorage()
-        name = fs.save(uploaded_file.name, uploaded_file)
-        context['url'] = fs.url(name)
+        upload = UploadForm(request.POST, request.FILES)
+        if upload.is_valid():
+            upload.save()
+            return redirect('trainers/trainer_upload_list.html')
+        else:
+            upload = UploadForm()
+    context = {
+        'page_title': 'Edit trainer profile',
+        'upload': upload}
     return render(request, 'trainers/trainerprofile_upload.html', context)
+
+#def delete_upload(request, id):
+#    uploaded_file = Upload_File.objects.get(id=id)
+#    uploaded_file.delete()
+#    return redirect('trainers/trainer_upload_list.html')
+
+def trainer_upload_list(request):
+    return render(request, 'trainers/trainer_upload_list.html', )
+
+
