@@ -11,7 +11,7 @@ Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practic
 * siteflags
 
 ## Development
-Die Website ist erreichbar unter `localhost:8080`.
+Die Website ist erreichbar unter `http://127.0.0.1:8000`. Das ist wichtig, wenn man das Social Login verwendet, sonst gibt es Probleme mit der redirect-URI. Ohne Social Login, kann die Website auch mit `localhost:8080` aufgerufen werden.
 Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im `fitnessplatform`-Verzeichnis erstellen und die Variablen aus der `.env.example` kopieren. Für die Ausgabe von Fehlermeldungen `DEBUG=True` setzen.
 
 ### Implementierung einer lokalen Datenbank:
@@ -31,7 +31,9 @@ Eigene OAuth Github App erstellen für Trainhorizon local:
   * Authorization callback URL: `http://127.0.0.1:8000/accounts/github/login/callback/`
 * Client secret generieren und dieses zusammen mit der Client ID dem o.g. 'Social application'-Objekt im Trainhorizon Admin-Bereich übergeben
 
+Achtung! Die Website muss unter `http://127.0.0.1:8000/` sonst gibt es Fehler mit der Redirect-URI von GitHub.
 
+Konfiguration im Admin-Bereich
 * in Admin-Bereich einloggen und Domain name der Site in `http://127.0.0.1:8000` ändern (Displayname kann frei gewählt werden)
 * im Admin-Bereich neues 'Social application' - Objekt anlegen
   * Provider: GitHub
