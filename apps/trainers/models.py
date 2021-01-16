@@ -28,11 +28,17 @@ class Trainer(models.Model):
 
 
 class Upload(models.Model):
+    def upload_filename(self):
+        filepath = f'user_{self.id}/uploads/'
+        fullpath = os.path.join(settings.MEDIA_ROOT, filepath)
+        return fullpath
+
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
-    url = models.URLField(max_length=30)
+    title = models.CharField(max_length=100, default='Here goes text')
+    url = models.FileField(upload_to=upload_filename, null=True, blank=True, )
 
     def __str__(self):
-        return f'{self.trainer.__str__()} ({self.url})'
+        return self.trainer.__str__()
 
 
 class Location(models.Model):
@@ -46,16 +52,3 @@ class Location(models.Model):
 
     def __str__(self):
         return self.trainer.__str__()
-
-
-class Upload_File(models.Model):
-    def upload_filename(self):
-        filepath = f'user_{self.id}/uploads/'
-        fullpath = os.path.join(settings.MEDIA_ROOT, filepath)
-        return fullpath
-
-    title = models.CharField(max_length=100)
-    uploaded = models.FileField(upload_to=upload_filename, null=True, blank=True,)
-
-    def __str__(self):
-        return self.uploaded.__str__()

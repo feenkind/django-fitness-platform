@@ -153,23 +153,32 @@ def delete_location(request, id):
 
 
 def upload_trainer_profile(request):
+    user = request.user
+    if not user.is_authenticated or user.role != Roles.TRAINER:
+        return render(request, '404.html')
+    try:
 
-    if request.method == 'POST':
-        upload = UploadForm(request.POST, request.FILES)
-        if upload.is_valid():
-            upload.save()
-            return redirect('trainers/trainer_upload_list.html')
+        if request.method == 'POST':
+            upload = UploadForm(request.POST, request.FILES)
+            if upload.is_valid():
+                upload.save()
+                messages.success(request, _('Upload uploaded'))
+                return redirect('trainers/trainer_upload_list.html')
+            else:
+                messages.error(request, _('We had problems with your upload.'))
         else:
-            upload = UploadForm()
-    context = {
-        'page_title': 'Edit trainer profile',
-        'upload': upload}
+            upload = UploadForm(instance=user)
+        context = {
+            'page_title': 'Edit trainer profile',
+            'upload': upload}
+    except:
+        return render(request, '404.html')
     return render(request, 'trainers/trainerprofile_upload.html', context)
 
-#def delete_upload(request, id):
-#    uploaded_file = Upload_File.objects.get(id=id)
-#    uploaded_file.delete()
-#    return redirect('trainers/trainer_upload_list.html')
+def delete_upload(request, id):
+    upload = Upload.objects.get(id=id)
+    upload.delete()
+    return redirect('trainers/trainer_upload_list.html')
 
 def trainer_upload_list(request):
     return render(request, 'trainers/trainer_upload_list.html', )

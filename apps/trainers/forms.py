@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Trainer, Location, Upload_File
+from .models import Trainer, Location, Upload
 
 
 class TrainerSettings(forms.ModelForm):
@@ -40,8 +40,8 @@ class LocationSettings(forms.ModelForm):
 
 
 class UploadForm(forms.ModelForm):
-    title = forms.CharField(label=_('Title'))
-    uploaded = forms.FileField(required=True, help_text= "You can't upload without an upload.")
+    title = forms.CharField(required=True, label=_('Title'))
+    url = forms.FileField(required=True, help_text= "You can't upload without an upload.")
     class Meta:
-        model = Upload_File
-        fields = ['title', 'uploaded']
+        model = Upload
+        fields = ['title', 'url']
