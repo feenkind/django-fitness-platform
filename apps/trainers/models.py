@@ -29,7 +29,6 @@ class Trainer(models.Model):
 class Upload(models.Model):
     def upload_filename(instance, filename):
         filepath = f'user_{instance.trainer.user_id}/uploads/{filename}'
-        fullpath = os.path.join(settings.MEDIA_ROOT, filepath)
         return filepath
 
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
