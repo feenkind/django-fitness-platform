@@ -13,7 +13,7 @@
     <div class="px-2 pt-5">
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ upload }}
+        {{ form }}
         <button type="submit" class="btn btn-primary ">Upload file</button>
     </form>
     </div>

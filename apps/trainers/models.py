@@ -27,10 +27,10 @@ class Trainer(models.Model):
 
 
 class Upload(models.Model):
-    def upload_filename(self):
-        filepath = f'user_{self.id}/uploads/'
+    def upload_filename(instance, filename):
+        filepath = f'user_{instance.trainer.user_id}/uploads/{filename}'
         fullpath = os.path.join(settings.MEDIA_ROOT, filepath)
-        return fullpath
+        return filepath
 
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, default='Here goes text')
