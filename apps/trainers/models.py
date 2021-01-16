@@ -2,7 +2,6 @@ import os
 from django.db import models
 from fitnessplatform import settings
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import AbstractUser
 
 
 class Trainer(models.Model):
