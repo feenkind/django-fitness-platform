@@ -6,10 +6,15 @@
 
 {% block content %}
     <h1>{% trans 'Register' %}</h1>
-    <p>{% trans 'Already have an account? Then please ' %}<a href="{{ login_url }}">{% trans 'log in' %}</a> or <a
-                href="{% provider_login_url "github" method = "oauth2" %}"> {% trans 'sign in with' %} <img
-                src="{% static 'img/GitHub_Logo.png' %}" height="25" class="d-inline-block align-top" alt=""></a>.</p>
-    <p>{% trans 'Otherwise please fill in the form to be registered as a trainer on our platform.' %}</p>
+    <p>
+        <button class="btn btn-light"><a
+                href="{% provider_login_url "github" method = "oauth2" %}"> {% trans 'Continue with' %} <img
+                src="{% static 'img/GitHub_Logo.png' %}" height="25" class="d-inline-block align-top" alt=""></a>
+        </button>
+        <br><br>
+        {% trans 'Already have an account? Then please ' %}<a href="{{ login_url }}">{% trans 'log in' %}</a>.
+    </p>
+    <p>{% trans 'Otherwise please fill in the form to be registered on our platform.' %}</p>
     <form class="signup my-5 p-4 bg-light" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
         <div class="form-row">

@@ -2,6 +2,7 @@
   --primary-color: #FF6100;
   --primary-color-dark: #e45000;
   --light-color: #D4DDE2;
+  --light-color-bright: #E9F0F4;
 }
 
 
@@ -42,6 +43,15 @@ body>.container-md>h1 {
 .btn-outline-primary:active {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+.btn-light {
+  border-color: var(--light-color);
+  background-color: var(--light-color);
+}
+.btn-light:hover,
+.btn-light:active {
+  background-color: var(--light-color-bright);
 }
 
 /* BACKGROUNDS */
