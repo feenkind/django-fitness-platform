@@ -1,28 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
 {% load bootstrap4 %}
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans 'Register' %}</h1>
-<p>{% trans 'Already have an account? Then please ' %}<a href="{{ login_url }}">{% trans 'sign in' %}</a>.</p>
-<p>{% trans 'Otherwise please fill in the form to be registered as a trainer on our platform.' %}</p>
-<form class="signup my-5 p-4 bg-light" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  <div class="form-row">
-    {% bootstrap_field form.role form_group_class='form-group col-lg-6' %}
-  </div>
-  <div class="form-row">
-    {% bootstrap_field form.username form_group_class='form-group col-lg-6' %}
-    {% bootstrap_field form.email form_group_class='form-group col-lg-6' %}
-    {% bootstrap_field form.first_name form_group_class='form-group col-lg-6' %}
-    {% bootstrap_field form.last_name form_group_class='form-group col-lg-6' %}
-    {% bootstrap_field form.password1 form_group_class='form-group col-lg-6' %}
-    {% bootstrap_field form.password2 form_group_class='form-group col-lg-6' %}
-  </div>
-  {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit" class="btn btn-primary">{% trans 'Register now' %}</button>
-</form>
+    <h1>{% trans 'Register' %}</h1>
+    <p>
+        <button class="btn btn-light"><a
+                href="{% provider_login_url "github" method = "oauth2" %}"> {% trans 'Continue with' %} <img
+                src="{% static 'img/GitHub_Logo.png' %}" height="25" class="d-inline-block align-top" alt=""></a>
+        </button>
+        <br><br>
+        {% trans 'Already have an account? Then please ' %}<a href="{{ login_url }}">{% trans 'log in' %}</a>.
+    </p>
+    <p>{% trans 'Otherwise please fill in the form to be registered on our platform.' %}</p>
+    <form class="signup my-5 p-4 bg-light" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        <div class="form-row">
+            {% bootstrap_field form.role form_group_class='form-group col-lg-6' %}
+        </div>
+        <div class="form-row">
+            {% bootstrap_field form.username form_group_class='form-group col-lg-6' %}
+            {% bootstrap_field form.email form_group_class='form-group col-lg-6' %}
+            {% bootstrap_field form.first_name form_group_class='form-group col-lg-6' %}
+            {% bootstrap_field form.last_name form_group_class='form-group col-lg-6' %}
+            {% bootstrap_field form.password1 form_group_class='form-group col-lg-6' %}
+            {% bootstrap_field form.password2 form_group_class='form-group col-lg-6' %}
+        </div>
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">{% trans 'Register now' %}</button>
+    </form>
 
 {% endblock %}

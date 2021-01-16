@@ -24,8 +24,8 @@ from apps.trainers.views import *
 urlpatterns = [
     path('', start_view),
     path('admin/', admin.site.urls),
-    path('user/', include('allauth.urls')),
-    path('user/', user_profile, name='user_profile'),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/', user_profile, name='user_profile'),
     path('trainerlist/', get_trainer_list, name='trainer_list'),
     path('trainer/<int:id>/', get_trainer_profile, name='trainer_profile'),
     path('trainer/', get_trainer_profile, name='trainer_profile'),

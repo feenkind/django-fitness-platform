@@ -11,8 +11,5 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 
-# hide unneeded allauth models
-admin.site.unregister(SocialToken)
-admin.site.unregister(SocialAccount)
-admin.site.unregister(SocialApp)
+# hide unneeded allauth model
 admin.site.unregister(EmailAddress)
