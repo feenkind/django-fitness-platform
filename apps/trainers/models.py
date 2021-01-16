@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from siteflags.models import ModelWithFlag
 from fitnessplatform import settings
@@ -27,11 +28,16 @@ class Trainer(ModelWithFlag):
 
 
 class Upload(models.Model):
+    def upload_filename(instance, filename):
+        filepath = f'user_{instance.trainer.user_id}/uploads/{filename}'
+        return filepath
+
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
-    url = models.URLField(max_length=30)
+    title = models.CharField(max_length=100, default='Here goes text')
+    url = models.FileField(upload_to=upload_filename, null=True, blank=True, )
 
     def __str__(self):
-        return f'{self.trainer.__str__()} ({self.url})'
+        return self.trainer.__str__()
 
 
 class Location(models.Model):
