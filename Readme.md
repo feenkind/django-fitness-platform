@@ -78,7 +78,7 @@ Außerdem kann der Benutzer ein Avatarbild hochladen. Dieses Bild wird im Ordner
 Über einen Reiter kommt man zu den Password-Settings, in denen man das Passwort ändern kann. 
 
 ### Your favorite trainers (nur für normale Benutzer)
-Hier wird für normale Benutzer eine Liste an Trainern angezeigt, die von dem entsprechenden Benutzer favorisiert wurden. Über einen Button kommt man zum Trainerprofil, über einen anderen Button kann man den Trainer schnell wieder entfavorisieren.
+Hier wird für normale Benutzer eine Liste an Trainern angezeigt, die von dem entsprechenden Benutzer favorisiert wurden. Trainer, die ihr Profil nicht öffentlich geschaltet haben, werden nicht angezeigt. Über einen Button kommt man zum Trainerprofil, über einen anderen Button kann man den Trainer schnell wieder entfavorisieren.
 Wenn ein Benutzer keine Trainer favorisiert hat, wird eine Meldung mit Link zur Trainerliste angezeigt.
 
 ### Your trainer profile (nur für Trainer)
