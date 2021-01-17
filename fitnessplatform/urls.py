@@ -59,7 +59,7 @@ urlpatterns = [
         name='mark_favorite',
     ),
     path(
-        'user/favorites',
+        'accounts/favorites',
         get_user_favorites,
         name='user_favorites',
     ),
