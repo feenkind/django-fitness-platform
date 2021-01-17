@@ -51,7 +51,9 @@ def get_user_favorites(request):
     favorite_trainer_ids = [trainer[0] for trainer in favorite_trainer_ids]
     # another query is probably faster than a loop
     # get the favorite trainer objects
-    favorite_trainers = Trainer.objects.filter(id__in=favorite_trainer_ids)
+    favorite_trainers = Trainer.objects.filter(
+        id__in=favorite_trainer_ids, visible=True
+    )
 
     context = {
         'page_title': _('Favorite trainers'),
