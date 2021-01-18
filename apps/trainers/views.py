@@ -180,23 +180,21 @@ def upload_trainer_profile(request):
                 messages.error(request, _('We had problems with your upload.'))
         else:
             form = UploadForm(instance=upload)
+        uploads = Upload.objects.all()
         context = {
             'page_title': 'Edit trainer profile',
             'upload': upload,
-            'form': form
+            'form': form,
+            'uploads': uploads,
         }
     return render(request, 'trainers/trainerprofile_upload.html', context)
 
 
 def delete_upload(request, id):
-    upload = Upload.objects.get(id=id)
-    upload.delete()
-    return redirect('trainers/trainer_upload_list.html')
-
-
-def trainer_upload_list(request):
-    return render(request, 'trainers/trainer_upload_list.html', )
-
+    if request.method == 'POST':
+        upload = Upload.objects.get(id=id)
+        upload.delete()
+    return redirect('trainer_profile_upload')
 
 def mark_favorite(request, id):
     user = request.user

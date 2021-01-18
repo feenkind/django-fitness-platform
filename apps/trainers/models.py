@@ -39,6 +39,9 @@ class Upload(models.Model):
     def __str__(self):
         return self.trainer.__str__()
 
+    def delete(self,*args, **kwargs,):
+        self.url.delete()
+        super().delete(*args, **kwargs)
 
 class Location(models.Model):
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)

@@ -11,6 +11,31 @@
   {% else %}
     {% include 'trainers/trainerprofile_nav.html' %}
     <div class="px-2 pt-5">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Download</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for upload in uploads %}
+            <tr>
+                <td>{{ upload.title }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ upload.url }}" >Download</a>
+                </td>
+                <td>
+                    <form method="POST" action="{% url 'delete_upload' upload.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}

@@ -31,10 +31,10 @@ urlpatterns = [
     path('trainer/', get_trainer_profile, name='trainer_profile'),
     path('trainer/edit', edit_trainer_profile, name='trainer_profile_edit'),
     path(
-        'trainer/upload', upload_trainer_profile, name='trainer_profile_upload'
+        'trainer/upload/<int:id>/', delete_upload, name='delete_upload'
     ),
     path(
-        'trainer/upload_list', trainer_upload_list, name='trainer_upload_list'
+        'trainer/upload', upload_trainer_profile, name='trainer_profile_upload'
     ),
     path(
         'trainer/locations',
