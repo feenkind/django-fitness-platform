@@ -59,6 +59,7 @@ def get_trainer_profile(request, id=None):
         user_can_favorite = (
             hasattr(request.user, 'role') and request.user.role == Roles.USER
         )
+        all_favorites = trainer.get_flags()
 
         context = {
             'page_title': f'{trainername}\'s profile',
@@ -70,6 +71,7 @@ def get_trainer_profile(request, id=None):
             'is_visible': trainer.visible,
             'marked_favorite': marked_favorite,
             'user_can_favorite': user_can_favorite,
+            'favorite_count': len(all_favorites),
         }
     except Trainer.DoesNotExist:
         if (
