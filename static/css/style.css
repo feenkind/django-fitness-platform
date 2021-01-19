@@ -25,6 +25,10 @@ body>.container-md>h1 {
   font-size: 2rem;
 }
 
+.word-wrap-anywhere {
+  word-wrap: anywhere;
+}
+
 /* BUTTONS */
 .btn-primary {
   background-color: var(--primary-color);
