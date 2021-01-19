@@ -113,3 +113,7 @@ Außerdem werden im Trainerprofil natürlich noch die About-Beschreibung und die
 Am Ende wird die Sportart des Trainers angezeigt, mit Klick auf diese kommt man zu einer gefilterten Trainerliste mit Trainern, die nur diese Sportart anbieten (und ein öffentliches Profil haben).
 
 Nur wenn der Benutzer, der dieses Profil betrachtet, eingeloggt ist und der Eigentümer des Profils, dann wird am Ende der Seite noch ein Edit Button angezeigt.
+
+## Admin Bereich
+Über `/admin` ist der Administrationsbereich für Superuser erreichbar. Hier können die Benutzer und die Accounts, die über das Social-Login erstellt wurden, verwaltet werden. Außerdem können hier auch Trainerprofile mit den dazugehörigen Daten wie Locations und Uploads vom Administrator angelegt und, wenn nötig, geändert oder gelöscht werden.
+Auch die Favorisierungen sind hier sichtbar und können geändert werden.
