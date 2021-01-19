@@ -11,8 +11,6 @@ from apps.trainers.filters import *
 
 
 # custom template tag to enable multiple level lookup
-
-
 @register.simple_tag(name='lookup')
 def get_item(dictionary, key):
     return dictionary.get(key)
@@ -161,16 +159,12 @@ def delete_location(request, id):
 
 def upload_trainer_profile(request):
     user = request.user
-    if not user.is_authenticated or user.role != Roles.TRAINER:
-        return render(request, '404.html')
-    else:
+    try:
         trainer = Trainer.objects.get(user_id=user.id)
-        try:
-            upload = Upload.objects.get(trainer_id=trainer.id)
-        except:
+        uploads = Upload.objects.filter(trainer_id=trainer.id)
+        if request.method == 'POST':
             upload = Upload()
             upload.trainer_id = trainer.id
-        if request.method == 'POST':
             form = UploadForm(request.POST, request.FILES, instance=upload)
             if form.is_valid():
                 form.save()
@@ -179,14 +173,15 @@ def upload_trainer_profile(request):
             else:
                 messages.error(request, _('We had problems with your upload.'))
         else:
-            form = UploadForm(instance=upload)
-        uploads = Upload.objects.all()
+            form = UploadForm()
         context = {
             'page_title': 'Edit trainer profile',
-            'upload': upload,
             'form': form,
             'uploads': uploads,
+            'media_url': settings.MEDIA_URL
         }
+    except:
+        return render(request, '404.html')
     return render(request, 'trainers/trainerprofile_upload.html', context)
 
 
@@ -195,6 +190,7 @@ def delete_upload(request, id):
         upload = Upload.objects.get(id=id)
         upload.delete()
     return redirect('trainer_profile_upload')
+
 
 def mark_favorite(request, id):
     user = request.user

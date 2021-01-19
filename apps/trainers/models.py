@@ -1,5 +1,7 @@
 import os
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from siteflags.models import ModelWithFlag
 from fitnessplatform import settings
 from django.utils.translation import gettext_lazy as _
@@ -42,6 +44,10 @@ class Upload(models.Model):
     def delete(self,*args, **kwargs,):
         self.url.delete()
         super().delete(*args, **kwargs)
+
+@receiver(post_delete, sender=Upload)
+def submission_delete(sender, instance, **kwargs):
+    instance.url.delete(False)
 
 class Location(models.Model):
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)

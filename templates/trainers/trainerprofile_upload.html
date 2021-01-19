@@ -24,7 +24,7 @@
             <tr>
                 <td>{{ upload.title }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ upload.url }}" >Download</a>
+                    <a class="btn btn-primary" href="{{ media_url }}{{ upload.url }}" >Download</a>
                 </td>
                 <td>
                     <form method="POST" action="{% url 'delete_upload' upload.id %}">
