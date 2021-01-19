@@ -31,7 +31,7 @@
 
         <div class="row align-items-center">
           {% if trainer.user.avatar %}
-            <div class="col-md-3">
+            <div class="col-md-3 pr-md-4">
                 <div class="image-square-crop d-inline-block">
                   <img class="img-fluid border border-secondary"  src="{{ trainer.user.avatar.url }}" alt="{% trans 'Profile picture' %}" />
                 </div>
@@ -58,14 +58,15 @@
           </p>
         {% endif %}
         <article class="row">
-          <section class="col-lg-8 py-4 pr-lg-4">
-            <p>{{ trainer.about|linebreaks }}</p>
+          <section class="col-lg-8 py-4 pr-lg-4 word-wrap-anywhere">
+            {{ trainer.about|linebreaks }}
             <p class="mb-0"><strong>{% trans 'Sports' %}:</strong>
-            <span class="lead">
-              <a class="badge badge-primary" href="{% url 'trainer_list' %}?sport={{ trainer.sport }}">
-                {{ trainer.get_sport_display }}
-              </a>
-            </span>
+              <span class="lead">
+                <a class="badge badge-primary" href="{% url 'trainer_list' %}?sport={{ trainer.sport }}">
+                  {{ trainer.get_sport_display }}
+                </a>
+              </span>
+            </p>
           </section>
           <aside class="col-lg-4 p-4 bg-light">
             <strong>{% trans 'Classes are offered in' %}</strong>
