@@ -1,4 +1,7 @@
+import os
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from siteflags.models import ModelWithFlag
 from fitnessplatform import settings
 from django.utils.translation import gettext_lazy as _
@@ -27,12 +30,24 @@ class Trainer(ModelWithFlag):
 
 
 class Upload(models.Model):
+    def upload_filename(instance, filename):
+        filepath = f'user_{instance.trainer.user_id}/uploads/{filename}'
+        return filepath
+
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
-    url = models.URLField(max_length=30)
+    title = models.CharField(max_length=100, default='Filename')
+    url = models.FileField(upload_to=upload_filename, null=True, blank=True, )
 
     def __str__(self):
-        return f'{self.trainer.__str__()} ({self.url})'
+        return self.title
 
+    def delete(self,*args, **kwargs,):
+        self.url.delete()
+        super().delete(*args, **kwargs)
+
+@receiver(post_delete, sender=Upload)
+def submission_delete(sender, instance, **kwargs):
+    instance.url.delete(False)
 
 class Location(models.Model):
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)

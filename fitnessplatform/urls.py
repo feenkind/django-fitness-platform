@@ -31,6 +31,9 @@ urlpatterns = [
     path('trainer/', get_trainer_profile, name='trainer_profile'),
     path('trainer/edit', edit_trainer_profile, name='trainer_profile_edit'),
     path(
+        'trainer/upload/<int:id>/', delete_upload, name='delete_upload'
+    ),
+    path(
         'trainer/upload', upload_trainer_profile, name='trainer_profile_upload'
     ),
     path(

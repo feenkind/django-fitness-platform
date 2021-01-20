@@ -5,14 +5,12 @@ from django.urls import reverse_lazy
 from apps.trainers.models import *
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-from apps.trainers.forms import TrainerSettings, LocationSettings
+from apps.trainers.forms import TrainerSettings, LocationSettings, UploadForm
 from apps.users.models import Roles
 from apps.trainers.filters import *
 
 
 # custom template tag to enable multiple level lookup
-
-
 @register.simple_tag(name='lookup')
 def get_item(dictionary, key):
     return dictionary.get(key)
@@ -57,7 +55,8 @@ def get_trainer_profile(request, id=None):
         locations = Location.objects.filter(trainer_id=trainer.id)
         marked_favorite = trainer.is_flagged(request.user)
         user_can_favorite = (
-            hasattr(request.user, 'role') and request.user.role == Roles.USER
+                hasattr(request.user,
+                        'role') and request.user.role == Roles.USER
         )
         all_favorites = trainer.get_flags()
 
@@ -75,9 +74,9 @@ def get_trainer_profile(request, id=None):
         }
     except Trainer.DoesNotExist:
         if (
-            not id
-            and hasattr(request.user, 'role')
-            and request.user.role == Roles.TRAINER
+                not id
+                and hasattr(request.user, 'role')
+                and request.user.role == Roles.TRAINER
         ):
             show_create = True
 
@@ -161,11 +160,38 @@ def delete_location(request, id):
 
 
 def upload_trainer_profile(request):
-    # TODO: all the upload logic goes here
-    context = {
-        'page_title': 'Edit trainer profile',
-    }
+    user = request.user
+    try:
+        trainer = Trainer.objects.get(user_id=user.id)
+        uploads = Upload.objects.filter(trainer_id=trainer.id)
+        if request.method == 'POST':
+            upload = Upload()
+            upload.trainer_id = trainer.id
+            form = UploadForm(request.POST, request.FILES, instance=upload)
+            if form.is_valid():
+                form.save()
+                messages.success(request, _('Upload uploaded'))
+                return redirect('trainer_profile_upload')
+            else:
+                messages.error(request, _('We had problems with your upload.'))
+        else:
+            form = UploadForm()
+        context = {
+            'page_title': 'Edit trainer profile',
+            'form': form,
+            'uploads': uploads,
+            'media_url': settings.MEDIA_URL
+        }
+    except:
+        return render(request, '404.html')
     return render(request, 'trainers/trainerprofile_upload.html', context)
+
+
+def delete_upload(request, id):
+    if request.method == 'POST':
+        upload = Upload.objects.get(id=id)
+        upload.delete()
+    return redirect('trainer_profile_upload')
 
 
 def mark_favorite(request, id):
