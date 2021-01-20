@@ -41,7 +41,7 @@ class LocationSettings(forms.ModelForm):
 
 class UploadForm(forms.ModelForm):
     title = forms.CharField(required=True, label=_('Title'))
-    url = forms.FileField(required=True, help_text= "You can't upload without an upload.")
+    url = forms.FileField(required=True)
     class Meta:
         model = Upload
         fields = ['title', 'url']

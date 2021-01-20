@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='upload',
             name='title',
-            field=models.CharField(default='Here goes text', max_length=100),
+            field=models.CharField(default='Filename', max_length=100),
         ),
         migrations.AlterField(
             model_name='upload',

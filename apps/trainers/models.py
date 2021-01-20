@@ -35,11 +35,11 @@ class Upload(models.Model):
         return filepath
 
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100, default='Here goes text')
+    title = models.CharField(max_length=100, default='Filename')
     url = models.FileField(upload_to=upload_filename, null=True, blank=True, )
 
     def __str__(self):
-        return self.trainer.__str__()
+        return self.title
 
     def delete(self,*args, **kwargs,):
         self.url.delete()
