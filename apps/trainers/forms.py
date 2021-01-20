@@ -1,5 +1,10 @@
+import magic
 from django import forms
+from django.core.exceptions import ValidationError
+from django.template.defaultfilters import filesizeformat
 from django.utils.translation import gettext_lazy as _
+
+from fitnessplatform import settings
 from .models import Trainer, Location, Upload
 
 
@@ -39,9 +44,24 @@ class LocationSettings(forms.ModelForm):
         fields = ['name', 'street', 'number', 'zipcode', 'city', 'country']
 
 
+def validate_upload(file):
+    content_type = magic.from_buffer(file.read(), mime=True)
+    print(content_type)
+    if not content_type in settings.CONTENT_TYPES:
+        raise forms.ValidationError(_(
+            'File type is not supported. Please upload only files of the following types: %s') % (
+                                        settings.CONTENT_TYPES))
+    if file.size > settings.MAX_UPLOAD_SIZE:
+        raise forms.ValidationError(
+            _('Please keep the filesize under %s. Current filesize: %s') % (
+                filesizeformat(settings.MAX_UPLOAD_SIZE),
+                filesizeformat(file.size)))
+
+
 class UploadForm(forms.ModelForm):
     title = forms.CharField(required=True, label=_('Title'))
-    url = forms.FileField(required=True)
+    url = forms.FileField(required=True, label='', validators=[validate_upload], )
+
     class Meta:
         model = Upload
         fields = ['title', 'url']
