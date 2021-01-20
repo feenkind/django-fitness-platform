@@ -8,11 +8,16 @@
     <p>{% trans 'You need to log in before you can edit your trainer profile.' %}</p>
     <a class="btn btn-outline-primary" href="{% url 'account_login' %}?next={{ request.path|urlencode }}">{% trans 'Log in' %}</a>
   {% else %}
-  {% include 'trainers/trainerprofile_nav.html' %}
+  {% include 'trainers/trainerprofile_nav.html' with trainer_has_profile=trainer_has_profile %}
   <div class="px-2 pt-5">
     {% if not is_visible %}
       <div class="alert alert-warning">
         {% trans 'Your profile is not visible. Check the visbility settings at the bottom and save to publish it.' %}
+      </div>
+    {% endif %}
+    {% if not trainer_has_profile %}
+      <div class="alert alert-warning">
+        {% trans 'You can add locations and uploads only when your profile data have been saved.' %}
       </div>
     {% endif %}
 

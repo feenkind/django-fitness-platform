@@ -9,7 +9,7 @@
     <p>{% trans 'You need to log in before you can edit your trainer profile.' %}</p>
     <a class="btn btn-outline-primary" href="{% url 'account_login' %}?next={{ request.path|urlencode }}">{% trans 'Log in' %}</a>
   {% else %}
-    {% include 'trainers/trainerprofile_nav.html' %}
+    {% include 'trainers/trainerprofile_nav.html' with trainer_has_profile=True %}
     <div class="px-2 pt-5">
     <table class="table">
         <thead>
