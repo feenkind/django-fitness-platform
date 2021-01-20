@@ -17,7 +17,7 @@
                         {% for location in locations %}
                             <div class="col-lg-5 p-4 mr-4 mb-4 bg-light">{{ location.name }}<br>{{ location.street }} {{ location.number }}<br>{{ location.zipcode }} {{ location.city }}
                                 ({{ location.country }})<br>
-                                <a class="btn btn-secondary mt-3 mr-3"
+                                <a class="btn btn-outline-primary mt-3 mr-3"
                                    href={% url 'trainer_profile_locations' location.id %}>{% trans 'Edit location' %}</a>
                                 <a class="btn btn-secondary mt-3 mr-3"
                                    href="{% url 'location_delete' location.pk %}">{% trans 'Delete location' %}</a><br>

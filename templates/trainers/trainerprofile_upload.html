@@ -14,33 +14,37 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Title</th>
-            <th>Download</th>
-            <th></th>
+            <th>{% trans 'Title' %}</th>
+            <th>{% trans 'Action' %}</th>
         </tr>
         </thead>
         <tbody>
+            {% if uploads|length == 0 %}
+              <tr>
+                <td>{% trans 'You don\'t have any uploads yet.' %}</td>
+              </tr>
+            {% endif %}
             {% for upload in uploads %}
             <tr>
                 <td>{{ upload.title }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ media_url }}{{ upload.url }}" >Download</a>
-                </td>
-                <td>
-                    <form method="POST" action="{% url 'delete_upload' upload.id %}">
+                    <a class="btn btn-outline-primary" href="{{ media_url }}{{ upload.url }}" >Download</a>
+                    <form class="d-inline" method="POST" action="{% url 'delete_upload' upload.id %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-secondary">Delete</button>
                     </form>
                 </td>
             </tr>
             {% endfor %}
+            <tr class="table-light">
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <td>{% bootstrap_form form layout='inline' form_group_class='lg-6' %}</td>
+                <td><button type="submit" class="btn btn-primary ">Upload file</button></td>
+              </form>
+            </tr>
         </tbody>
     </table>
-      <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn btn-primary ">Upload file</button>
-    </form>
     </div>
   {% endif %}
 {% endblock %}
