@@ -93,6 +93,7 @@ Es kann die Sportart und ein Motto angegeben werden. In dem About-Textfeld kann 
 Die Checkox "visible" bestimmt, ob das Profil für andere Benutzer (oder anonyme Besucher) sichtbar ist.
 Über den Reiter kommt der Trainer zu Locations. Hier können die verschiedenen Orte angegeben werden, an denen der Trainer seine Kurse anbietet. Bestehende Orte können hier auch gelöscht werden.
 Weiter gibt es den Reiter Uploads. Hier kann der Trainer verschiedene Dateien wie PDFs oder Videos hochladen (oder auch wieder löschen). Diese werden dann in seinem öffentlichen Trainerprofil angezeigt.
+Wenn ein Trainer noch kein Profil angelegt hat, dann sind die Links "Locations" und "Uploads" nicht aktiv und eine Warnung wird angezeigt. Erst wenn das Profil das erste Mal gespeichert und somit angelegt wurde, kann ein Trainer Orte und Uploads zu seinem Profil hinzugügen.
 
 ### Logout
 Sobald hier geklickt wird, wird der Benutzer sofort ausgeloggt. Die allauth-Settings wurden angepasst, damit keine extra Bestätigungsseite angezeigt wird.
