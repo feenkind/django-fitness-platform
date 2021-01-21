@@ -57,6 +57,13 @@
             </a>
           </p>
         {% endif %}
+
+        {% if show_edit %}
+          <div>
+            <a class="btn btn-outline-primary mt-3" href="{% url 'trainer_profile_edit' %} ">{% trans 'Edit your trainer profile' %}</a>
+          </div>
+        {% endif %}
+
         <article class="row">
           <section class="col-lg-8 py-4 pr-lg-4 word-wrap-anywhere">
             {{ trainer.about|linebreaks }}
@@ -81,10 +88,69 @@
             </ul>
           </aside>
         </article>
+
+        <article class="row">
+          <h2 class="col-lg-12">{% trans 'Uploads of' %} {{ trainername }}</h2>
+          <section class="py-4 my-4 col-lg-12">
+            <h4 class="mb-4">{% trans 'Videos' %}<h4>
+            {% if uploads.video|length < 1 %}
+              <p>{% trans 'This trainer has no videos.'%}</p>
+            {% else %}
+              <div class="row">
+              {% for video in uploads.video %}
+              <div class="col-lg-3">
+                <div class="embed-responsive embed-responsive-4by3">
+                  <video class="embed-responsive-item" controls>
+                    <source src="{{ video.0 }}" type="{{ video.1 }}">
+                    {% trans 'Your browser does not support the video tag.' %}'
+                  </video> 
+                </div>
+              </div>
+              {% endfor %}
+              </div>
+            {% endif %}
+          </section>
+
+          <section class="col-lg-8 py-4 pr-lg-4">
+            <h4 class="mb-4">{% trans 'Images' %}<h4>
+            {% if uploads.image|length < 1 %}
+              <p>{% trans 'This trainer has no images.'%}</p>
+            {% else %}
+              <div class="row">
+              {% for image in uploads.image %}
+              <div class="col-lg-3">
+                <figure class="figure">
+                  <img src="{{ image.0 }}" class="figure-img img-fluid" alt="{{ image.2 }}">
+                  <figcaption class="figure-caption">{{ image.2 }}</figcaption>
+                </figure>
+              </div>
+              {% endfor %}
+              </div>
+            {% endif %}
+          </section>
+
+          <aside class="col-lg-4 p-4 bg-light">
+            <h4 class="mb-4">{% trans 'PDFs' %}</h4>
+            {% if not uploads.pdf %}
+              <p>{% trans 'This trainer has no PDFs.' %}</p>
+            {% else %}
+              <ul class="list-unstyled">
+              {% for pdf in uploads.pdf %}
+                  <li class="my-2 row">
+                    <div class="col-lg-8">
+                      {{ pdf.2 }}
+                    </div>
+                    <div class="col-lg-4">
+                      <a class="btn btn-outline-primary btn-sm" href="{{ pdf.0 }}" >Download</a>
+                    </div>
+                  </li>
+              {% endfor %}
+            {% endif %}
+            </ul>
+          </aside>
+        </article>
   
-        {% if show_edit %}
-            <a class="btn btn-secondary mt-3" href="{% url 'trainer_profile_edit' %} ">{% trans 'Edit your trainer profile' %}</a>
-        {% endif %}
+        
     
     {% else %}
       <h1>{% trans 'This trainer profile is not public' %}</h1>

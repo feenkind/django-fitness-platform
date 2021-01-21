@@ -27,11 +27,15 @@ def order_uploads_by_type(uploads):
     for upload in uploads:
         type = magic.from_file(upload.url.path, mime=True)
         if type[:5] == 'image':
-            uploads_by_type['image'].append(upload)
+            uploads_by_type['image'].append(
+                (upload.url.url, type, upload.title)
+            )
         if type == 'application/pdf':
-            uploads_by_type['pdf'].append(upload)
+            uploads_by_type['pdf'].append((upload.url.url, type, upload.title))
         if type[:5] == 'video':
-            uploads_by_type['video'].append(upload)
+            uploads_by_type['video'].append(
+                (upload.url.url, type, upload.title)
+            )
 
     return uploads_by_type
 
@@ -72,12 +76,15 @@ def get_trainer_profile(request, id=None):
             show_edit = True
         trainername = trainer.get_fullname()
         locations = Location.objects.filter(trainer_id=trainer.id)
-        uploads = Upload.objects.filter(trainer_id=trainer.id)
+        uploads = Upload.objects.filter(trainer_id=trainer.id).order_by(
+            'title'
+        )
         marked_favorite = trainer.is_flagged(request.user)
         user_can_favorite = (
             hasattr(request.user, 'role') and request.user.role == Roles.USER
         )
         all_favorites = trainer.get_flags()
+        print(order_uploads_by_type(uploads))
 
         context = {
             'page_title': f'{trainername}\'s profile',
