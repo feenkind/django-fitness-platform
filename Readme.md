@@ -9,7 +9,6 @@ Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practic
 * django-filters (Filter für die Trainerliste)
 * environ (Environment Variables für Development und Production)
 * siteflags (Favorisieren von Trainern)
-* Pillow (für den Upload von Avataren)
 
 Außerdem packages für die lokale MySQL-Datenbank und dependencies.
 
