@@ -188,9 +188,8 @@ def upload_trainer_profile(request):
 
 
 def delete_upload(request, id):
-    if request.method == 'POST':
-        upload = Upload.objects.get(id=id)
-        upload.delete()
+    upload = Upload.objects.get(id=id)
+    upload.delete()
     return redirect('trainer_profile_upload')
 
 
