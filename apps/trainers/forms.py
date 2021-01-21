@@ -46,7 +46,6 @@ class LocationSettings(forms.ModelForm):
 
 def validate_upload(file):
     content_type = magic.from_buffer(file.read(), mime=True)
-    print(content_type)
     if not content_type in settings.CONTENT_TYPES:
         raise forms.ValidationError(_(
             'File type is not supported. Please upload only files of the following types: %s') % (
