@@ -9,13 +9,19 @@ Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practic
 * django-filters (Filter für die Trainerliste)
 * environ (Environment Variables für Development und Production)
 * siteflags (Favorisieren von Trainern)
-* Pillow (für den Upload von Avataren)
 
 Außerdem packages für die lokale MySQL-Datenbank und dependencies.
 
 ## Development
+Vor dem Starten des Servers muss `libmagic` auf dem System installiert sein.
+Linux: `$ sudo apt-get install libmagic1`
+Mac: `brew install libmagic`
+Siehe auch https://pypi.org/project/python-magic/.
+
+Der Server kann lokal mit `python manage.py runserver` gestartet werden.
 Die Website ist erreichbar unter `http://127.0.0.1:8000`. Das ist wichtig, wenn man das Social Login verwendet, sonst gibt es Probleme mit der redirect-URI. Ohne Social Login, kann die Website auch mit `localhost:8000` aufgerufen werden.
 Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im `fitnessplatform`-Verzeichnis erstellen und die Variablen aus der `.env.example` kopieren. Für die Ausgabe von Fehlermeldungen `DEBUG=True` setzen.
+
 
 ### Verbindung zu einer lokalen Datenbank:
 * Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
