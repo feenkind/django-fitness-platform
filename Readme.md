@@ -16,6 +16,7 @@ Außerdem packages für die lokale MySQL-Datenbank und dependencies.
 Vor dem Starten des Servers muss `libmagic` auf dem System installiert sein.
 Linux: `$ sudo apt-get install libmagic1`
 Mac: `brew install libmagic`
+Windows: `pip install python-magic-bin`
 Siehe auch https://pypi.org/project/python-magic/.
 
 Der Server kann lokal mit `python manage.py runserver` gestartet werden.
