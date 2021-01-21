@@ -21,7 +21,6 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -31,7 +30,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = env.bool("DEBUG")
 
 ALLOWED_HOSTS = [env("ALLOWED_HOSTS")]
-
 
 # Application definition
 
@@ -56,7 +54,6 @@ INSTALLED_APPS = [
     'apps.pages',
     # social login
     'allauth.socialaccount.providers.github',
-
 
 ]
 
@@ -92,7 +89,6 @@ WSGI_APPLICATION = 'fitnessplatform.wsgi.application'
 
 SITE_ID = 1
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -110,7 +106,6 @@ DATABASES = {
         'PORT': env("DATABASE_PORT"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -131,7 +126,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -144,7 +138,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -159,14 +152,8 @@ STATICFILES_DIRS = [os.path.join(ROOT_PATH, '../static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-CONTENT_TYPES = ['image/jpeg', 'image/png', 'application/pdf']
-MAX_UPLOAD_SIZE = 2097152
-
-# AUTHENTICATION AND ACCOUNT
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
+CONTENT_TYPES = ['image/jpeg', 'image/png', 'application/pdf', 'video/mp4',
+                 'video/webm', 'video/ogg']
 
 AUTH_USER_MODEL = 'users.User'
 
