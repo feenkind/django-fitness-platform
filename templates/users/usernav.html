@@ -20,7 +20,7 @@
     </a>
 
     {% if user.role == 'trainer' %}
-      <a class="dropdown-item {% if request.path == '/trainer/' %}active{% endif %}" href="{% url 'trainer_profile'%}">
+      <a class="dropdown-item {% if request.path == '/trainer/' or request.path == '/trainer/edit' or request.path == '/trainer/locations' or request.path == '/trainer/upload' %}active{% endif %}" href="{% url 'trainer_profile'%}">
         {% trans 'Your trainer profile' %}
       </a>
     {% endif %}

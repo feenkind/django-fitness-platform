@@ -22,7 +22,7 @@
   </form>
 
   <div class="d-flex justify-content-end my-2">
-    <span class="badge badge-light font-weight-normal mx-1">{{result_count|default:0}} {% trans 'result' %}{{ result_count|pluralize:'s' }}</span>
+    <span class="badge badge-light font-weight-normal mx-1">{{trainers|length}} {% trans 'result' %}{{ trainers|length|pluralize:'s' }}</span>
   </div>
   <div class="table-responsive">
     <table class="table table-hover">

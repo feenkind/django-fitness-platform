@@ -58,7 +58,6 @@ def get_user_favorites(request):
     context = {
         'page_title': _('Favorite trainers'),
         'favorites': favorite_trainers,
-        'favourites_count': len(favorite_trainers),
     }
 
     return render(request, 'users/favorites.html', context)

@@ -35,7 +35,6 @@ def get_trainer_list(request):
         'trainers': trainers,
         'locations_by_trainerid': locations_by_trainerid,
         'filter': trainer_filter.form,
-        'result_count': trainers.__len__,
     }
     return render(request, 'trainers/trainerlist.html', context)
 
@@ -55,8 +54,7 @@ def get_trainer_profile(request, id=None):
         locations = Location.objects.filter(trainer_id=trainer.id)
         marked_favorite = trainer.is_flagged(request.user)
         user_can_favorite = (
-                hasattr(request.user,
-                        'role') and request.user.role == Roles.USER
+            hasattr(request.user, 'role') and request.user.role == Roles.USER
         )
         all_favorites = trainer.get_flags()
 
@@ -74,9 +72,9 @@ def get_trainer_profile(request, id=None):
         }
     except Trainer.DoesNotExist:
         if (
-                not id
-                and hasattr(request.user, 'role')
-                and request.user.role == Roles.TRAINER
+            not id
+            and hasattr(request.user, 'role')
+            and request.user.role == Roles.TRAINER
         ):
             show_create = True
 
@@ -91,10 +89,12 @@ def get_trainer_profile(request, id=None):
 
 def edit_trainer_profile(request):
     user = request.user
+    trainer_has_profile = False
     if not user.is_authenticated or user.role != Roles.TRAINER:
         return render(request, '404.html')
     try:
         trainer = Trainer.objects.get(user_id=user.id)
+        trainer_has_profile = True
     except:
         trainer = Trainer()
     if request.method == 'POST':
@@ -112,6 +112,7 @@ def edit_trainer_profile(request):
         'page_title': 'Edit trainer profile',
         'form': form,
         'is_visible': trainer.visible,
+        'trainer_has_profile': trainer_has_profile,
     }
     return render(request, 'trainers/trainerprofile_edit.html', context)
 
@@ -180,7 +181,7 @@ def upload_trainer_profile(request):
             'page_title': 'Edit trainer profile',
             'form': form,
             'uploads': uploads,
-            'media_url': settings.MEDIA_URL
+            'media_url': settings.MEDIA_URL,
         }
     except:
         return render(request, '404.html')

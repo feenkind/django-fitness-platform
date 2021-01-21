@@ -6,11 +6,11 @@
            href="{% url 'trainer_profile_edit' %}">{% trans 'Profile data' %}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {% if '/trainer/locations' in request.path %}active{% endif %}"
+        <a class="nav-link {% if '/trainer/locations' in request.path %}active{% endif %} {% if not trainer_has_profile %}disabled{% endif %}"
            href="{% url 'trainer_profile_locations' %}">{% trans 'Locations' %}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {% if request.path == '/trainer/upload' %}active{% endif %}"
+        <a class="nav-link {% if request.path == '/trainer/upload' %}active{% endif %} {% if not trainer_has_profile %}disabled{% endif %}"
            href="{% url 'trainer_profile_upload' %}">{% trans 'Uploads' %}</a>
     </li>
 </ul>
