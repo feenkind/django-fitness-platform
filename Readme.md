@@ -9,13 +9,20 @@ Die Projekstruktur orientiert sich an https://studygyaan.com/django/best-practic
 * django-filters (Filter für die Trainerliste)
 * environ (Environment Variables für Development und Production)
 * siteflags (Favorisieren von Trainern)
-* Pillow (für den Upload von Avataren)
 
 Außerdem packages für die lokale MySQL-Datenbank und dependencies.
 
 ## Development
+Vor dem Starten des Servers muss `libmagic` auf dem System installiert sein.
+Linux: `$ sudo apt-get install libmagic1`
+Mac: `brew install libmagic`
+Windows: `pip install python-magic-bin`
+Siehe auch https://pypi.org/project/python-magic/.
+
+Der Server kann lokal mit `python manage.py runserver` gestartet werden.
 Die Website ist erreichbar unter `http://127.0.0.1:8000`. Das ist wichtig, wenn man das Social Login verwendet, sonst gibt es Probleme mit der redirect-URI. Ohne Social Login, kann die Website auch mit `localhost:8000` aufgerufen werden.
 Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im `fitnessplatform`-Verzeichnis erstellen und die Variablen aus der `.env.example` kopieren. Für die Ausgabe von Fehlermeldungen `DEBUG=True` setzen.
+
 
 ### Verbindung zu einer lokalen Datenbank:
 * Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
@@ -92,7 +99,7 @@ Wenn ein Trainer auf den Edit- oder Create-Button klickt, dann kann er sein Trai
 Es kann die Sportart und ein Motto angegeben werden. In dem About-Textfeld kann der Trainer über sich schreiben, auch Zeilenumbrüche werden richtig dargestellt.
 Die Checkox "visible" bestimmt, ob das Profil für andere Benutzer (oder anonyme Besucher) sichtbar ist.
 Über den Reiter kommt der Trainer zu Locations. Hier können die verschiedenen Orte angegeben werden, an denen der Trainer seine Kurse anbietet. Bestehende Orte können hier auch gelöscht werden.
-Weiter gibt es den Reiter Uploads. Hier kann der Trainer verschiedene Dateien wie PDFs oder Videos hochladen (oder auch wieder löschen). Diese werden dann in seinem öffentlichen Trainerprofil angezeigt.
+Weiter gibt es den Reiter Uploads. Hier kann der Trainer verschiedene Dateien wie PDFs oder Videos hochladen (oder auch wieder löschen). Diese werden dann in seinem öffentlichen Trainerprofil angezeigt. Diese werden dann in seinem öffentlichen Trainerprofil angezeigt. Die erlaubten Dateien sind auf ausgewählte Formate von maximal 2MB beschränkt.
 Wenn ein Trainer noch kein Profil angelegt hat, dann sind die Links "Locations" und "Uploads" nicht aktiv und eine Warnung wird angezeigt. Erst wenn das Profil das erste Mal gespeichert und somit angelegt wurde, kann ein Trainer Orte und Uploads zu seinem Profil hinzugügen.
 
 ### Logout

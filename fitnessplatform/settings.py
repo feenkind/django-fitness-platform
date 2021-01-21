@@ -159,6 +159,9 @@ STATICFILES_DIRS = [os.path.join(ROOT_PATH, '../static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+CONTENT_TYPES = ['image/jpeg', 'image/png', 'application/pdf', 'video/mp4',
+                 'video/webm', 'video/ogg']
+MAX_UPLOAD_SIZE = 2097152
 
 # AUTHENTICATION AND ACCOUNT
 AUTHENTICATION_BACKENDS = (
