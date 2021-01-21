@@ -1,3 +1,4 @@
+import magic
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.defaulttags import register
@@ -14,6 +15,29 @@ from apps.trainers.filters import *
 @register.simple_tag(name='lookup')
 def get_item(dictionary, key):
     return dictionary.get(key)
+
+
+def order_uploads_by_type(uploads):
+    uploads_by_type = {
+        'image': [],
+        'pdf': [],
+        'video': [],
+    }
+
+    for upload in uploads:
+        type = magic.from_file(upload.url.path, mime=True)
+        if type[:5] == 'image':
+            uploads_by_type['image'].append(
+                (upload.url.url, type, upload.title)
+            )
+        if type == 'application/pdf':
+            uploads_by_type['pdf'].append((upload.url.url, type, upload.title))
+        if type[:5] == 'video':
+            uploads_by_type['video'].append(
+                (upload.url.url, type, upload.title)
+            )
+
+    return uploads_by_type
 
 
 def get_trainer_list(request):
@@ -52,11 +76,15 @@ def get_trainer_profile(request, id=None):
             show_edit = True
         trainername = trainer.get_fullname()
         locations = Location.objects.filter(trainer_id=trainer.id)
+        uploads = Upload.objects.filter(trainer_id=trainer.id).order_by(
+            'title'
+        )
         marked_favorite = trainer.is_flagged(request.user)
         user_can_favorite = (
             hasattr(request.user, 'role') and request.user.role == Roles.USER
         )
         all_favorites = trainer.get_flags()
+        print(order_uploads_by_type(uploads))
 
         context = {
             'page_title': f'{trainername}\'s profile',
@@ -69,6 +97,7 @@ def get_trainer_profile(request, id=None):
             'marked_favorite': marked_favorite,
             'user_can_favorite': user_can_favorite,
             'favorite_count': len(all_favorites),
+            'uploads': order_uploads_by_type(uploads),
         }
     except Trainer.DoesNotExist:
         if (
