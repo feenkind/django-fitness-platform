@@ -53,6 +53,7 @@ def get_trainer_profile(request, id=None):
             show_edit = True
         trainername = trainer.get_fullname()
         locations = Location.objects.filter(trainer_id=trainer.id)
+        uploads = Upload.objects.filter(trainer_id=trainer.id)
         marked_favorite = trainer.is_flagged(request.user)
         user_can_favorite = (
                 hasattr(request.user,
@@ -65,6 +66,8 @@ def get_trainer_profile(request, id=None):
             'trainer': trainer,
             'trainername': trainername,
             'locations': locations,
+            'uploads': uploads,
+            'media_url': settings.MEDIA_URL,
             'show_edit': show_edit,
             'show_create': show_create,
             'is_visible': trainer.visible,

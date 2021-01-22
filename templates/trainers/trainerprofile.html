@@ -76,12 +76,32 @@
                   <li class="my-2">{{ location.name}}<br />{{location.street }} {{ location.number }}<br />{{ location.zipcode }} {{ location.city }} ({{ location.country }})</li>
               {% endfor %}
             {% else %}
-              <p>{% trans 'This trainer doesn\'t offer classes on any location for now.' %}</p>
+              <p>{% trans "This trainer doesn\'t offer classes on any location for now."%}</p>
             {% endif %}
             </ul>
           </aside>
         </article>
-  
+        <article class="row col-lg-8">
+        <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Download</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for upload in uploads %}
+            <tr>
+                <td>{{ upload.title }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ media_url }}{{ upload.url }}" >Download</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+         </table>
+        </article>
+
         {% if show_edit %}
             <a class="btn btn-secondary mt-3" href="{% url 'trainer_profile_edit' %} ">{% trans 'Edit your trainer profile' %}</a>
         {% endif %}
