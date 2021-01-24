@@ -1,9 +1,7 @@
 import magic
 from django import forms
-from django.core.exceptions import ValidationError
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import gettext_lazy as _
-
 from fitnessplatform import settings
 from .models import Trainer, Location, Upload
 

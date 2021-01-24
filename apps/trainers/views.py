@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.defaulttags import register
 from django.urls import reverse_lazy
-from apps.trainers.models import *
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from apps.trainers.forms import TrainerSettings, LocationSettings, UploadForm
