@@ -39,7 +39,7 @@ class Upload(models.Model):
     url = models.FileField(upload_to=upload_filename, null=True, blank=True, )
 
     def __str__(self):
-        return self.title
+        return f'{self.title} -  {self.trainer.user.username}'
 
     def delete(self,*args, **kwargs,):
         self.url.delete()
@@ -59,4 +59,4 @@ class Location(models.Model):
     country = models.CharField(max_length=150)
 
     def __str__(self):
-        return self.trainer.__str__()
+        return f'{self.trainer.__str__()} - {self.name}'
