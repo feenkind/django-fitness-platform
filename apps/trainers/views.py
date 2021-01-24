@@ -1,5 +1,5 @@
 import magic
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.defaulttags import register
 from django.urls import reverse_lazy
