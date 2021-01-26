@@ -24,7 +24,7 @@ Die Website ist erreichbar unter `http://127.0.0.1:8000`. Das ist wichtig, wenn 
 Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im `fitnessplatform`-Verzeichnis erstellen und die Variablen aus der `.env.example` kopieren. Für die Ausgabe von Fehlermeldungen `DEBUG=True` setzen.
 
 ### Tests
-Tests können einfach mit `python manage.py test <app name>` ausgeführt werden.
+Tests können einfach mit `python manage.py test <app name>` ausgeführt werden. Momentan gibt es nur Tests für die App `users`.
 
 
 ### Verbindung zu einer lokalen Datenbank:
