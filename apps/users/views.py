@@ -43,12 +43,12 @@ def get_user_favorites(request):
     flagged_trainers = ModelWithFlag.get_flags_for_objects(
         Trainer.objects.all(), user
     )
-    # filter these trainers only for the ones with flag value
-    favorite_trainer_ids = list(
-        filter(lambda trainer: len(trainer[1]) > 0, flagged_trainers.items())
-    )
-    # create a list, we are doing this in 2 steps because otherwise the code is too confusing
-    favorite_trainer_ids = [trainer[0] for trainer in favorite_trainer_ids]
+    # filter these trainers only for the ones with flag value, this is the one where trainer object is not empty
+    favorite_trainer_ids = [
+        trainer_id
+        for (trainer_id, trainer) in list(flagged_trainers.items())
+        if len(trainer) > 0
+    ]
     # another query is probably faster than a loop
     # get the favorite trainer objects
     favorite_trainers = Trainer.objects.filter(
