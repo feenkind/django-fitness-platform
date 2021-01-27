@@ -84,7 +84,6 @@ def get_trainer_profile(request, id=None):
             hasattr(request.user, 'role') and request.user.role == Roles.USER
         )
         all_favorites = trainer.get_flags()
-        print(order_uploads_by_type(uploads))
 
         context = {
             'page_title': f'{trainername}\'s profile',
