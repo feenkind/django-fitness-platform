@@ -23,6 +23,10 @@ Der Server kann lokal mit `python manage.py runserver` gestartet werden.
 Die Website ist erreichbar unter `http://127.0.0.1:8000`. Das ist wichtig, wenn man das Social Login verwendet, sonst gibt es Probleme mit der redirect-URI. Ohne Social Login, kann die Website auch mit `localhost:8000` aufgerufen werden.
 Damit die Entwicklungsumgebung optimal läuft, eine Datei `.env` im `fitnessplatform`-Verzeichnis erstellen und die Variablen aus der `.env.example` kopieren. Für die Ausgabe von Fehlermeldungen `DEBUG=True` setzen.
 
+### Tests
+Tests können einfach mit `python manage.py test <app name>` ausgeführt werden.
+Momentan gibt es Tests für `apps/users` und `apps/trainers`.
+
 
 ### Verbindung zu einer lokalen Datenbank:
 * Zugangsdaten müssen als Umgebungsvariabeln hinterlegt werden 
